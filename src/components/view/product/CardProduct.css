@@ -1,0 +1,91 @@
+.card_content {
+  width: 20vw;
+  height: 30vw;
+  min-height: 380px;
+  min-width: 200px;
+  background-color: var(--mediumgrayColor);
+}
+
+.card_header {
+  height: 40%;
+  width: 100%;
+  background-color: var(--grayblueColor);
+}
+
+.card_header img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.card_body {
+  height: 60%;
+  padding: 1vw 0;
+}
+
+.card_product_name {
+  font-weight: bolder;
+  height: 30%;
+  font-size: 16px;
+  padding: 0 5%;
+  overflow: hidden;
+
+ 
+}
+.card_product_name h4 {
+  font-size: 1.6em;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  
+}
+
+.card_product_price {
+  color: var(--yellowColor);
+  font-weight: 900;
+  font-size: 22px;
+  height: 15%;
+  display: flex;
+  justify-content: center;
+}
+
+.card_button_container {
+  height: 55%;
+  align-items: center;
+  justify-content: center;
+}
+
+.card_button_container Button {
+  width: 75%;
+  margin: 5px 0;
+  font-size: 15px;
+}
+.button_showme{
+    background-color: var(--greenColor);
+    border-color: var(--greenColor);
+}
+.button_showme:hover {
+    background-color: #1eaf10; 
+    border-color: #1eaf10;
+}
+
+.button_add_order{
+    background-color: var(--orangeColor);
+    border-color: var(--orangeColor);
+}
+
+.button_add_order:hover{
+    background-color: rgb(255, 60, 0);
+    border-color: rgb(255, 60, 0);
+}
+
+.button_remove_order{
+    background-color: var(--redColor);
+    border-color: var(--redColor);
+}
+
+.button_remove_order:hover{
+    background-color: rgb(253, 67, 67);
+    border-color: rgb(253, 67, 67);
+}
