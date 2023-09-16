@@ -2,12 +2,15 @@ import './App.css'
 import 'bootstrap/dist/css/bootstrap.css';
 import CardProduct from "./components/view/product/CardProduct"
 import CardOrder from './components/view/order/CardOrder';
+import Home from "./components/view/home/Home";
+
 function App() {
 
   return (
     <>
-    <CardProduct></CardProduct>
-    <CardOrder></CardOrder>
+    <Home></Home>
+    {/* <CardProduct></CardProduct> */}
+    {/* <CardOrder></CardOrder> */}
     </>
   )
 }

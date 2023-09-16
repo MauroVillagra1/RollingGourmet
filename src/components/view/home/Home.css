@@ -1,0 +1,49 @@
+.home{
+    background-color: var(--darkgrayColor);
+    min-height: 100vh;
+    width: 100vw;
+}
+
+.page_entry{
+    height: 90vh;
+    overflow: hidden;
+}
+
+.img_page_entry{
+    position: relative;
+    width: 100%;
+}
+
+.img_page_entry img{
+    min-width: 100%;
+}
+
+.text_page_entry{
+    position: absolute;
+    text-align: center;
+    color: var(--whiteColor);
+    font-size: 16px;
+    height: 588px;
+    align-items: center;
+}
+
+.text_page_entry h4{
+    font-size: 3em;
+} 
+
+.text_header_rolling{
+    color: var(--yellowColor);
+}
+
+.text_header_gourmet{
+    color: var(--navyblueColor);
+}
+
+.search_bar{
+    width: 20vw;
+}
+.select_combobox{
+    width: 20vw;
+}
+
+
