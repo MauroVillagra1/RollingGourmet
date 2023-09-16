@@ -109,12 +109,11 @@
     right: 0;
     margin-right: 5%;
     margin-top: 5%;
-    background-color: red;
+    background-color: orangered;
     border-radius: 50%;
     width: 50px;
     height: 50px;
 }
-.card_header .order_count p{ 
-    
+.card_header .order_count p{     
     margin: 0 auto;
 }

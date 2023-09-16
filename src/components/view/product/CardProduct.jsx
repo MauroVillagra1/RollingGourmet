@@ -1,6 +1,6 @@
 import { Button } from 'react-bootstrap'
 import React, { useState } from 'react'
-import "./CardProduct.css"
+import "../product/CardProduct.css"
 function CardProduct() {
     const [count, setCount] = useState(0);
 
