@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Administrator from "./components/view/administrator/Administrator";
 import AdministratorProduct from "./components/view/administrator/administrator-product/AdministratorProduct";
 import AdministratorUser from "./components/view/administrator/administrator-user/AdministratorUser";
+import AdministratorOrder from "./components/view/administrator/administrator-order/AdministratorOrder";
 
 function App() {
   return (
@@ -19,6 +20,11 @@ function App() {
           exact
           path="/administrator/users"
           element={<AdministratorUser />}
+        ></Route>
+        <Route
+          exact
+          path="/administrator/orders"
+          element={<AdministratorOrder />}
         ></Route>
       </Routes>
     </BrowserRouter>
