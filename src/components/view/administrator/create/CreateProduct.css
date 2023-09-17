@@ -1,0 +1,25 @@
+.selected-category{
+    background-color: var(--mediumgrayColor);
+}
+
+.selected-categories{
+    justify-content: flex-start;
+}
+
+.selected-category Button{
+    background-color: var(--redColor);
+    border-color: var(--redColor);
+    border-radius: initial;
+    margin-left: 5px;
+}
+
+.create_product_container{
+    background-color: var(--darkgrayColor);
+    min-height: 100vh;
+    padding: 2% 5%;
+}
+
+.title_create_product{
+    text-align: center;
+    font-size: 30px;
+}
