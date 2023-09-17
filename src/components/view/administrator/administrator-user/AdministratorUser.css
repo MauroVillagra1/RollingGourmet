@@ -1,0 +1,76 @@
+.bg-user-page {
+  background: #212939;
+  height: 100vh;
+}
+
+hr {
+  height: 6px;
+  width: 30%;
+  opacity: 1;
+  background-color: #fff;
+  margin-bottom: 3rem;
+}
+
+.btn-create {
+  background: #008000;
+  width: 300px;
+  height: 45px;
+}
+
+.btn-options-user-width {
+  width: 200px;
+}
+
+.img-table-product {
+  width: 50%;
+}
+
+td {
+  width: 20%;
+}
+@media screen and (max-width: 1225px) and (min-width: 1045px) {
+  .priority-table-user-1 {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1045px) and (min-width: 565px) {
+  .btn-options-width {
+    width: 200px;
+  }
+
+  .priority-table-user-1 {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 565px) and (min-width: 300px) {
+  .btn-options-width {
+    width: 200px;
+  }
+  .priority-table-user-1 {
+    display: none;
+  }
+  .priority-table-user-2 {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .priority-table-user-1 {
+    display: none;
+  }
+  .priority-table-user-2 {
+    display: none;
+  }
+  .priority-table-user-3 {
+    display: none;
+  }
+  .priority-table-user-4 {
+    display: none;
+  }
+
+  .btn-options-width {
+    width: 200px;
+  }
+}
