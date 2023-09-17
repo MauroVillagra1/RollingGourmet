@@ -1,5 +1,6 @@
 import "./Administrator.css";
 import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
 
 const Administrator = () => {
   return (
@@ -7,14 +8,27 @@ const Administrator = () => {
       <div>
         <h1 className="text-color-title text-center pb-5">Administrator</h1>
         <div className="d-flex flex-column">
-          <Button className="my-2 btn-admin text-white border-0">
-            <span>User Management</span>
+          <Button
+            as={Link}
+            to="/administrator/users"
+            className="my-2 btn-admin text-white border-0 center"
+          >
+            User Management
           </Button>
-          <Button className="my-2 btn-admin text-white border-0">
-            <span>Product Management</span>
+
+          <Button
+            as={Link}
+            to="/administrator/products"
+            className="my-2 btn-admin text-white border-0 center"
+          >
+            Product Management
           </Button>
-          <Button className="my-2 btn-admin text-white border-0">
-            <span>Orders Management</span>
+          <Button
+            as={Link}
+            to="/administrator/orders"
+            className="my-2 btn-admin text-white border-0 center"
+          >
+            Product Management
           </Button>
         </div>
       </div>
