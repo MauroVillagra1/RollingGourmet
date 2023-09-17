@@ -4,12 +4,14 @@ import Administrator from "./components/view/administrator/Administrator";
 import AdministratorProduct from "./components/view/administrator/administrator-product/AdministratorProduct";
 import AdministratorUser from "./components/view/administrator/administrator-user/AdministratorUser";
 import AdministratorOrder from "./components/view/administrator/administrator-order/AdministratorOrder";
+import Administrator from "./components/view/administrator/Administrator";
+import Home from "./components/view/home/Home";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path="/" element={<h1>Hello world</h1>}></Route>
+        <Route exact path="/" element={<Home></Home>}></Route>
         <Route exact path="/administrator" element={<Administrator />}></Route>
         <Route
           exact
