@@ -50,14 +50,15 @@ const ItemProduct = ({ product, price, image, category, id }) => {
       </td>
       <td className="priority-5">{category}</td>
       <td className="priority-6 ">
-        <Link
+        <Button
+          as={Link}
           to={`/administrador/editar/id`}
-          className="btn btn-warning me-2 my-1 btn-options-width"
+          className="btn-edit me-2 my-1 text-black btn-options-width border-0"
         >
           Edit
-        </Link>
+        </Button>
         <Button
-          variant="danger btn-options-width my-1"
+          className="btn-delete btn-options-width my-1 border-0"
           onClick={() => {
             console.log("borrar producto");
           }}

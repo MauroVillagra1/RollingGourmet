@@ -25,6 +25,14 @@ hr {
   width: 50%;
 }
 
+.btn-edit {
+  background-color: #ffd230 !important;
+}
+
+.btn-delete {
+  background-color: #ff0000 !important;
+}
+
 td {
   width: 20%;
 }
@@ -35,10 +43,6 @@ td {
 }
 
 @media screen and (max-width: 1045px) and (min-width: 565px) {
-  .btn-options-width {
-    width: 200px;
-  }
-
   .priority-4 {
     display: none;
   }
@@ -48,9 +52,6 @@ td {
 }
 
 @media screen and (max-width: 565px) and (min-width: 300px) {
-  .btn-options-width {
-    width: 200px;
-  }
   .priority-5 {
     display: none;
   }
