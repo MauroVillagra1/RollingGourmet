@@ -46,14 +46,15 @@ const ItemUser = ({ id, userName, email }) => {
       <td className="priority-table-user-2">{userName}</td>
       <td className="priority-table-user-3">{email}</td>
       <td className="priority-table-user-4">
-        <Link
+        <Button
+          as={Link}
           to={`/administrador/editar/id`}
-          className="btn btn-warning me-2 my-1 btn-options-user-width"
+          className="btn btn-unsuspend  border-0 me-2 my-1 btn-options-user-width"
         >
           Unsuspend
-        </Link>
+        </Button>
         <Button
-          variant="danger btn-options-user-width my-1"
+          className="btn-suspend btn-options-user-width my-1 border-0"
           onClick={() => {
             console.log("borrar producto");
           }}

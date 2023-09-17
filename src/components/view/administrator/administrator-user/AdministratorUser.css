@@ -11,18 +11,20 @@ hr {
   margin-bottom: 3rem;
 }
 
-.btn-create {
-  background: #008000;
-  width: 300px;
-  height: 45px;
-}
-
 .btn-options-user-width {
   width: 200px;
 }
 
 .img-table-product {
   width: 50%;
+}
+
+.btn-unsuspend {
+  background-color: #ff8210 !important;
+}
+
+.btn-suspend {
+  background-color: #ff0000 !important;
 }
 
 td {
@@ -35,19 +37,12 @@ td {
 }
 
 @media screen and (max-width: 1045px) and (min-width: 565px) {
-  .btn-options-width {
-    width: 200px;
-  }
-
   .priority-table-user-1 {
     display: none;
   }
 }
 
 @media screen and (max-width: 565px) and (min-width: 300px) {
-  .btn-options-width {
-    width: 200px;
-  }
   .priority-table-user-1 {
     display: none;
   }
