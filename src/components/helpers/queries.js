@@ -1,5 +1,5 @@
 const uriProducts = import.meta.env.VITE_API_PRODUCTS;
-
+const uriCategories = import.meta.env.VITE_API_CATEGORIES;
 const fetchData = async (url) => {
     try {
       const respuesta = await fetch(url);
@@ -12,6 +12,9 @@ const fetchData = async (url) => {
 
   export const listProducts = async () => {
     return fetchData(uriProducts);
+  };
+  export const listCategories = async () => {
+    return fetchData(uriCategories);
   };
 
   export const createProducts = async (products) => {

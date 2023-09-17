@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Button,
   Form,
@@ -11,20 +11,20 @@ import {
 import "./CreateProduct.css";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
-import { createProducts } from "../../../helpers/queries";
+import { createProducts, listCategories } from "../../../helpers/queries";
 function CreateProduct() {
   const [selectedCategory, setSelectedCategory] = useState("");
-  const [availableCategories, setAvailableCategories] = useState([
-    "Burgers",
-    "Chicken",
-    "French Fries",
-    "Breakfast",
-    "Drinks",
-    "Salads",
-  ]); // esto sera las categorias del backend
+  const [categories, setCategories] = useState([]);
 
   const [selectedCategories, setSelectedCategories] = useState([]);
+  const [categoriesComboBox, setCategoriesComboBox] = useState("");
 
+
+  useEffect(()=>{
+    listCategories().then((categories)=>{
+        setCategories(categories)
+    })
+  },[])
   const {
     register,
     handleSubmit,
@@ -34,7 +34,11 @@ function CreateProduct() {
   
 
   const onSubmit = (data) => {
-    data["CategoriesID"] = selectedCategories
+    const categories = []
+    selectedCategories.map((category)=>{
+        categories.push(category._id)
+    })
+    data["CategoriesID"] = categories
     data["State"] = "Visible"
     data["Price"] = parseInt(data["Price"])
     data["Stock"] = parseInt(data["Stock"])
@@ -57,40 +61,21 @@ function CreateProduct() {
           "error"
         );
       });
-
-
-    // console.log(availableCategories)
-    // console.log(selectedCategory)
-
-    // CreateProduct(data).then((resp)=>{
-    //     console.log(resp.status);
-    //     if (resp.status === 201) {
-    //         Swal.fire(
-    //           "Producto guardado",
-    //           "Su producto se guardo correctamente",
-    //           "success"
-    //         );
-    //       }
-    //     })
-    //     .catch((error) => {
-    //       console.log(error);
-    //       Swal.fire(
-    //         "Hubo un error",
-    //         "Error al intentar cargar el producto",
-    //         "error"
-    //       );
-    //     });
   };
 
   function handleCategoryChange(event) {
-    setSelectedCategory(event.target.value);
+    const selectedCategoryId = event.target.value;
+    const selectedCategory = categories.find(category => category._id === selectedCategoryId);
+    setSelectedCategory(selectedCategory);
+    console.log(selectedCategoryId)
+    setCategoriesComboBox(selectedCategoryId)
   }
 
   function handleAddCategory() {
-    if (selectedCategory && !selectedCategories.includes(selectedCategory)) {
+    if (selectedCategory._id && !selectedCategories.includes(selectedCategory)) {
       setSelectedCategories([...selectedCategories, selectedCategory]);
-      setAvailableCategories(
-        availableCategories.filter((category) => category !== selectedCategory)
+      setCategories(
+        categories.filter((category) => category !== selectedCategory)
       );
       setSelectedCategory("");
     }
@@ -98,7 +83,7 @@ function CreateProduct() {
 
   function handleRemoveCategory(category) {
     setSelectedCategories(selectedCategories.filter((c) => c !== category));
-    setAvailableCategories([...availableCategories, category]);
+    setCategories([...categories, category]);
   }
 
   return (
@@ -229,13 +214,13 @@ function CreateProduct() {
             <div className="d-flex">
               <FormSelect
                 className="w-50"
-                value={selectedCategory}
-                onChange={handleCategoryChange}
+                value={categoriesComboBox}
+                onChange={(event) => handleCategoryChange(event)}
               >
                 <option value="">Select an option</option>
-                {availableCategories.map((category) => (
-                  <option key={category} value={category}>
-                    {category}
+                {categories.map((category) => (
+                  <option key={category._id} value={category._id}>
+                    {category.Category}
                   </option>
                 ))}
               </FormSelect>
@@ -247,8 +232,8 @@ function CreateProduct() {
             <FormLabel>Selected Categories</FormLabel>
             <div className="selected-categories d-flex text-light flex-wrap mb-5">
               {selectedCategories.map((category) => (
-                <div key={category} className="selected-category mb-1 mx-3 p-2">
-                  {category}
+                <div key={category._id} className="selected-category mb-1 mx-3 p-2">
+                  {category.Category}
                   <Button
                     className="remove_button_category"
                     onClick={() => handleRemoveCategory(category)}
