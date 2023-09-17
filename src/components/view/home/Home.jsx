@@ -11,6 +11,14 @@ function home() {
   const [productsFilter, setProductsFilter] = useState([])
   const [searchTerm, setSearchTerm] = useState("");
 
+  var order = [{
+    ProductID: "",
+    ProductName: "",
+    Price: 0,
+    Stock: "",
+    quantity: 0,
+    State: "",
+  }]
   useEffect(() => {
     listProducts().then((resp) => {
       setProducts(resp);
@@ -97,7 +105,7 @@ function home() {
           <p className="text-light">No products were found with this category.</p>
         ) : (
           productsFilter.map((product) => (
-            <CardProduct key={product._id} product={product}></CardProduct>
+            <CardProduct key={product._id} product={product} order={order}></CardProduct>
           ))
         )}
           </div>

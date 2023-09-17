@@ -1,10 +1,15 @@
 import { Button } from 'react-bootstrap'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "../product/CardProduct.css"
-function CardProduct({product}) {
+function CardProduct({product, order}) {
     const [count, setCount] = useState(0);
     const [stock, setStock] = useState(product.Stock);
+    const [statusEffect, setStatusEffect] = useState(false);
 
+  
+    // useEffect(()=>{
+    //   setStock(product.Stock)
+    // },[])
 
   const handleAddOrder = () => {
     if (count < product.Stock)
@@ -18,9 +23,43 @@ function CardProduct({product}) {
     if (count > 0) {
       setCount(count - 1);
       setStock(stock + 1)
-
     }
   };
+
+  useEffect(()=>{
+    if(count>0 || statusEffect===true)
+    {
+      var newOrder = {
+          ProductID: product._id.toString(),
+          ProductName: product.NameProduct,
+          Price: product.Price,
+          Stock: stock,
+          quantity: count,
+          State: "Active",
+      }
+      
+      setStatusEffect(true)
+      console.log(order)
+      var c = 0
+      if(count > 0)
+      {
+        order.map((ord)=>{
+          // console.log(ord)
+          console.log(product._id)
+          console.log(ord.ProductID)
+          if((ord.ProductID) === (product._id).toString()){
+            ord = newOrder
+            c++
+          }
+        })
+        if(c===0)
+        {
+          order.push(newOrder)
+        }
+        console.log(order)
+      } 
+    }
+  },[count])
 
   return (
     <>
