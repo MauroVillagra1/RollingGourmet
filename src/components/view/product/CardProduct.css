@@ -117,3 +117,18 @@
 .card_header .order_count p{     
     margin: 0 auto;
 }
+.card_header .order_Stock{
+  position: absolute;
+    z-index: 2;
+    font-size: 12px;
+    top: 0;
+    left: 0;
+    margin-left: 5%;
+    margin-top: 5%;
+    background-color: rgba(0, 128, 0, 0.534);
+    width: 120px;
+    height: 50px;  
+}
+.card_header .order_Stock p{     
+  margin: 0 auto;
+}

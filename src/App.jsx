@@ -10,9 +10,9 @@ function App() {
 
   return (
     <>
-    <CreateProduct></CreateProduct>
+    {/* <CreateProduct></CreateProduct> */}
     {/* <Order></Order> */}
-    {/* <Home></Home> */}
+    <Home></Home>
     {/* <CardProduct></CardProduct> */}
     {/* <CardOrder></CardOrder> */}
     </>
