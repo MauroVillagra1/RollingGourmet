@@ -1,0 +1,20 @@
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.bg-admin-page {
+  background: #212939;
+}
+
+.btn-admin {
+  background: #6f779d !important;
+  width: 400px;
+  height: 50px;
+}
+
+.text-color-title {
+  color: #ffd230;
+}
