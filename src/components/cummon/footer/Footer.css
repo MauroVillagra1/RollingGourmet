@@ -5,12 +5,23 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  --blackColor: #000000;
+  --greenColor: #008000;
+  --navyblueColor: #212939;
+  --darkgrayColor: #221f1f;
+  --mediumgrayColor: #252734;
+  --grayblueColor: #333647;
+  --paleblueColor: #6f779d;
+  --whiteColor: #ffffff;
+  --yellowColor: #ffd230;
+  --orangeColor: #ff8210;
+  --redColor: #ff0000;
 }
 
-.separationLine{
-    background-color: #6F779D;
-    height: 5px;
-    width: 100%;
+.separationLine {
+  background-color: var(--paleblueColor);
+  height: 5px;
+  width: 100%;
 }
 
 .footerPosition {
@@ -25,19 +36,49 @@
   font-family: "Roboto", sans-serif;
 }
 
-.footerBackground{
-    background-color: #212939;
+.footerBackground {
+  background-color: var(--navyblueColor);
 }
 
 .footerFontColor {
-  color: #ffffff;
+  color: var(--whiteColor);
 }
 
 .copyStyleText {
   text-align: center;
-  color: #ffffff;
+  color: var(--whiteColor);
+  font-size: 0.8em;
 }
 
-.copyStyleGeneral{
-    background-color: #333647;
+.copyStyleGeneral {
+  background-color: var(--grayblueColor);
+}
+
+.imgFooterFix {
+  width: 25%;
+  margin: 2% 0 2% 0;
+}
+
+.listAnimate:active {
+  color: var(--orangeColor);
+}
+
+@media (min-width: 767.98px) {
+  .imgFooterFix {
+    width: 50%;
+    margin: 10% 0 10% 0;
+  }
+  .copyStyleText {
+    font-size: 1em;
+  }
+  .footerLiCustom {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+  }
+
+  .listAnimate:hover {
+    color: var(--orangeColor);
+    transition: 0.5s;
+  }
 }
