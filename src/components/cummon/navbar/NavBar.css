@@ -1,0 +1,24 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+:root {
+    --blackColor: #000000;
+    --greenColor: #008000;
+    --navyblueColor: #212939;
+    --darkgrayColor: #221F1F;
+    --mediumgrayColor: #252734;
+    --grayblueColor: #333647;
+    --paleblueColor: #6F779D;
+    --whiteColor: #FFFFFF;
+    --yellowColor: #FFD230;
+    --orangeColor: #FF8210;
+    --redColor: #FF0000;
+  }
+
+
+.imgFix{
+    width: 10em;
+}
+
+.navbarBackground{
+    background-color: var(--navyblueColor);
+}
