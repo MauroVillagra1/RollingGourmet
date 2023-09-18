@@ -14,8 +14,8 @@ function App() {
       {/* <Order></Order> */}
       {/* <CardProduct></CardProduct> */}
       {/* <CardOrder></CardOrder> */}
-      {/*<AboutUs></AboutUs>*/}
-      <BrowserRouter>
+      <AboutUs></AboutUs>
+      {/* <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<Home></Home>}></Route>
           <Route
@@ -39,7 +39,7 @@ function App() {
             element={<AdministratorOrder />}
           ></Route>
         </Routes>
-      </BrowserRouter>
+      </BrowserRouter>*/}
     </>
   );
 }

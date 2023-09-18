@@ -4,10 +4,10 @@ import "./CardProgrammer.css";
 const CardProgrammer = () => {
   return (
     <>
-      <div className="d-flex flex-column justify-content-center align-items-center">
+      <div className="container d-flex flex-column justify-content-center align-items-center">
         <Card
           style={{ width: "45rem" }}
-          className="d-flex flex-row card_title my-5"
+          className="d-flex flex-md-row card_title my-5"
         >
           <div className="m-2 border border-5 border-opacity-75 rounded">
             <Card.Img variant="top" src="emitorres.jpg" />
@@ -31,9 +31,10 @@ const CardProgrammer = () => {
             </Card.Body>
           </div>
         </Card>
+
         <Card
           style={{ width: "45rem" }}
-          className="d-flex flex-row card_title my-5"
+          className="d-flex flex-md-row card_title my-5"
         >
           <div className="m-2 border border-5 border-opacity-75 rounded">
             <Card.Img variant="top" src="emitorres.jpg" />
@@ -59,7 +60,7 @@ const CardProgrammer = () => {
         </Card>
         <Card
           style={{ width: "45rem" }}
-          className="d-flex flex-row card_title my-5"
+          className="d-flex flex-md-row card_title my-5"
         >
           <div className="m-2 border border-5 border-opacity-75 rounded">
             <Card.Img variant="top" src="emitorres.jpg" />
@@ -85,7 +86,7 @@ const CardProgrammer = () => {
 
         <Card
           style={{ width: "45rem" }}
-          className="d-flex flex-row card_title my-5"
+          className="d-flex flex-md-row card_title my-5"
         >
           <div className="m-2 border border-5 border-opacity-75 rounded">
             <Card.Img variant="top" src="emitorres.jpg" />
@@ -110,7 +111,7 @@ const CardProgrammer = () => {
         </Card>
         <Card
           style={{ width: "45rem" }}
-          className="d-flex flex-row card_title my-5"
+          className="d-flex flex-md-row card_title my-5"
         >
           <div className="m-2 border border-5 border-opacity-75 rounded">
             <Card.Img variant="top" src="emitorres.jpg" />
@@ -136,7 +137,7 @@ const CardProgrammer = () => {
         </Card>
         <Card
           style={{ width: "45rem" }}
-          className="d-flex flex-row card_title my-5"
+          className="d-flex flex-md-row card_title my-5"
         >
           <div className="m-2 border border-5 border-opacity-75 rounded">
             <Card.Img variant="top" src="emitorres.jpg" />
