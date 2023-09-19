@@ -5,7 +5,7 @@ import { Container } from "react-bootstrap";
 const AboutUs = () => {
   return (
     <>
-      <div className="aboutUs container-fluid">
+      <div className="aboutUs container-fluid w-100">
         <div className="d-flex flex-column justify-content-center py-5">
           <h1 className="text-center pb-5 fs-1 fw-bold text-light title">
             About us
@@ -19,7 +19,7 @@ const AboutUs = () => {
             its users.
           </p>
         </div>
-        <div className="container-fluid">
+        <div className="container-fluid w-75">
           <CardProgrammer></CardProgrammer>
         </div>
       </div>
