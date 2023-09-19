@@ -14,7 +14,7 @@ function App() {
       {/* <CardProduct></CardProduct> */}
       {/* <CardOrder></CardOrder> */}
       <ProductDetail></ProductDetail>
-      {/* <BrowserRouter>
+      {/*<BrowserRouter>
         <Routes>
           <Route exact path="/" element={<Home></Home>}></Route>
           <Route

@@ -1,18 +1,18 @@
 :root {
-    --blackColor: #000000;
-    --greenColor: #008000;
-    --navyblueColor: #212939;
-    --darkgrayColor: #221F1F;
-    --mediumgrayColor: #252734;
-    --grayblueColor: #333647;
-    --paleblueColor: #6F779D;
-    --whiteColor: #FFFFFF;
-    --yellowColor: #FFD230;
-    --orangeColor: #FF8210;
-    --redColor: #FF0000;
-  }
+  --blackColor: #000000;
+  --greenColor: #008000;
+  --navyblueColor: #212939;
+  --darkgrayColor: #221f1f;
+  --mediumgrayColor: #252734;
+  --grayblueColor: #333647;
+  --paleblueColor: #6f779d;
+  --whiteColor: #ffffff;
+  --yellowColor: #ffd230;
+  --orangeColor: #ff8210;
+  --redColor: #ff0000;
+}
 
-  body{
-    max-width: 100vw;
-    overflow-x: hidden;
-  }
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
