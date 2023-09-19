@@ -13,13 +13,13 @@ const NavBar = () => {
     //     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     //     <Navbar.Collapse id="basic-navbar-nav">
     //       <Nav className="ms-auto">
-    //         <Nav.Link href="#link" className="mt-3 ms-sm-2 navButtonDefault">
+    //         <Nav.Link href="#link" className="mt-2 mt-sm-0 ms-sm-2 navButtonDefault navButtonAnimation footerFontFamilyBold">
     //           Sobre Nosotros
     //         </Nav.Link>
-    //         <Nav.Link href="#link" className="mt-2 ms-sm-2 navButtonGreen">
+    //         <Nav.Link href="#link" className="mt-2 mt-sm-0 ms-sm-2 navButtonDefault navButtonAnimation footerFontFamilyBold">
     //           Iniciar Sesión
     //         </Nav.Link>
-    //         <Nav.Link href="#link" className="mt-2 ms-sm-2 navButtonGreen">
+    //         <Nav.Link href="#link" className="mt-2 mt-sm-0 ms-sm-2 navButtonDefault navButtonAnimation footerFontFamilyBold">
     //           Registro
     //         </Nav.Link>
     //       </Nav>
@@ -37,13 +37,13 @@ const NavBar = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            <Nav.Link href="#link" className="mt-3 ms-sm-2 navButtonDefault navButtonAnimation">
+            <Nav.Link href="#link" className="mt-2 mt-sm-0 ms-sm-2 navButtonDefault navButtonAnimation footerFontFamilyBold">
               Mi Cuenta
             </Nav.Link>
-            <Nav.Link href="#link" className="mt-2 ms-sm-2 navButtonDefault navButtonAnimation">
+            <Nav.Link href="#link" className="mt-2 mt-sm-0 ms-sm-2 navButtonDefault navButtonAnimation footerFontFamilyBold">
               Sobre Nosotros
             </Nav.Link>
-            <Nav.Link href="#link" className="mt-2 ms-sm-2 navButtonRed navButtonAnimation">
+            <Nav.Link href="#link" className="mt-2 ms-sm-2 mt-sm-0 navButtonRed navButtonAnimation footerFontFamilyBold">
               Cerrar Sesión
             </Nav.Link>
           </Nav>
@@ -61,16 +61,16 @@ const NavBar = () => {
     //     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     //     <Navbar.Collapse id="basic-navbar-nav">
     //       <Nav className="ms-auto">
-    //         <Nav.Link href="#link" className="mt-3 ms-sm-2 navButtonDefault">
+    //         <Nav.Link href="#link" className="mt-2 mt-sm-0 ms-sm-2 navButtonDefault navButtonAnimation footerFontFamilyBold">
     //           Administrador
     //         </Nav.Link>
-    //         <Nav.Link href="#link" className="mt-2 ms-sm-2 navButtonDefault">
+    //         <Nav.Link href="#link" className="mt-2 mt-sm-0 ms-sm-2 navButtonDefault navButtonAnimation footerFontFamilyBold">
     //           Mi Cuenta
     //         </Nav.Link>
-    //         <Nav.Link href="#link" className="mt-2 ms-sm-2 navButtonDefault">
+    //         <Nav.Link href="#link" className="mt-2 mt-sm-0 ms-sm-2 navButtonDefault navButtonAnimation footerFontFamilyBold">
     //           Sobre Nosotros
     //         </Nav.Link>
-    //         <Nav.Link href="#link" className="mt-2 ms-sm-2 navButtonRed">
+    //         <Nav.Link href="#link" className="mt-2 mt-sm-0 ms-sm-2 navButtonDefault navButtonAnimation footerFontFamilyBold">
     //           Cerrar Sesión
     //         </Nav.Link>
     //       </Nav>

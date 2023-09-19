@@ -1,65 +1,72 @@
-@import 'bootstrap/dist/css/bootstrap.min.css';
+@import "bootstrap/dist/css/bootstrap.min.css";
 
 :root {
-    --blackColor: #000000;
-    --greenColor: #008000;
-    --navyblueColor: #212939;
-    --darkgrayColor: #221F1F;
-    --mediumgrayColor: #252734;
-    --grayblueColor: #333647;
-    --paleblueColor: #6F779D;
-    --whiteColor: #FFFFFF;
-    --yellowColor: #FFD230;
-    --orangeColor: #FF8210;
-    --redColor: #FF0000;
-  }
-
-
-.imgFix{
-    width: 10em;
+  --blackColor: #000000;
+  --greenColor: #008000;
+  --navyblueColor: #212939;
+  --darkgrayColor: #221f1f;
+  --mediumgrayColor: #252734;
+  --grayblueColor: #333647;
+  --paleblueColor: #6f779d;
+  --whiteColor: #ffffff;
+  --yellowColor: #ffd230;
+  --orangeColor: #ff8210;
+  --redColor: #ff0000;
 }
 
-.navbarBackground{
-    background-color: var(--navyblueColor);
+.imgFix {
+  width: 10em;
 }
 
-.navbar-toggler{
-    border: none !important;
+.navbarBackground {
+  background-color: var(--navyblueColor);
 }
 
-.navbar-toggler:focus{
-    box-shadow: none !important;
+.navbar-toggler {
+  border: none !important;
 }
 
-.navButtonAdmin{
-    color: var(--whiteColor);
-    display: flex;
-    justify-content: center;
-    background-color: var(--orangeColor);
+.navbar-toggler:focus {
+  box-shadow: none !important;
 }
 
-.navButtonDefault{
-    color: var(--whiteColor);
-    display: flex;
-    justify-content: center;
-    background-color: var(--paleblueColor);
+.navButtonAdmin {
+  color: var(--whiteColor);
+  display: flex;
+  justify-content: center;
+  background-color: var(--orangeColor);
 }
 
-.navButtonGreen{
-    color: var(--whiteColor);
-    display: flex;
-    justify-content: center;
-    background-color: var(--greenColor);
+.navButtonDefault {
+  color: var(--whiteColor);
+  display: flex;
+  justify-content: center;
+  background-color: var(--paleblueColor);
 }
 
-.navButtonRed{
-    color: var(--whiteColor);
-    display: flex;
-    justify-content: center;
-    background-color: var(--redColor);
+.navButtonGreen {
+  color: var(--whiteColor);
+  display: flex;
+  justify-content: center;
+  background-color: var(--greenColor);
 }
 
-.navButtonAnimation:hover{
-    color: var(--whiteColor);
-    opacity: 60%;
+.navButtonRed {
+  color: var(--whiteColor);
+  display: flex;
+  justify-content: center;
+  background-color: var(--redColor);
+}
+
+.navButtonAnimation:hover {
+  color: var(--whiteColor);
+  opacity: 60%;
+}
+
+.footerFontFamilyBold {
+  font-family: "Bebas Neue", sans-serif;
+}
+
+.footerFontFamilyNormal {
+  font-family: "Roboto", sans-serif;
 }
