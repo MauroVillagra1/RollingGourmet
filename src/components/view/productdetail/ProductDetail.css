@@ -39,3 +39,7 @@
 .description {
   background: #333647;
 }
+
+.customBgImg {
+  background-color: var(--paleblueColor);
+}

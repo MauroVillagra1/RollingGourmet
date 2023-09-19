@@ -10,10 +10,10 @@ const ProductDetail = () => {
             style={{ width: "100%" }}
             className="d-flex flex-lg-row flex-column card_title my-3 "
           >
-            <div className="image_background m-2 w-lg-50 w-100 d-flex">
+            <div className="image_background w-lg-50 w-100 d-flex">
               <Card.Img
-                src="https://images.pexels.com/photos/4243302/pexels-photo-4243302.jpeg"
-                className="flex-wrap align-items-center"
+                src="https://res.cloudinary.com/dhe7vivfw/image/upload/v1694744246/Rolling%20Gourmet/IMG%20PRODUCTS/image-removebg-preview_61_pnmqam.png"
+                className="img-fluid customBgImg "
               />
             </div>
             <div className="w-lg-50 w-100 body_background">
@@ -26,19 +26,19 @@ const ProductDetail = () => {
                 </Card.Text>
                 <div className="container  mt-5 text-center fw-bold">
                   <div className="row  d-flex flex-md-row flex-column">
-                    <div className="col mx-2 py-2 border-0 rounded">
+                    <div className="col m-2 py-2 border-0 rounded">
                       <h2 className="title fw-bold fs-2 mb-4 pb-2 text-light">
                         Column
                       </h2>
                       <p className="text text-center">Text Description</p>
                     </div>
-                    <div className="col mx-2 py-2 border-0 rounded">
+                    <div className="col m-2 py-2 border-0 rounded">
                       <h2 className="title fw-bold fs-2 mb-4 pb-2 text-light">
                         Column
                       </h2>
                       <p className="text text-center">Text Description</p>
                     </div>
-                    <div className="col mx-2 py-2 border-0 rounded">
+                    <div className="col m-2 py-2 border-0 rounded">
                       {" "}
                       <h2 className="title fw-bold fs-2 mb-4 pb-2 text-light">
                         Column
