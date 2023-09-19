@@ -21,6 +21,7 @@ useEffect(()=>{
     localStorage.setItem("user_ID", user_ID);
     setUserActive(user_ID)
 },[])
+
   return (
     <>
     {/* <Home></Home> */}
@@ -56,8 +57,6 @@ useEffect(()=>{
     </BrowserRouter>
     </>
   )
-
-    
 }
 
 export default App;
