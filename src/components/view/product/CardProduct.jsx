@@ -1,65 +1,132 @@
 import { Button } from 'react-bootstrap'
 import React, { useEffect, useState } from 'react'
 import "../product/CardProduct.css"
-function CardProduct({product, order}) {
+import { listOrders } from '../../helpers/queries';
+import Swal from 'sweetalert2';
+function CardProduct({product, order, setOrder, newOrders, userActive}) {
     const [count, setCount] = useState(0);
     const [stock, setStock] = useState(product.Stock);
     const [statusEffect, setStatusEffect] = useState(false);
+    const [orderLocal, setOrderLocal] = useState({})
+    const [orderDB, setOrderDB] = useState([])
+    const newArray = [...order]
 
-  
-    // useEffect(()=>{
-    //   setStock(product.Stock)
-    // },[])
+    var newOrder = {
+    }  
+    useEffect(()=>{
+      listOrders().then((resp)=>{
+        setOrderDB(resp)
+      })
+      const ordersJson = localStorage.getItem("orders");
+      const ordersJson_retrieved = JSON.parse(ordersJson);
+      ordersJson_retrieved.map((orderJson_retrieved)=>{
+        if(orderJson_retrieved.ProductID === product._id.toString())
+        {
+          setCount(orderJson_retrieved.quantity)
+          setStock(orderJson_retrieved.Stock)
+        }
+      })
+      
+        },[])
 
   const handleAddOrder = () => {
-    if (count < product.Stock)
+    if(count <= product.Stock){
+    var x = 0
+    if (userActive._id !== undefined){
+      
+      orderDB.map((ord)=>{
+      if(ord.IdUser === userActive._id && ord.State === "Pending")
+      {
+        x=1
+      }
+    })
+    if(x===0)
     {
-        setCount(count + 1);
-        setStock(stock - 1)
+      if (count < product.Stock)
+      {
+          setCount(count + 1);
+          setStock(stock - 1);
+      }
     }
+    else{
+      Swal.fire("You have a pending order");
+    }
+    }
+    else{
+      Swal.fire("You must log in");
+    } 
+  }  
   };
 
   const handleRemoveOrder = () => {
-    if (count > 0) {
-      setCount(count - 1);
-      setStock(stock + 1)
+    if(count > 0){
+    var x = 0
+    if (userActive._id !== undefined){
+      orderDB.map((ord)=>{
+        if(ord.IdUser === userActive._id && ord.State === "Pending")
+        {
+        x=1
+      }
+    })
+    if(x===0)
+    {
+      if (count < product.Stock)
+      {
+          setCount(count - 1);
+          setStock(stock + 1);
+      }
     }
+    else{
+      Swal.fire("You have a pending order");
+    }
+    }
+    else{
+      Swal.fire("You must log in");
+    }   
+  }
   };
 
   useEffect(()=>{
     if(count>0 || statusEffect===true)
     {
-      var newOrder = {
-          ProductID: product._id.toString(),
-          ProductName: product.NameProduct,
-          Price: product.Price,
-          Stock: stock,
-          quantity: count,
-          State: "Active",
-      }
-      
-      setStatusEffect(true)
-      console.log(order)
+     let newOrder = {
+        ProductID: product._id.toString(),
+        ProductName: product.NameProduct,
+        Price: product.Price,
+        Stock: stock,
+        quantity: count
+    }
       var c = 0
       if(count > 0)
-      {
+      {      
         order.map((ord)=>{
-          // console.log(ord)
-          console.log(product._id)
-          console.log(ord.ProductID)
           if((ord.ProductID) === (product._id).toString()){
-            ord = newOrder
             c++
+            const newArray2 = (newArray.filter(orderItem => orderItem.ProductID !== product._id.toString()))
+            newArray2.push(newOrder)
+            setOrder(newArray2)
+
           }
         })
         if(c===0)
         {
-          order.push(newOrder)
+          newArray.push(newOrder)
+          setOrder(newArray)
+          c=0
         }
-        console.log(order)
-      } 
-    }
-  },[count])
+
+      }
+      if(count === 0)    
+      {
+        const newOrder_ = order.filter(orderItem => orderItem.ProductID !== product._id.toString());
+        setOrder(newOrder_)
+      }
+
+      setStatusEffect(true)
+
+    }   
+
+  },[count, product])
 
   return (
     <>
