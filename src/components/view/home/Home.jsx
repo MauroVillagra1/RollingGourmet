@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
 import "./Home.css";
+
 import { Form, FormGroup, Button } from "react-bootstrap";
 import { set, useForm } from "react-hook-form";
 import CardProduct from "../product/CardProduct";
 import { listCategories, listProducts } from "../../helpers/queries";
+
 
 function home({ userActive }) {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [productsFilter, setProductsFilter] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+
   const ordersJson = localStorage.getItem("orders");
   const ordersJson_retrieved = JSON.parse(ordersJson);
   const [order, setOrder] = useState(ordersJson_retrieved || []);
@@ -33,6 +36,7 @@ function home({ userActive }) {
   }, []);
 
   function handleCategoryChange(event) {
+
     setSelectedCategory(event.target.value);
   }
 
@@ -77,6 +81,7 @@ function home({ userActive }) {
           </div>
         </div>
         <div className="home_body mt-5">
+
           <div >
           <Form className="d-flex flex-wrap justify-content-center" onSubmit={(e) => {
   e.preventDefault(); 
@@ -91,11 +96,13 @@ function home({ userActive }) {
                   onChange={handleSearchChange}
                 />
               </FormGroup>
+
               <FormGroup className="select_combobox mx-2 mb-2">
                 <Form.Select
                   onChange={(event) => handleCategoryChange(event)}
                   className="select_option_category"
                 >
+
                   <option value="">Select an option</option>
                   <option value="">Alls</option>
 
@@ -106,6 +113,7 @@ function home({ userActive }) {
                   ))}
                 </Form.Select>
               </FormGroup>
+
               <FormGroup>
                 <Button
                   className="search_name"
@@ -127,6 +135,7 @@ function home({ userActive }) {
                   key={product._id}
                   product={product}
                   order={order}
+
                   setOrder={setOrder}
                   newOrders={newOrders}
                   userActive={userActive}
