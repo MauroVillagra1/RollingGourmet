@@ -32,7 +32,7 @@ export const createProducts = async (products) => {
     console.log(error);
   }
 };
-=======
+
 const uriOrders = import.meta.env.VITE_API_ORDERS;
 
 const fetchData = async (url) => {
