@@ -13,8 +13,8 @@ function App() {
       {/* <Order></Order> */}
       {/* <CardProduct></CardProduct> */}
       {/* <CardOrder></CardOrder> */}
-      {/*<ProductDetail></ProductDetail>*/}
-      <BrowserRouter>
+      <ProductDetail></ProductDetail>
+      {/*<BrowserRouter>
         <Routes>
           <Route exact path="/" element={<Home></Home>}></Route>
           <Route
@@ -38,7 +38,7 @@ function App() {
             element={<AdministratorOrder />}
           ></Route>
         </Routes>
-      </BrowserRouter>
+      </BrowserRouter>*/}
     </>
   );
 }
