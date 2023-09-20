@@ -6,15 +6,15 @@
 }
 
 .bg-admin-page {
-  background: #212939;
+  background: var(--navyblueColor);
 }
 
 .btn-admin {
-  background: #6f779d !important;
+  background: var(--paleblueColor) !important;
   width: 400px;
   height: 60px;
 }
 
 .text-color-title {
-  color: #ffd230;
+  color: var(--yellowColor);
 }

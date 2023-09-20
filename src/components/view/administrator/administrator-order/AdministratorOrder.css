@@ -1,5 +1,5 @@
 .bg-order-page {
-  background: #212939;
+  background: var(--grayblueColor);
   height: 100vh;
 }
 
@@ -12,11 +12,11 @@ hr {
 }
 
 .btn-pending {
-  background-color: #ff8210 !important;
+  background-color: var(--orangeColor) !important;
 }
 
 .btn-delivery {
-  background-color: #008000 !important;
+  background-color: var(--greenColor) !important;
   width: 200px !important;
 }
 

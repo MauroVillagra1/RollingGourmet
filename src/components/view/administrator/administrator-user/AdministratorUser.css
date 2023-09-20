@@ -1,5 +1,5 @@
 .bg-user-page {
-  background: #212939;
+  background: var(--navyblueColor);
   height: 100vh;
 }
 
@@ -20,11 +20,11 @@ hr {
 }
 
 .btn-unsuspend {
-  background-color: #ff8210 !important;
+  background-color: var(--yellowColor) !important;
 }
 
 .btn-suspend {
-  background-color: #ff0000 !important;
+  background-color: var(--redColor) !important;
 }
 
 td {
