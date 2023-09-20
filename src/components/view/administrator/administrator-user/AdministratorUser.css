@@ -1,5 +1,5 @@
 .bg-user-page {
-  background: var(--navyblueColor);
+  background: var(--navybluecolor) !important;
   height: 100vh;
 }
 

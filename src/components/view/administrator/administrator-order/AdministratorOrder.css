@@ -1,5 +1,5 @@
 .bg-order-page {
-  background: var(--grayblueColor);
+  background: var(--navybluecolor) !important;
   height: 100vh;
 }
 

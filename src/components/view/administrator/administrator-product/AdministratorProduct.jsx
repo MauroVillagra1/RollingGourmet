@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./../administrator-product/AdministratorProduct.css";
-import { Table } from "react-bootstrap";
+import { Spinner, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import ItemProduct from "./ItemProduct";
 
@@ -28,12 +28,10 @@ const productsData = [
 
 const AdministratorProduct = () => {
   const [products, setProducts] = useState([]);
-  console.log(
-    "file: AdministratorProduct.jsx:30 ~ AdministratorProduct ~ products:",
-    products
-  );
+  const [mostrarSpinner, setMostrarSpinner] = useState(true);
 
   useEffect(() => {
+    setMostrarSpinner(true);
     listProducts()
       .then((resp) => {
         if (resp) {
@@ -48,6 +46,7 @@ const AdministratorProduct = () => {
           "error"
         );
       });
+    setMostrarSpinner(false);
   }, []);
 
   useEffect(() => {
@@ -83,28 +82,33 @@ const AdministratorProduct = () => {
         <div>
           <hr />
         </div>
-
-        <Table responsive striped bordered hover>
-          <thead>
-            <tr>
-              <th className="priority-1">ID</th>
-              <th className="priority-2">Product</th>
-              <th className="priority-3">Price</th>
-              <th className="priority-4">Image</th>
-              <th className="priority-5">Details</th>
-              <th className="priority-6">Options</th>
-            </tr>
-          </thead>
-          <tbody>
-            {products.map((product, id) => (
-              <ItemProduct
-                key={id}
-                {...product}
-                setProducts={setProducts}
-              ></ItemProduct>
-            ))}
-          </tbody>
-        </Table>
+        {mostrarSpinner ? (
+          <div className="my-5 d-flex justify-content-center">
+            <Spinner className="fs-1" animation="border" variant="dark" />
+          </div>
+        ) : (
+          <Table responsive striped bordered hover>
+            <thead>
+              <tr>
+                <th className="priority-1">ID</th>
+                <th className="priority-2">Product</th>
+                <th className="priority-3">Price</th>
+                <th className="priority-4">Image</th>
+                <th className="priority-5">Details</th>
+                <th className="priority-6">Options</th>
+              </tr>
+            </thead>
+            <tbody>
+              {products.map((product, id) => (
+                <ItemProduct
+                  key={id}
+                  {...product}
+                  setProducts={setProducts}
+                ></ItemProduct>
+              ))}
+            </tbody>
+          </Table>
+        )}
       </section>
     </div>
   );
