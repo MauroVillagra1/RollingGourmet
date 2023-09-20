@@ -1,6 +1,9 @@
 .bg-product-page {
   background: #212939;
-  height: 100vh;
+}
+
+.mainSection {
+  flex-grow: 1;
 }
 
 hr {

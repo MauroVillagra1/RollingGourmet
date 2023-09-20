@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./../administrator-product/AdministratorProduct.css";
 import { Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import ItemProduct from "./ItemProduct";
+
+import Swal from "sweetalert2";
+import { listProducts } from "../../../helpers/queries";
 
 const productsData = [
   {
@@ -25,10 +28,49 @@ const productsData = [
 
 const AdministratorProduct = () => {
   const [products, setProducts] = useState([]);
+  console.log(
+    "file: AdministratorProduct.jsx:30 ~ AdministratorProduct ~ products:",
+    products
+  );
+
+  useEffect(() => {
+    listProducts()
+      .then((resp) => {
+        if (resp) {
+          setProducts(resp);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        Swal.fire(
+          "Ocurrio un error",
+          "Intente realizar esta operación mas tarde",
+          "error"
+        );
+      });
+  }, []);
+
+  useEffect(() => {
+    listProducts()
+      .then((respuestaProductos) => {
+        if (respuestaProductos) {
+          // actualizar el estado
+          setProducts(respuestaProductos);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        Swal.fire(
+          "Ocurrio un error",
+          "Intente realizar esta operación mas tarde",
+          "error"
+        );
+      });
+  }, []);
 
   return (
     <div className="bg-product-page">
-      <section className="container ">
+      <section className="container mainSection ">
         <div className="d-flex justify-content-between align-items-center  pt-5">
           <h1 className=" text-white">Product Manager</h1>
           <Link
@@ -49,12 +91,12 @@ const AdministratorProduct = () => {
               <th className="priority-2">Product</th>
               <th className="priority-3">Price</th>
               <th className="priority-4">Image</th>
-              <th className="priority-5">Category</th>
+              <th className="priority-5">Details</th>
               <th className="priority-6">Options</th>
             </tr>
           </thead>
           <tbody>
-            {productsData.map((product, id) => (
+            {products.map((product, id) => (
               <ItemProduct
                 key={id}
                 {...product}

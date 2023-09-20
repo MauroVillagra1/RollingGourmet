@@ -1,7 +1,7 @@
 import { Button, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const ItemProduct = ({ product, price, image, category, id }) => {
+const ItemProduct = (product) => {
   // const borrarProducto = () => {
   //   Swal.fire({
   //     title: "¿Esta seguro de eliminar el producto",
@@ -42,13 +42,18 @@ const ItemProduct = ({ product, price, image, category, id }) => {
 
   return (
     <tr>
-      <td className="priority-1">{id}</td>
-      <td className="priority-2">{product}</td>
-      <td className="priority-3">{price}</td>
+      <td className="priority-1">{product._id}</td>
+      <td className="priority-2">{product.NameProduct}</td>
+      <td className="priority-3">{product.Price}</td>
       <td className="priority-4">
-        <Image className="img-table-product" src={image} rounded fluid />
+        <Image
+          className="img-table-product"
+          src={product.Image}
+          rounded
+          fluid
+        />
       </td>
-      <td className="priority-5">{category}</td>
+      <td className="priority-5">{product.Details}</td>
       <td className="priority-6 ">
         <Button
           as={Link}

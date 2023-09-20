@@ -8,21 +8,23 @@ import { listCategories, listProducts } from "../../helpers/queries";
 function home() {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
-  const [productsFilter, setProductsFilter] = useState([])
+  const [productsFilter, setProductsFilter] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
-  var order = [{
-    ProductID: "",
-    ProductName: "",
-    Price: 0,
-    Stock: "",
-    quantity: 0,
-    State: "",
-  }]
+  var order = [
+    {
+      ProductID: "",
+      ProductName: "",
+      Price: 0,
+      Stock: "",
+      quantity: 0,
+      State: "",
+    },
+  ];
   useEffect(() => {
     listProducts().then((resp) => {
       setProducts(resp);
-      setProductsFilter(resp)
+      setProductsFilter(resp);
     });
     listCategories().then((resp) => {
       setCategories(resp);
@@ -31,23 +33,20 @@ function home() {
 
   function handleCategoryChange(event) {
     const selectCategory = event.target.value;
-    if(selectCategory === "")
-    {
-      setProductsFilter(products)
-    }
-    else{
-      var newProductsfilter = []
+    if (selectCategory === "") {
+      setProductsFilter(products);
+    } else {
+      var newProductsfilter = [];
       products.forEach((product) => {
         product.CategoriesID.forEach((Category) => {
-          if(selectCategory === Category)
-          {
-            newProductsfilter.push(product)
+          if (selectCategory === Category) {
+            newProductsfilter.push(product);
           }
         });
-      })
-      setProductsFilter(newProductsfilter)
-      console.log(newProductsfilter)
-    }   
+      });
+      setProductsFilter(newProductsfilter);
+      console.log(newProductsfilter);
+    }
   }
   function handleSearchChange(event) {
     const searchTerm = event.target.value;
@@ -81,8 +80,12 @@ function home() {
           <div className="d-flex">
             <Form className="search_bar mx-2">
               <FormGroup>
-                <Form.Control type="text" placeholder="Search by name..." value={searchTerm}
-                  onChange={handleSearchChange} />
+                <Form.Control
+                  type="text"
+                  placeholder="Search by name..."
+                  value={searchTerm}
+                  onChange={handleSearchChange}
+                />
               </FormGroup>
             </Form>
             <Form className="select_combobox mx-2">
@@ -94,20 +97,28 @@ function home() {
                   <option value="">Seleccione una opción</option>
 
                   {categories.map((category) => (
-                    <option key={category._id} value={category._id}>{category.Category}</option>
+                    <option key={category._id} value={category._id}>
+                      {category.Category}
+                    </option>
                   ))}
                 </Form.Select>
               </FormGroup>
             </Form>
           </div>
           <div className="list_products px-5 py-5 d-flex flex-wrap justify-content-center">
-          {productsFilter.length === 0 ? (
-          <p className="text-light">No products were found with this category.</p>
-        ) : (
-          productsFilter.map((product) => (
-            <CardProduct key={product._id} product={product} order={order}></CardProduct>
-          ))
-        )}
+            {productsFilter.length === 0 ? (
+              <p className="text-light">
+                No products were found with this category.
+              </p>
+            ) : (
+              productsFilter.map((product) => (
+                <CardProduct
+                  key={product._id}
+                  product={product}
+                  order={order}
+                ></CardProduct>
+              ))
+            )}
           </div>
         </div>
       </div>
