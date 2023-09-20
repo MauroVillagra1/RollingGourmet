@@ -1,6 +1,7 @@
 import { Button } from 'react-bootstrap'
 import React, { useEffect, useState } from 'react'
 import "../product/CardProduct.css"
+
 import { listOrders } from '../../helpers/queries';
 import Swal from 'sweetalert2';
 function CardProduct({product, order, setOrder, newOrders, userActive}) {
@@ -89,6 +90,7 @@ function CardProduct({product, order, setOrder, newOrders, userActive}) {
   useEffect(()=>{
     if(count>0 || statusEffect===true)
     {
+
      let newOrder = {
         ProductID: product._id.toString(),
         ProductName: product.NameProduct,
@@ -110,6 +112,7 @@ function CardProduct({product, order, setOrder, newOrders, userActive}) {
         })
         if(c===0)
         {
+
           newArray.push(newOrder)
           setOrder(newArray)
           c=0
