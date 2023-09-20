@@ -1,0 +1,7 @@
+.home_order{
+    background-color: var(--darkgrayColor);
+    min-height: 100vh;
+}
+.title_orders h4{
+    font-size: 50px;
+}
