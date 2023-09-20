@@ -1,0 +1,58 @@
+.imgFix {
+  width: 10em;
+}
+.hola{
+  position: sticky;
+}
+.navbarBackground {
+  background-color: var(--navyblueColor);
+}
+
+.navbar-toggler {
+  border: none !important;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none !important;
+}
+
+.navButtonAdmin {
+  color: var(--whiteColor);
+  display: flex;
+  justify-content: center;
+  background-color: var(--orangeColor);
+}
+
+.navButtonDefault {
+  color: var(--whiteColor);
+  display: flex;
+  justify-content: center;
+  background-color: var(--paleblueColor);
+}
+
+.navButtonGreen {
+  color: var(--whiteColor);
+  display: flex;
+  justify-content: center;
+  background-color: var(--greenColor);
+}
+
+.navButtonRed {
+  color: var(--whiteColor);
+  display: flex;
+  justify-content: center;
+  background-color: var(--redColor);
+}
+
+.navButtonAnimation:hover {
+  color: var(--whiteColor);
+  opacity: 60%;
+}
+
+.footerFontFamilyBold {
+  font-family: "Bebas Neue", sans-serif;
+}
+
+.footerFontFamilyNormal {
+  font-family: "Roboto", sans-serif;
+}
