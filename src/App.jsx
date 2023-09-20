@@ -1,11 +1,11 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Home from "./components/view/home/Home";
 import Administrator from "./components/view/administrator/Administrator";
 import AdministratorProduct from "./components/view/administrator/administrator-product/AdministratorProduct";
 import AdministratorUser from "./components/view/administrator/administrator-user/AdministratorUser";
 import AdministratorOrder from "./components/view/administrator/administrator-order/AdministratorOrder";
-
-import Home from "./components/view/home/Home";
 
 function App() {
   return (
