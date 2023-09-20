@@ -38,6 +38,7 @@ function CreateProduct() {
     selectedCategories.map((category)=>{
         categories.push(category._id)
     })
+   
     data["CategoriesID"] = categories
     data["State"] = "Visible"
     data["Price"] = parseInt(data["Price"])
