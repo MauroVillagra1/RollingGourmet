@@ -13,13 +13,13 @@ const NavBar = () => {
     //     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     //     <Navbar.Collapse id="basic-navbar-nav">
     //       <Nav className="ms-auto">
-    //         <Nav.Link href="#link" className="mt-2 mt-sm-0 ms-sm-2 navButtonDefault navButtonAnimation footerFontFamilyBold">
+    //         <Nav.Link href="#link" className="mt-2 mt-sm-0 ms-sm-2 navButtonDefault navButtonAnimation navBarFontFamilyBold">
     //           About Us
     //         </Nav.Link>
-    //         <Nav.Link href="#link" className="mt-2 mt-sm-0 ms-sm-2 navButtonGreen navButtonAnimation footerFontFamilyBold">
+    //         <Nav.Link href="#link" className="mt-2 mt-sm-0 ms-sm-2 navButtonGreen navButtonAnimation navBarFontFamilyBold">
     //           Login
     //         </Nav.Link>
-    //         <Nav.Link href="#link" className="mt-2 mt-sm-0 ms-sm-2 navButtonGreen navButtonAnimation footerFontFamilyBold">
+    //         <Nav.Link href="#link" className="mt-2 mt-sm-0 ms-sm-2 navButtonGreen navButtonAnimation navBarFontFamilyBold">
     //           Signup
     //         </Nav.Link>
     //       </Nav>
@@ -61,16 +61,16 @@ const NavBar = () => {
     //     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     //     <Navbar.Collapse id="basic-navbar-nav">
     //       <Nav className="ms-auto">
-    //         <Nav.Link href="#link" className="mt-2 mt-sm-0 ms-sm-2 navButtonAdmin navButtonAnimation footerFontFamilyBold">
+    //         <Nav.Link href="#link" className="mt-2 mt-sm-0 ms-sm-2 navButtonAdmin navButtonAnimation navBarFontFamilyBold">
     //           Administrator
     //         </Nav.Link>
-    //         <Nav.Link href="#link" className="mt-2 mt-sm-0 ms-sm-2 navButtonDefault navButtonAnimation footerFontFamilyBold">
+    //         <Nav.Link href="#link" className="mt-2 mt-sm-0 ms-sm-2 navButtonDefault navButtonAnimation navBarFontFamilyBold">
     //           My Account
     //         </Nav.Link>
-    //         <Nav.Link href="#link" className="mt-2 mt-sm-0 ms-sm-2 navButtonDefault navButtonAnimation footerFontFamilyBold">
+    //         <Nav.Link href="#link" className="mt-2 mt-sm-0 ms-sm-2 navButtonDefault navButtonAnimation navBarFontFamilyBold">
     //           About Us
     //         </Nav.Link>
-    //         <Nav.Link href="#link" className="mt-2 mt-sm-0 ms-sm-2 navButtonRed navButtonAnimation footerFontFamilyBold">
+    //         <Nav.Link href="#link" className="mt-2 mt-sm-0 ms-sm-2 navButtonRed navButtonAnimation navBarFontFamilyBold">
     //           Logout
     //         </Nav.Link>
     //       </Nav>
