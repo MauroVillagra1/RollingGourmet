@@ -3,6 +3,7 @@ const uriCategories = import.meta.env.VITE_API_CATEGORIES;
 const uriOrders = import.meta.env.VITE_API_ORDERS;
 
 const fetchData = async (url) => {
+
   try {
     const respuesta = await fetch(url);
     const datos = await respuesta.json();
@@ -36,6 +37,16 @@ export const createProducts = async (products) => {
     console.log(error);
   }
 };
+
+    try {
+      const respuesta = await fetch(url);
+      const datos = await respuesta.json();
+      return datos;
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
 
 export const createOrders = async (Orders) => {
   try {
