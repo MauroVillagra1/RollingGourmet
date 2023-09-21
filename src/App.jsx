@@ -6,10 +6,16 @@ import AdministratorUser from "./components/view/administrator/administrator-use
 import AdministratorOrder from "./components/view/administrator/administrator-order/AdministratorOrder";
 
 import Home from "./components/view/home/Home";
+{/*No olvidar borrar navbar, footer y sus respectivos imports antes del pull request final!!!*/}
+import NavBar from "./components/cummon/navbar/NavBar";
+import Footer from "./components/cummon/footer/Footer";
+
 
 function App() {
   return (
     <BrowserRouter>
+    {/*No olvidar borrar navbar, footer y sus respectivos imports antes del pull request final!!!*/}
+    <NavBar/>
       <Routes>
         <Route exact path="/" element={<Home></Home>}></Route>
         <Route exact path="/administrator" element={<Administrator />}></Route>
@@ -29,6 +35,8 @@ function App() {
           element={<AdministratorOrder />}
         ></Route>
       </Routes>
+      {/*No olvidar borrar navbar, footer y sus respectivos imports antes del pull request final!!!*/}
+      <Footer/>
     </BrowserRouter>
   );
 }
