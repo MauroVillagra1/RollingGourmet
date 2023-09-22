@@ -88,7 +88,7 @@ function home({ userActive }) {
   
 }}>
            
-              <FormGroup lassName="search_bar mx-2 mb-2">
+              <FormGroup className="search_bar mx-2 mb-2">
                 <Form.Control
                   type="text"
                   placeholder="Search by name..."
