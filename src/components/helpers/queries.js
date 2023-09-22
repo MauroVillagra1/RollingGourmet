@@ -1,6 +1,7 @@
 const uriProducts = import.meta.env.VITE_API_PRODUCTS;
 const uriCategories = import.meta.env.VITE_API_CATEGORIES;
 const uriOrders = import.meta.env.VITE_API_ORDERS;
+const uriUsers = import.meta.env.VITE_API_USERS;
 
 const fetchData = async (url) => {
     try {
@@ -64,3 +65,5 @@ const fetchData = async (url) => {
       console.log(error);
     }
   };
+
+ 
