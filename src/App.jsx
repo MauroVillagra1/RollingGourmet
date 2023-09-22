@@ -1,6 +1,8 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
+import NavBar from "./components/cummon/navbar/NavBar";
+import Home from "./components/view/home/Home";
+import Login from "./components/view/login/Login";
 import Home from "./components/view/home/Home";
 import SignUp from "./components/view/signup/SignUp";
 import Login from "./components/view/login/Login";
@@ -9,9 +11,11 @@ import CardProgrammer from "./components/view/programmer/CardProgrammer";
 import EncapsulateRoutes from "./components/routes/EncapsulateRoutes";
 import ProtectedRoutes from "./components/routes/ProtectedRoutes";
 
+
 function App() {
   return (
     <BrowserRouter>
+    <NavBar></NavBar>
       <Routes>
         <Route exact path="/" element={<Home></Home>}></Route>
         <Route exact path="/sing-up" element={<SignUp />}></Route>

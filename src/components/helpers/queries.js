@@ -1,6 +1,7 @@
 const uriProducts = import.meta.env.VITE_API_PRODUCTS;
 const uriCategories = import.meta.env.VITE_API_CATEGORIES;
 const uriOrders = import.meta.env.VITE_API_ORDERS;
+const uriUsers = import.meta.env.VITE_API_USERS;
 
 const fetchData = async (url) => {
 
@@ -64,14 +65,17 @@ export const createOrders = async (Orders) => {
 };
 
 
+  export const deleteOrders = async (id) => {
+    try {
+      const resp = await fetch(`${uriOrders}/${id}`, {
+        method: 'DELETE',
+      });
+      return resp;
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-export const deleteOrders = async (id) => {
-  try {
-    const resp = await fetch(`${uriOrders}/${id}`, {
-      method: 'DELETE',
-    });
-    return resp;
-  } catch (error) {
-    console.log(error);
-  }
-};
+ 
+
+
