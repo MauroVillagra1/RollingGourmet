@@ -38,17 +38,6 @@ export const createProducts = async (products) => {
     console.log(error);
   }
 };
-
-    try {
-      const respuesta = await fetch(url);
-      const datos = await respuesta.json();
-      return datos;
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  };
-
-
 export const createOrders = async (Orders) => {
   try {
     const resp = await fetch(uriOrders, {
@@ -65,17 +54,13 @@ export const createOrders = async (Orders) => {
 };
 
 
-  export const deleteOrders = async (id) => {
-    try {
-      const resp = await fetch(`${uriOrders}/${id}`, {
-        method: 'DELETE',
-      });
-      return resp;
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
- 
-
-
+export const deleteOrders = async (id) => {
+  try {
+    const resp = await fetch(`${uriOrders}/${id}`, {
+      method: 'DELETE',
+    });
+    return resp;
+  } catch (error) {
+    console.log(error);
+  }
+};
