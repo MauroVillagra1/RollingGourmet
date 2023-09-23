@@ -4,7 +4,7 @@ import "../product/CardProduct.css"
 
 import { listOrders } from '../../helpers/queries';
 import Swal from 'sweetalert2';
-function CardProduct({product, order, setOrder, newOrders, userActive}) {
+function CardProduct({product, order, setOrder, newOrders, userActive, setCountGlobal, countGlobal}) {
     const [count, setCount] = useState(0);
     const [stock, setStock] = useState(product.Stock);
     const [statusEffect, setStatusEffect] = useState(false);
@@ -47,6 +47,9 @@ function CardProduct({product, order, setOrder, newOrders, userActive}) {
       {
           setCount(count + 1);
           setStock(stock - 1);
+          setCountGlobal((countGlobal+1))
+          const x = JSON.stringify(countGlobal+1);
+          localStorage.setItem("countGlobal", x);
       }
     }
     else{
@@ -75,6 +78,9 @@ function CardProduct({product, order, setOrder, newOrders, userActive}) {
       {
           setCount(count - 1);
           setStock(stock + 1);
+          setCountGlobal((countGlobal-1))
+          const x = JSON.stringify(countGlobal-1);
+          localStorage.setItem("countGlobal", x);
       }
     }
     else{
