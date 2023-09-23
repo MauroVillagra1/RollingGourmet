@@ -38,8 +38,6 @@ export const createProducts = async (products) => {
     console.log(error);
   }
 };
-
-
 export const createOrders = async (Orders) => {
   try {
     const resp = await fetch(uriOrders, {
