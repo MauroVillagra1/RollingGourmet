@@ -10,6 +10,7 @@ import {
 } from "../../../helpers/queries";
 import { set } from "react-hook-form";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 function Order({ userActive }) {
   const [show, setShow] = useState(false);
@@ -60,10 +61,12 @@ function Order({ userActive }) {
       if (hasMatchingOrder) {
         Swal.fire("You already have a pending order.")
         localStorage.removeItem("orders");
+        localStorage.removeItem("countGlobal");
         setProductFilter([]);
       } else {
         createOrders(storageOrder);
         localStorage.removeItem("orders");
+        localStorage.removeItem("countGlobal");
         Swal.fire("Your order was saved successfully")
         setProductFilter([]);
       }
@@ -131,7 +134,9 @@ function Order({ userActive }) {
             <div className="text-light text_not_order">
               <p>No orders have been made yet.</p>
             </div>
+            <Link className="btn" to={"../"}>
             <Button onClick={handleShow}>Back to Home</Button>
+            </Link>
           </div>
         ) : (
           <div className="d-flex flex-column">

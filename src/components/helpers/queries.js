@@ -38,6 +38,7 @@ export const createProducts = async (products) => {
     console.log(error);
   }
 };
+
 export const createOrders = async (Orders) => {
   try {
     const resp = await fetch(uriOrders, {
@@ -54,13 +55,40 @@ export const createOrders = async (Orders) => {
 };
 
 
-export const deleteOrders = async (id) => {
-  try {
-    const resp = await fetch(`${uriOrders}/${id}`, {
-      method: 'DELETE',
-    });
-    return resp;
-  } catch (error) {
-    console.log(error);
-  }
-};
+  export const deleteOrders = async (id) => {
+    try {
+      const resp = await fetch(`${uriOrders}/${id}`, {
+        method: 'DELETE',
+      });
+      return resp;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  export const getProduct = async (id) => {
+    try {
+      const resp = await fetch(`${uriProducts}/${id}`);
+      const data = await resp.json();
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+ 
+  export const editProduct = async (id, productEdit) => {
+    try {
+      const resp = await fetch(`${uriProducts}/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(productEdit),
+      });
+      return resp;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+

@@ -1,75 +1,78 @@
-import { Button } from "react-bootstrap";
-import React, { useEffect, useState } from "react";
-import "../product/CardProduct.css";
+import { Button } from 'react-bootstrap'
+import React, { useEffect, useState } from 'react'
+import "../product/CardProduct.css"
 
-// import { listOrders } from '../../helpers/queries';
-import Swal from "sweetalert2";
-import { listOrders } from "../../helpers/queries";
-function CardProduct({ product, order, setOrder, newOrders, userActive }) {
-  const [count, setCount] = useState(0);
-  const [stock, setStock] = useState(product.Stock);
-  const [statusEffect, setStatusEffect] = useState(false);
-  const [orderLocal, setOrderLocal] = useState({});
-  const [orderDB, setOrderDB] = useState([]);
-  const newArray = [...order];
+import { listOrders } from '../../helpers/queries';
+import Swal from 'sweetalert2';
+function CardProduct({product, order, setOrder, newOrders, userActive, setCountGlobal, countGlobal}) {
+    const [count, setCount] = useState(0);
+    const [stock, setStock] = useState(product.Stock);
+    const [statusEffect, setStatusEffect] = useState(false);
+    const [orderLocal, setOrderLocal] = useState({})
+    const [orderDB, setOrderDB] = useState([])
+    const newArray = [...order]
 
-  var newOrder = {};
-  useEffect(() => {
-    listOrders().then((resp) => {
-      setOrderDB(resp);
-    });
-    const ordersJson = localStorage.getItem("orders");
-    const ordersJson_retrieved = JSON.parse(ordersJson);
-    ordersJson_retrieved.map((orderJson_retrieved) => {
-      if (orderJson_retrieved.ProductID === product._id.toString()) {
-        setCount(orderJson_retrieved.quantity);
-        setStock(orderJson_retrieved.Stock);
-      }
-    });
-  }, []);
+    var newOrder = {
+    }  
+    useEffect(()=>{
+      listOrders().then((resp)=>{
+        setOrderDB(resp)
+      })
+      const ordersJson = localStorage.getItem("orders");
+      const ordersJson_retrieved = JSON.parse(ordersJson);
+      ordersJson_retrieved.map((orderJson_retrieved)=>{
+        if(orderJson_retrieved.ProductID === product._id.toString())
+        {
+          setCount(orderJson_retrieved.quantity)
+          setStock(orderJson_retrieved.Stock)
+        }
+      })
+      
+        },[])
 
   const handleAddOrder = () => {
-    if (count <= product.Stock) {
-      var x = 0;
-      if (userActive._id !== undefined) {
-        orderDB.map((ord) => {
-          if (ord.IdUser === userActive._id && ord.State === "Pending") {
-            x = 1;
-          }
-        });
-        if (x === 0) {
-          if (count < product.Stock) {
-            setCount(count + 1);
-            setStock(stock - 1);
-          }
-        } else {
-          Swal.fire("You have a pending order");
-        }
-      } else {
-        Swal.fire("You must log in");
+    if(count <= product.Stock){
+    var x = 0
+    if (userActive._id !== undefined){
+      
+      orderDB.map((ord)=>{
+      if(ord.IdUser === userActive._id && ord.State === "Pending")
+      {
+        x=1
+      }
+    })
+    if(x===0)
+    {
+      if (count < product.Stock)
+      {
+          setCount(count + 1);
+          setStock(stock - 1);
+          setCountGlobal((countGlobal+1))
+          const x = JSON.stringify(countGlobal+1);
+          localStorage.setItem("countGlobal", x);
       }
     }
   };
 
   const handleRemoveOrder = () => {
-    if (count > 0) {
-      var x = 0;
-      if (userActive._id !== undefined) {
-        orderDB.map((ord) => {
-          if (ord.IdUser === userActive._id && ord.State === "Pending") {
-            x = 1;
-          }
-        });
-        if (x === 0) {
-          if (count < product.Stock) {
-            setCount(count - 1);
-            setStock(stock + 1);
-          }
-        } else {
-          Swal.fire("You have a pending order");
-        }
-      } else {
-        Swal.fire("You must log in");
+    if(count > 0){
+    var x = 0
+    if (userActive._id !== undefined){
+      orderDB.map((ord)=>{
+        if(ord.IdUser === userActive._id && ord.State === "Pending")
+        {
+        x=1
+      }
+    })
+    if(x===0)
+    {
+      if (count < product.Stock)
+      {
+          setCount(count - 1);
+          setStock(stock + 1);
+          setCountGlobal((countGlobal-1))
+          const x = JSON.stringify(countGlobal-1);
+          localStorage.setItem("countGlobal", x);
       }
     }
   };
