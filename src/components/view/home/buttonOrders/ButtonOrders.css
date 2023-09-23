@@ -1,0 +1,39 @@
+.container_button_orders{
+    width: 8vw;
+    height: 8vw;
+    background: radial-gradient(circle, yellow 0%, rgba(254,57,0,1) 75%);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    object-fit: contain;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 3;
+    min-width: 80px;
+    min-height: 80px;
+    margin-bottom: 2vw;
+    margin-right: 2vw;
+}
+.container_button_orders img{
+  width: 50%;
+  object-fit: cover;
+}
+.container_button_orders:hover{
+    background: radial-gradient(circle, rgba(243,255,0,1) 0%, rgba(254,0,71,1) 100%);
+    cursor: pointer;
+}
+.count_button-orders{
+    width: 3vw;
+    height: 3vw;
+    border-radius: 50%;
+    background-color: red;
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    right: 0;
+    min-width: 40px;
+    min-height: 40px;
+}
+
