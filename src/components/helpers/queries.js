@@ -46,7 +46,6 @@ export const createProducts = async (products) => {
     } catch (error) {
       console.error("Error:", error);
     }
-  };
 
 
 export const createOrders = async (Orders) => {
