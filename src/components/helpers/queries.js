@@ -39,13 +39,14 @@ export const createProducts = async (products) => {
   }
 };
 
-    try {
-      const respuesta = await fetch(url);
-      const datos = await respuesta.json();
-      return datos;
-    } catch (error) {
-      console.error("Error:", error);
-    }
+    // try {
+    //   const respuesta = await fetch(url);
+    //   const datos = await respuesta.json();
+    //   return datos;
+    // } catch (error) {
+    //   console.error("Error:", error);
+    // }
+  
 
 
 export const createOrders = async (Orders) => {
@@ -64,17 +65,36 @@ export const createOrders = async (Orders) => {
 };
 
 
-  export const deleteOrders = async (id) => {
-    try {
-      const resp = await fetch(`${uriOrders}/${id}`, {
-        method: 'DELETE',
-      });
-      return resp;
-    } catch (error) {
-      console.log(error);
-    }
-  };
+export const deleteOrders = async (id) => {
+  try {
+    const resp = await fetch(`${uriOrders}/${id}`, {
+      method: 'DELETE',
+    });
+    return resp;
+  } catch (error) {
+    console.log(error);
+  }
+};
 
- 
-
-
+export const login = async (usuario) =>{
+  try {
+    console.log(usuario);
+    const respuesta = await fetch(uriUsuario, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(usuario),
+    });
+    const datos = await respuesta.json();
+    return {
+      status: respuesta.status,
+      mensaje: datos.mensaje,
+      usuario: datos.nombre,
+      uid: datos.uid,
+    };
+  } catch (error) {
+    console.log("errores en el login");
+    return;
+  }
+}
