@@ -31,8 +31,6 @@ function EditProduct() {
 
   useEffect(() => {
     let x = [];
-    id = "650652ffea92b196f89793a9"
-
     setValue("NameProduct", editLoad.NameProduct);
     setValue("Price", editLoad.Price);
     setValue("Details", editLoad.Details);
@@ -57,7 +55,6 @@ function EditProduct() {
   }, [categories2, editLoad, categoriesLoad]);
 
   useEffect(() => {
-    id = "650652ffea92b196f89793a9"
     getProduct(id).then((resp) => {
       setEditLoad(resp);
       setCategoriesLoad(resp.CategoriesID)
@@ -66,6 +63,7 @@ function EditProduct() {
       setCategories(categories);
       setCategories2(categories)
     });
+    console.log(id)
   }, []);
   const {
     register,
@@ -75,7 +73,6 @@ function EditProduct() {
   } = useForm();
 
   const onSubmit = (data) => {
-    id = "650652ffea92b196f89793a9"
 
     const categories = [];
     selectedCategories.map((category) => {

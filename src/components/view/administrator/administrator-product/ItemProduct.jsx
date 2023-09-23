@@ -1,5 +1,5 @@
 import { Button, Image } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const ItemProduct = (product) => {
   // const borrarProducto = () => {
@@ -56,8 +56,8 @@ const ItemProduct = (product) => {
       <td className="priority-5">{product.Details}</td>
       <td className="priority-6 ">
         <Button
-          as={Link}
-          to={`/administrador/editar/id`}
+          as={NavLink}
+          to={`/administrator/product/edit/${product._id}`}
           className="btn-edit me-2 my-1 text-black btn-options-width border-0"
         >
           Edit
