@@ -1,9 +1,10 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import NavBar from "./components/cummon/navbar/NavBar";
 import Home from "./components/view/home/Home";
-import SignUp from "./components/view/signup/SignUp";
 import Login from "./components/view/login/Login";
+import SignUp from "./components/view/signup/SignUp";
 import ProductDetail from "./components/view/productdetail/ProductDetail";
 import CardProgrammer from "./components/view/programmer/CardProgrammer";
 import EncapsulateRoutes from "./components/routes/EncapsulateRoutes";
@@ -14,6 +15,7 @@ import Order2 from "./components/view/order/order/Order"
 import CardOrder from "./components/view/order/orderCard/CardOrder"
 import HomeOrder from "./components/view/order/orderHome/OrderHome"
 import EditProduct from "./components/view/administrator/edit/EditProduct";
+
 
 function App() {
   const [userActive, setUserActive] = useState({})
@@ -26,7 +28,7 @@ function App() {
 
   return (
     <BrowserRouter>
-    <NavBar></NavBar>
+      <NavBar></NavBar>
       <Routes>
         <Route exact path="/" element={<Home userActive={userActive}></Home>}></Route>
         <Route exact path="/my-orders" element={<Order2 userActive={userActive}></Order2>}></Route>
