@@ -52,8 +52,8 @@ const NavBar = () => {
     //   </Container>
     // </Navbar>
     
-    <Navbar expand="sm" className="navbarBackground navbar-dark">
-      <Container className="hola">
+    <Navbar expand="sm" className="navbarBackground navbar-dark Content-Nav">
+      <Container>
         <Image
           src="https://res.cloudinary.com/dhe7vivfw/image/upload/v1695001920/Rolling%20Gourmet/IMG%20LOGO/ROLLING-GOURMET_fcyqgy.png"
           alt="gourmetLogo"
@@ -66,7 +66,7 @@ const NavBar = () => {
             <NavLink to="/administrator" className="nav-link mt-2 mt-sm-0 ms-sm-2 navButtonDefault navButtonAnimation footerFontFamilyBold">
               Administrador
             </NavLink>
-            <NavLink to="/" className="nav-link mt-2 mt-sm-0 ms-sm-2 navButtonDefault navButtonAnimation footerFontFamilyBold">
+            <NavLink to="/my-account" className="nav-link mt-2 mt-sm-0 ms-sm-2 navButtonDefault navButtonAnimation footerFontFamilyBold">
               Mi Cuenta
             </NavLink>
             <NavLink to="/about-us" className="nav-link mt-2 mt-sm-0 ms-sm-2 navButtonDefault navButtonAnimation footerFontFamilyBold">
