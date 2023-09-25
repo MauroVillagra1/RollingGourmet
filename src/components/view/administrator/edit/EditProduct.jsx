@@ -39,13 +39,11 @@ function EditProduct() {
   
     categoriesLoad.forEach((resp2) => {
       categories2.forEach((cate2) => {
-        console.log(cate2);
         if (cate2._id.toString() === resp2) {
           x.push(cate2);
         }
       });
     });
-    console.log(x)
     setSelectedCategories(x);
     x.map((asd)=>{
       setCategories(categories.filter((category) => category._id !== asd._id))
@@ -63,7 +61,6 @@ function EditProduct() {
       setCategories(categories);
       setCategories2(categories)
     });
-    console.log(id)
   }, []);
   const {
     register,
@@ -83,8 +80,7 @@ function EditProduct() {
     data["State"] = "Visible";
     data["Price"] = parseInt(data["Price"]);
     data["Stock"] = parseInt(data["Stock"]);
-    console.log(data);
-    console.log(selectedCategories);
+   
     editProduct(id, data)
       .then((resp) => {
         if (resp.status === 201) {
@@ -111,7 +107,6 @@ function EditProduct() {
       (category) => category._id === selectedCategoryId
     );
     setSelectedCategory(selectedCategory);
-    console.log(selectedCategoryId);
     setCategoriesComboBox(selectedCategoryId);
   }
 

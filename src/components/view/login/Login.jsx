@@ -1,12 +1,11 @@
-
 import { Container, Button, Form, Card } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
-// import { login } from "../../helpers/queries";
+import { login } from "../../helpers/queries";
 import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 
-const Login = ({setUsuarioActivo}) => {
+const Login = ({setUserActive}) => {
   const {
     register,
     handleSubmit,
@@ -16,10 +15,7 @@ const Login = ({setUsuarioActivo}) => {
 
   // esta es mi funcion la que pide loguear al usuario
   const onSubmit = (usuario)=>{
-    console.log('aqui agrego mi logica')
-    console.log(usuario)
     login(usuario).then((respuesta)=>{
-      console.log(respuesta)
       if(respuesta.status === 200){
         Swal.fire(
           'Bienvenido '+ respuesta.usuario,
@@ -27,8 +23,8 @@ const Login = ({setUsuarioActivo}) => {
           'success'
         )
         // guardar el usuario en el localstorage o sessionStorage;
-        sessionStorage.setItem('usuarioLogueado', JSON.stringify(respuesta));
-        setUsuarioActivo(respuesta);
+        sessionStorage.setItem('userActive', JSON.stringify(respuesta));
+        setUserActive(respuesta);
         navegacion('/administrador')
       }else{
         Swal.fire(
@@ -53,10 +49,10 @@ const Login = ({setUsuarioActivo}) => {
                 type="email"
                 placeholder="Ingrese un email"
                 {
-                  ...register('email',{
+                  ...register('Email',{
                     required: 'El email es un dato obligatorio',
                     pattern:{
-                      value:/^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/,
+                      value:/^[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/,
                       message:'El email debe cumplir con un formato valido como el siguiente mail@mail.com '
                     }
                   })
@@ -71,10 +67,10 @@ const Login = ({setUsuarioActivo}) => {
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Label>Password</Form.Label>
               <Form.Control
-                type="password"
+                type="Password"
                 placeholder="Password"
                {
-                ...register('password',{
+                ...register('Password',{
                   required:'El password es un dato obligatorio',
                   pattern: {
                     value:/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/,

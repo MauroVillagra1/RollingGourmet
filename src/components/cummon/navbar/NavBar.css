@@ -1,11 +1,20 @@
 .imgFix {
   width: 10em;
 }
-.hola{
-  position: sticky;
+
+
+
+.navbarBackground {
+  top: 0;
+  z-index: 1000; 
+  border-bottom: 2px black solid;
 }
+
 .navbarBackground {
   background-color: var(--navyblueColor);
+  position: sticky;
+  opacity: 99%;
+
 }
 
 .navbar-toggler {
