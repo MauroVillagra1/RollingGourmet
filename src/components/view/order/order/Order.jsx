@@ -48,16 +48,17 @@ function Order({ userActive }) {
     setShow(false);
     const Date = obtenerFechaYHoraActual();
     let storageOrder = {
-      Orders: order,
+      Order: order,
       State: "Pending",
       Adress: address,
       Date: Date,
       IdUser: userActive._id,
+      NameUser: userActive.userName
     };
+
     
     listOrders().then((orderDB) => {
-      const hasMatchingOrder = orderDB.some((ord) => ord.IdUser === userActive._id);
-      
+      const hasMatchingOrder = orderDB.some((ord) => (ord.IdUser === userActive._id && ord.State === "Pending"));
       if (hasMatchingOrder) {
         Swal.fire("You already have a pending order.")
         localStorage.removeItem("orders");
@@ -87,22 +88,7 @@ function Order({ userActive }) {
     listProducts().then((resp) => {
       setProducts(resp);
     });
-    // var c = 0
-    // listOrders().then((resp)=>{
-    //   resp.map((order_resp)=>{
-    //     if(!order_resp.length)
-    //     {
-    //       c++
-    //       console.log("adios")
-    //     }
-
-    //   })
-    //   if (c===0)
-    //   {
-    //     setOrder(resp)
-    //     console.log("hola")
-    //   }
-    // })
+    
   }, []);
   useEffect(() => {
     const ordersJson = JSON.stringify(order);
@@ -120,7 +106,6 @@ function Order({ userActive }) {
     });
 
     setProductFilter(productsFilt);
-    console.log(productFilter);
   }, [products, order]);
 
   return (

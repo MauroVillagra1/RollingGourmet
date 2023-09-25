@@ -1,23 +1,27 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./AdministratorOrder.css";
 import { Table } from "react-bootstrap";
 import ItemOrder from "./ItemOrder";
+import { listOrders } from "../../../helpers/queries";
 
-const usersData = [
-  {
-    id: 1,
-    product: "Hamburguer",
-    email: "Pedro@gmail.com",
-  },
-  {
-    id: 2,
-    product: "Water Bottle",
-    email: "Juan@gmail.com",
-  },
-];
+
+
+
 
 const AdministratorOrder = () => {
   const [users, setUsers] = useState([]);
+const [orders, setOrders] = useState([]);
+  useEffect(()=>{
+    listOrders().then((resp)=>{
+      setOrders(resp.reverse())
+    })
+  },[])
+
+  const updateOrderList = () => {
+    listOrders().then((resp) => {
+      setOrders(resp.reverse());
+    });
+  };
 
   return (
     <div className="bg-order-page">
@@ -32,15 +36,16 @@ const AdministratorOrder = () => {
         <Table responsive striped bordered hover>
           <thead>
             <tr>
-              <th className="priority-table-user-1">ID</th>
-              <th className="priority-table-user-2">Product</th>
-              <th className="priority-table-user-3">Mail</th>
-              <th className="priority-table-user-4">Options</th>
+              <th className="priority-table-user-1">Products</th>
+              <th className="priority-table-user-2">User</th>
+              <th className="priority-table-user-3">Adress</th>
+              <th className="priority-table-user-4">Total</th>
+              <th className="priority-table-user-5">Options</th>
             </tr>
           </thead>
           <tbody>
-            {usersData.map((user, id) => (
-              <ItemOrder key={id} {...user} setProducts={setUsers}></ItemOrder>
+            {orders.map((order) => (
+              <ItemOrder key={order._id} order={order} setProducts={setUsers} updateOrderList={updateOrderList}></ItemOrder>
             ))}
           </tbody>
         </Table>
