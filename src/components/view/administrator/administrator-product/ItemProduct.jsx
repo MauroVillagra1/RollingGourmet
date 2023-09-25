@@ -1,44 +1,39 @@
 import { Button, Image } from "react-bootstrap";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import Swal from "sweetalert2";
+import { deleteProductAPI, listProducts } from "../../../helpers/queries";
 
-const ItemProduct = (product) => {
-  // const borrarProducto = () => {
-  //   Swal.fire({
-  //     title: "¿Esta seguro de eliminar el producto",
-  //     text: "No se puede revertir este paso",
-  //     icon: "warning",
-  //     showCancelButton: true,
-  //     confirmButtonColor: "#3085d6",
-  //     cancelButtonColor: "#d33",
-  //     confirmButtonText: "Borrar",
-  //     cancelButtonText: "Cancelar",
-  //   }).then((result) => {
-  //     if (result.isConfirmed) {
-  //       //realizar la consulta a la api
-  //       borrarProductoAPI(_id).then((respuesta) => {
-  //         if (respuesta.status === 200) {
-  //           //actualizar el state productos o la tabla
-  //           listarProductos().then((respuesta) => {
-  //             console.log(respuesta);
-  //             setProductos(respuesta);
-  //           });
-
-  //           Swal.fire(
-  //             "Producto eliminado",
-  //             "El producto fue correctamente borrado",
-  //             "success"
-  //           );
-  //         } else {
-  //           Swal.fire(
-  //             "Se produjo un error",
-  //             "Intente realizar esta operacion mas tarde",
-  //             "error"
-  //           );
-  //         }
-  //       });
-  //     }
-  //   });
-  // };
+const ItemProduct = (product, setProducts) => {
+  const deleteProduct = () => {
+    Swal.fire({
+      title: "¿Esta seguro de eliminar el producto",
+      text: "No se puede revertir este paso",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Borrar",
+      cancelButtonText: "Cancelar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteProductAPI(product._id).then((resp) => {
+          if (resp.status === 200) {
+            listProducts().then((resp) => {
+              console.log(resp);
+              setProducts(resp);
+            });
+            Swal.fire(
+              "Product deleted",
+              "Product was successfully deleted",
+              "success"
+            );
+          } else {
+            Swal.fire("An error occurred", "Try this operation later", "error");
+          }
+        });
+      }
+    });
+  };
 
   return (
     <tr>
@@ -64,9 +59,7 @@ const ItemProduct = (product) => {
         </Button>
         <Button
           className="btn-delete btn-options-width my-1 border-0"
-          onClick={() => {
-            console.log("borrar producto");
-          }}
+          onClick={deleteProduct}
         >
           Delete
         </Button>
