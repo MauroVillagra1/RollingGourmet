@@ -1,7 +1,15 @@
-import { Nav, Navbar, Container, Image } from "react-bootstrap";
+import { Nav, Navbar, Container, Image, Button } from "react-bootstrap";
 import "./NavBar.css";
+import { useNavigate } from "react-router-dom";
 
-const NavBar = () => {
+const NavBar = ({usuarioActivo, setUsuarioActivo}) => {
+  const navegacion = useNavigate()
+
+  const logout = () =>{
+    setUsuarioActivo({});
+    sessionStorage.removeItem('usuarioLogueado');
+    navegacion('/')
+  }
   return (
     <Navbar expand="sm" className="navbarBackground navbar-dark">
       <Container>
@@ -16,9 +24,16 @@ const NavBar = () => {
             <Nav.Link href="#link" className="mt-2 mt-sm-0 ms-sm-2 navButtonDefault navButtonAnimation footerFontFamilyBold">
               Sobre Nosotros
             </Nav.Link>
-            <Nav.Link href="#link" className="mt-2 mt-sm-0 ms-sm-2 navButtonDefault navButtonAnimation footerFontFamilyBold">
+            {usuarioActivo.email ? (
+                <>
+                <Nav.Link end to='/administrador' className="mt-2 mt-sm-0 ms-sm-2 navButtonDefault navButtonAnimation footerFontFamilyBold">Administrador</Nav.Link>
+                <Button onClick={logout}>Logout</Button>
+                </>
+              ): (
+              <Nav.Link end to='/Login' className="mt-2 mt-sm-0 ms-sm-2 navButtonDefault navButtonAnimation footerFontFamilyBold">
               Iniciar Sesión
             </Nav.Link>
+            )}
             <Nav.Link href="#link" className="mt-2 mt-sm-0 ms-sm-2 navButtonDefault navButtonAnimation footerFontFamilyBold">
               Registro
             </Nav.Link>

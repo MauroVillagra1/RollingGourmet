@@ -14,7 +14,6 @@ const Login = ({setUsuarioActivo}) => {
   }= useForm();
   const navegacion = useNavigate();
 
-  // esta es mi funcion la que pide loguear al usuario
   const onSubmit = (usuario)=>{
     console.log('aqui agrego mi logica')
     console.log(usuario)
@@ -26,7 +25,6 @@ const Login = ({setUsuarioActivo}) => {
           'Ingresaste a la web cafecito',
           'success'
         )
-        // guardar el usuario en el localstorage o sessionStorage;
         sessionStorage.setItem('usuarioLogueado', JSON.stringify(respuesta));
         setUsuarioActivo(respuesta);
         navegacion('/administrador')
@@ -65,7 +63,6 @@ const Login = ({setUsuarioActivo}) => {
               <Form.Text className="text-danger">
                 {errors.email?.message}
               </Form.Text>
-             
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicPassword">

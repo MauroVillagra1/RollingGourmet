@@ -79,7 +79,7 @@ export const deleteOrders = async (id) => {
 export const login = async (usuario) =>{
   try {
     console.log(usuario);
-    const respuesta = await fetch(uriUsuario, {
+    const respuesta = await fetch(uriUsers, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

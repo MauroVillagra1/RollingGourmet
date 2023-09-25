@@ -12,7 +12,7 @@ const ProtectedRoutes = () => {
       <Route exact path="/create" element={<CreateProduct />}></Route>
       <Route exact path="/edit/:id" element={<EditProduct />}></Route>
       <Route exact path="/order" element={<AdministratorOrder />}></Route>
-      <Route exact path="/user" element={<AdministratorUser />}></Route>
+      <Route exact path="/" element={<AdministratorUser />}></Route>
     </Routes>
   );
 };
