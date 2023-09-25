@@ -21,7 +21,7 @@ function Order({ userActive }) {
   const [products, setProducts] = useState([]);
   const [productFilter, setProductFilter] = useState([]);
 
-  var newOrders = [];
+  let newOrders = [];
 
   function obtenerFechaYHoraActual() {
     const ahora = new Date();
@@ -44,10 +44,10 @@ function Order({ userActive }) {
   }
 
   const handleCloseBuy = () => {
-    var x = 0;
+    let x = 0;
     setShow(false);
     const Date = obtenerFechaYHoraActual();
-    var storageOrder = {
+    let storageOrder = {
       Orders: order,
       State: "Pending",
       Adress: address,
@@ -110,7 +110,7 @@ function Order({ userActive }) {
   }, [order]);
 
   useEffect(() => {
-    var productsFilt = [];
+    let productsFilt = [];
     products.map((product) => {
       order.map((ord) => {
         if (product._id.toString() === ord.ProductID) {

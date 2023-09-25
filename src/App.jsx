@@ -23,6 +23,7 @@ function App() {
     let x = {
       _id:"123"
     }
+    sessionStorage.setItem("userActive", JSON.stringify(x));
     setUserActive(x)
   },[])
 
@@ -32,7 +33,6 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home userActive={userActive}></Home>}></Route>
         <Route exact path="/my-orders" element={<Order2 userActive={userActive}></Order2>}></Route>
-        <Route exact path="/Edit" element={<EditProduct></EditProduct>}></Route>
         <Route exact path="/sing-up" element={<SignUp />}></Route>
         <Route exact path="/login" element={<Login />}></Route>
         <Route exact path="/about-us" element={<CardProgrammer />}></Route>
