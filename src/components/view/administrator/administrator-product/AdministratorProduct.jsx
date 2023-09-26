@@ -74,7 +74,7 @@ const AdministratorProduct = () => {
           <h1 className=" text-white">Product Manager</h1>
           <Link
             className="btn-create text-white btn"
-            to="/administrador/create"
+            to="/administrator/product/create"
           >
             Create Product
           </Link>

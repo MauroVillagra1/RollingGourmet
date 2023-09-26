@@ -10,7 +10,7 @@ const ItemUser = ({ id, userName, email }) => {
       <td className="priority-table-user-4">
         <Button
           as={Link}
-          to={`/administrador/editar/id`}
+          to={`/administrator/product/edit/id`}
           className="btn btn-unsuspend  border-0 me-2 my-1 btn-options-user-width"
         >
           Unsuspend
