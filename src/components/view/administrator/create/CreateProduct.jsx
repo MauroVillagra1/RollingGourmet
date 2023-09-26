@@ -29,6 +29,7 @@ function CreateProduct() {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
   
@@ -51,6 +52,13 @@ function CreateProduct() {
               "Su producto se guardo correctamente",
               "success"
             );
+            reset()
+            listCategories().then((categories)=>{
+              setCategories(categories)
+          })
+          setSelectedCategory("")
+          setSelectedCategories([])
+          setCategoriesComboBox("")
           }
     })
     .catch((error) => {
