@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { registerList } from "../../helpers/queries";
 import Swal from "sweetalert2";
 
-const SignUp = () => {
+const SignUp = ({ setUserInLine }) => {
   const {
     register,
     handleSubmit,
@@ -22,6 +22,7 @@ const SignUp = () => {
           "success"
         );
         sessionStorage.setItem("registeredUser", JSON.stringify(response));
+        setUserInLine(response);
       } else {
         Swal.fire(
           "A system error occurred! ",
@@ -64,6 +65,7 @@ const SignUp = () => {
                 type="text"
                 placeholder="Enter username"
                 {...register("nameUser", {
+                  required: "username is mandatory information",
                   pattern: {
                     value: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/,
                     message:

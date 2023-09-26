@@ -18,10 +18,12 @@ function App() {
   // useEffect(()=>{
   //   sessionStorage.setItem("userActive", JSON.stringify(userActive));
   // },[userActive])
+  const singUpUser = JSON.parse(sessionStorage.getItem("registeredUser")) || {};
+  const [userInLine, setUserInLine] = useState(singUpUser);
 
   return (
     <BrowserRouter>
-      <NavBar></NavBar>
+      <NavBar userInLine={userInLine} setUserInLine={setUserInLine}></NavBar>
       <Routes>
         <Route
           exact
@@ -36,7 +38,11 @@ function App() {
           element={<Order userActive={userActive}></Order>}
         ></Route>
 
-        <Route exact path="/sing-up" element={<SignUp />}></Route>
+        <Route
+          exact
+          path="/sing-up"
+          element={<SignUp setUserInLine={setUserInLine}></SignUp>}
+        ></Route>
         <Route exact path="/login" element={<Login />}></Route>
         <Route exact path="/about-us" element={<AboutUs />}></Route>
         <Route
