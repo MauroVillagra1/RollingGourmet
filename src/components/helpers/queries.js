@@ -38,15 +38,7 @@ export const createProducts = async (products) => {
   }
 };
 
-/*try {
-  const respuesta = await fetch(url);
-  const datos = await respuesta.json();
-  return datos;
-} catch (error) {
-  console.error("Error:", error);
-}
-*/
-/*export const createOrders = async (Orders) => {
+export const createOrders = async (Orders) => {
   try {
     const resp = await fetch(uriOrders, {
       method: "POST",
@@ -60,7 +52,7 @@ export const createProducts = async (products) => {
     console.log(error);
   }
 };
-*/
+
 export const deleteOrders = async (id) => {
   try {
     const resp = await fetch(`${uriOrders}/${id}`, {
@@ -69,5 +61,96 @@ export const deleteOrders = async (id) => {
     return resp;
   } catch (error) {
     console.log(error);
+  }
+};
+
+export const getProduct = async (id) => {
+  try {
+    const resp = await fetch(`${uriProducts}/${id}`);
+    const data = await resp.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const login = async (user) => {
+  try {
+    const resp = await fetch(uriUsersLogin, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    });
+    const data = await resp.json();
+    //  aqui pueden cambiar la respuesta
+    return {
+      status: resp.status,
+      message: data.message,
+      userName: data.name,
+      token: data.token,
+      _id: data.uid,
+    };
+  } catch (error) {
+    console.log("errores en el login");
+    return;
+  }
+};
+
+export const editOrder = async (id, orderEdit) => {
+  try {
+    const resp = await fetch(`${uriOrders}/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(orderEdit),
+    });
+    return resp;
+  } catch (error) {
+    console.log(error);
+  }
+};
+export const editProduct = async (id, productEdit) => {
+  try {
+    const resp = await fetch(`${uriProducts}/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(productEdit),
+    });
+    return resp;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const deleteProductAPI = async (id) => {
+  try {
+    const resp = await fetch(`${uriProducts}/${id}`, {
+      method: "DELETE",
+    });
+    return resp;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+//busca los usuarios que ya están registrados
+export const registerList = async (user) => {
+  try {
+    const resp = await fetch("http://localhost:3004/listUsers");
+    const listUsers = await resp.json();
+    if (listUsers) {
+      return user;
+    } else {
+      console.log("Username or email not found");
+      return null;
+    }
+  } catch (error) {
+    console.log(error);
+    return null;
   }
 };

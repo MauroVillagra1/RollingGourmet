@@ -1,6 +1,8 @@
 import "./SignUp.css";
 import { Form, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import { registerList } from "../../helpers/queries";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
   const {
@@ -9,8 +11,25 @@ const SignUp = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (usuario) => {
-    console.log(usuario);
+  const onSubmit = (user) => {
+    console.log(user);
+    registerList(user).then((response) => {
+      console.log(response);
+      if (response) {
+        Swal.fire(
+          "Welcome! " + response.nameUser,
+          "You are successfully registered!",
+          "success"
+        );
+        sessionStorage.setItem("registeredUser", JSON.stringify(response));
+      } else {
+        Swal.fire(
+          "A system error occurred! ",
+          "You're already signed in!",
+          "error"
+        );
+      }
+    });
   };
 
   return (

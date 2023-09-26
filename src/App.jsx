@@ -7,8 +7,12 @@ import Login from "./components/view/login/Login";
 import SignUp from "./components/view/signup/SignUp";
 import ProductDetail from "./components/view/productdetail/ProductDetail";
 import AboutUs from "./components/view/programmer/CardProgrammer";
+import Order from "./components/view/order/Order";
+import Footer from "./components/cummon/footer/Footer";
 import EncapsulateRoutes from "./components/routes/EncapsulateRoutes";
 import ProtectedRoutes from "./components/routes/ProtectedRoutes";
+import { useState } from "react";
+
 function App() {
   const [userActive, setUserActive] = useState({});
   // useEffect(()=>{
@@ -29,7 +33,7 @@ function App() {
         <Route
           exact
           path="/my-orders"
-          element={<Order2 userActive={userActive}></Order2>}
+          element={<Order userActive={userActive}></Order>}
         ></Route>
 
         <Route exact path="/sing-up" element={<SignUp />}></Route>
