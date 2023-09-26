@@ -1,5 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 
 import NavBar from "./components/cummon/navbar/NavBar";
 import Home from "./components/view/home/Home";
@@ -19,21 +19,24 @@ import Footer from "./components/cummon/footer/Footer"
 import MyAccount from "./components/view/my-account/MyAccount";
 import ProtectedRoutes_MyAccount from "./components/routes/my-account-routes/ProtectedRoutes_MyAccount"
 function App() {
+
   const [userActive, setUserActive] = useState({})
-  // useEffect(()=>{
-  //   sessionStorage.setItem("userActive", JSON.stringify(userActive));
-  // },[userActive])
+  const [reload, setReload] = useState([]);
+
+  
+const reloadNav = () =>{
+  window.location.reload();
+}
 
   return (
     
     <BrowserRouter>
-          <NavBar></NavBar>
+          <NavBar setReload={setReload} reload={reload}></NavBar>
       <Routes>
         <Route exact path="/" element={<Home userActive={userActive} setUserActive={setUserActive}></Home>}></Route>
         <Route exact path="/my-orders" element={<Order2 userActive={userActive}></Order2>}></Route>
-        
         <Route exact path="/sing-up" element={<SignUp />}></Route>
-        <Route exact path="/login" element={<Login setUserActive={setUserActive} />}></Route>
+        <Route exact path="/login" element={<Login reloadNav={reloadNav} />}></Route>
         <Route exact path="/about-us" element={<CardProgrammer />}></Route>
         <Route exact path="my-account/*" element={ <EncapsulateRoutes>
               <ProtectedRoutes_MyAccount></ProtectedRoutes_MyAccount>
