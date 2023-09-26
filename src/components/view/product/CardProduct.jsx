@@ -39,7 +39,8 @@ function CardProduct({
   const handleAddOrder = () => {
     if (count <= product.Stock) {
       let x = 0;
-      if (userActive._id !== undefined) {
+      
+      if (userActive && userActive._id && userActive._id !== undefined)  {
         orderDB.map((ord) => {
           if (ord.IdUser === userActive._id && ord.State === "Pending") {
             x = 1;
@@ -53,15 +54,23 @@ function CardProduct({
             const x = JSON.stringify(countGlobal + 1);
             localStorage.setItem("countGlobal", x);
           }
+          
         }
-      }
+        else{
+          Swal.fire("You have a pending order")
+        }
+      
+    }
+    else{
+      Swal.fire("You must log in")
+    }
     }
   };
 
   const handleRemoveOrder = () => {
     if (count > 0) {
       let x = 0;
-      if (userActive._id !== undefined) {
+      if (userActive && userActive._id && userActive._id !== undefined)  {
         orderDB.map((ord) => {
           if (ord.IdUser === userActive._id && ord.State === "Pending") {
             x = 1;
@@ -76,6 +85,13 @@ function CardProduct({
             localStorage.setItem("countGlobal", x);
           }
         }
+        else{
+          Swal.fire("You have a pending order")
+        }
+        
+      }
+      else{
+        Swal.fire("You must log in")
       }
     }
   };

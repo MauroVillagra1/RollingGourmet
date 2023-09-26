@@ -21,7 +21,8 @@ function home({ userActive, setUserActive }) {
 
   useEffect(() => {
     const ordersJson = JSON.stringify(order);
-    localStorage.setItem("orders", ordersJson);   
+    localStorage.setItem("orders", ordersJson);
+    
   }, [order]);
 
   useEffect(() => {
