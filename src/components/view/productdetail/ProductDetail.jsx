@@ -1,7 +1,47 @@
+import { useParams } from "react-router-dom";
 import "./ProductDetail.css";
 import { Card, Container } from "react-bootstrap";
+import { useEffect } from "react";
+import { listCategories, listProducts } from "../../helpers/queries";
+import { useState } from "react";
 
 const ProductDetail = () => {
+  const [products, setProducts] = useState([]);
+  const [product, setProduct] = useState([]);
+  const [categoriesID, setCategoriesID] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [categoriesSearch, setCategoriesSearch] = useState([]);
+
+  const { id } = useParams();
+  useEffect(() => {
+    listProducts().then((resp) => {
+      setProducts(resp);
+    });
+    listCategories().then((resp) => {
+      setCategories(resp);
+    });
+  }, []);
+  useEffect(() => {
+    products.map((resp) => {
+      if (resp._id.toString() === id) {
+        setProduct(resp);
+        setCategoriesID(resp.CategoriesID);
+      }
+    });
+  }, [products]);
+
+  useEffect(() => {
+    let arrayCategory = [];
+    categories.map((resp) => {
+      categoriesID.map((resp2) => {
+        if (resp._id.toString() === resp2) {
+          arrayCategory.push(resp);
+        }
+      });
+    });
+    setCategoriesSearch(arrayCategory);
+  }, [categoriesID, categories]);
+
   return (
     <>
       <div className="detail d-flex flex-column justify-content-center align-items-center">

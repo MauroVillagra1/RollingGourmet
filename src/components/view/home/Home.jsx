@@ -1,28 +1,27 @@
 import React, { useEffect, useState } from "react";
 import "./Home.css";
-
 import { Form, FormGroup, Button } from "react-bootstrap";
-import { set, useForm } from "react-hook-form";
 import CardProduct from "../product/CardProduct";
 import { listCategories, listProducts } from "../../helpers/queries";
-
-
-function home({ userActive }) {
+import ButtonOrders from "./buttonOrders/ButtonOrders"
+function home({ userActive, setUserActive }) {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [productsFilter, setProductsFilter] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-
   const ordersJson = localStorage.getItem("orders");
   const ordersJson_retrieved = JSON.parse(ordersJson);
   const [order, setOrder] = useState(ordersJson_retrieved || []);
-  const [selectedCategory, setSelectedCategory] = useState(""); // Agrega el estado de la categoría seleccionada
-
+  const [selectedCategory, setSelectedCategory] = useState(""); 
+  const countG = localStorage.getItem("countGlobal");
+  const countGlobal_local = JSON.parse(countG);
+  const [countGlobal, setCountGlobal] = useState(countGlobal_local || 0)
   var newOrders = [];
+ 
 
   useEffect(() => {
     const ordersJson = JSON.stringify(order);
-    localStorage.setItem("orders", ordersJson);
+    localStorage.setItem("orders", ordersJson);   
   }, [order]);
 
   useEffect(() => {
@@ -33,10 +32,10 @@ function home({ userActive }) {
     listCategories().then((resp) => {
       setCategories(resp);
     });
+    setUserActive(JSON.parse(sessionStorage.getItem("userActive")))
   }, []);
 
   function handleCategoryChange(event) {
-
     setSelectedCategory(event.target.value);
   }
 
@@ -46,7 +45,6 @@ function home({ userActive }) {
   }
 
   function handleSearchButtonClick() {
-    // Filtra los productos basados en el término de búsqueda y la categoría seleccionada al hacer clic en el botón "Search"
     const filteredProducts = products.filter((product) => {
       const nameMatches = product.NameProduct.toLowerCase().includes(
         searchTerm.toLowerCase()
@@ -69,6 +67,7 @@ function home({ userActive }) {
               <img
                 src="https://res.cloudinary.com/dhe7vivfw/image/upload/v1694745259/Rolling%20Gourmet/IMG%20HOME/image_23_wwjkn7.png"
                 alt="page_entry_img"
+                draggable="false"
               />
             </div>
             <div className="text_page_entry d-flex justify-content-center align-items-center">
@@ -81,13 +80,13 @@ function home({ userActive }) {
           </div>
         </div>
         <div className="home_body mt-5">
-
-          <div >
-          <Form className="d-flex flex-wrap justify-content-center" onSubmit={(e) => {
-  e.preventDefault(); 
-  
-}}>
-           
+          <div>
+            <Form
+              className="d-flex flex-wrap justify-content-center"
+              onSubmit={(e) => {
+                e.preventDefault();
+              }}
+            >
               <FormGroup className="search_bar mx-2 mb-2">
                 <Form.Control
                   type="text"
@@ -102,7 +101,6 @@ function home({ userActive }) {
                   onChange={(event) => handleCategoryChange(event)}
                   className="select_option_category"
                 >
-
                   <option value="">Select an option</option>
                   <option value="">Alls</option>
 
@@ -135,14 +133,17 @@ function home({ userActive }) {
                   key={product._id}
                   product={product}
                   order={order}
-
                   setOrder={setOrder}
                   newOrders={newOrders}
                   userActive={userActive}
+                  setCountGlobal={setCountGlobal}
+                  countGlobal={countGlobal}
                 ></CardProduct>
               ))
             )}
           </div>
+          <ButtonOrders countGlobal={countGlobal}></ButtonOrders>
+
         </div>
       </div>
     </>

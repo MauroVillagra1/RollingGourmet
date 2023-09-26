@@ -1,5 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import NavBar from "./components/cummon/navbar/NavBar";
 import Home from "./components/view/home/Home";
 import Login from "./components/view/login/Login";
@@ -8,13 +9,29 @@ import ProductDetail from "./components/view/productdetail/ProductDetail";
 import AboutUs from "./components/view/programmer/CardProgrammer";
 import EncapsulateRoutes from "./components/routes/EncapsulateRoutes";
 import ProtectedRoutes from "./components/routes/ProtectedRoutes";
-
 function App() {
+  const [userActive, setUserActive] = useState({});
+  // useEffect(()=>{
+  //   sessionStorage.setItem("userActive", JSON.stringify(userActive));
+  // },[userActive])
+
   return (
     <BrowserRouter>
       <NavBar></NavBar>
       <Routes>
-        <Route exact path="/" element={<Home></Home>}></Route>
+        <Route
+          exact
+          path="/"
+          element={
+            <Home userActive={userActive} setUserActive={setUserActive}></Home>
+          }
+        ></Route>
+        <Route
+          exact
+          path="/my-orders"
+          element={<Order2 userActive={userActive}></Order2>}
+        ></Route>
+
         <Route exact path="/sing-up" element={<SignUp />}></Route>
         <Route exact path="/login" element={<Login />}></Route>
         <Route exact path="/about-us" element={<AboutUs />}></Route>
@@ -32,6 +49,7 @@ function App() {
           }
         ></Route>
       </Routes>
+      <Footer></Footer>
     </BrowserRouter>
   );
 }

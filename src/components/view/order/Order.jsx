@@ -31,7 +31,6 @@ function HomeOrder() {
   const handleCloseBuy = () => {
     setShow(false);
     const fechaYHoraActual = obtenerFechaYHoraActual();
-    console.log("Fecha y Hora actual:", fechaYHoraActual);
   };
 
   const handleClose = () => setShow(false);

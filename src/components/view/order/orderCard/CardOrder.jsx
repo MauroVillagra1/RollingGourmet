@@ -16,7 +16,6 @@ function CardOrder({ order, index }) {
       stateClassName = "";
   }
   const handleDelete = () =>{
-    console.log(order._id)
     deleteOrders(order._id)
   }
 
