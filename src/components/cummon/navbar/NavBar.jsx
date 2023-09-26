@@ -1,8 +1,16 @@
-import { Nav, Navbar, Container, Image } from "react-bootstrap";
+import { Nav, Navbar, Container, Image, Button } from "react-bootstrap";
 import "./NavBar.css";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 const NavBar = ({ userInLine, setUserInLine }) => {
+  const navigator = useNavigate();
+
+  const singOut = () => {
+    setUserInLine({});
+    sessionStorage.removeItem("registeredUser");
+    navigator("/");
+  };
+
   return (
     // <Navbar expand="sm" className="navbarBackground navbar-dark">
     //   <Container>
@@ -77,12 +85,13 @@ const NavBar = ({ userInLine, setUserInLine }) => {
                 >
                   My Acount
                 </NavLink>
-                <NavLink
+                <Button
+                  onClick={singOut}
                   to="/sing-up"
                   className="nav-link mt-2 mt-sm-0 ms-sm-2 navButtonDefault navButtonAnimation footerFontFamilyBold"
                 >
                   Sing out
-                </NavLink>
+                </Button>
               </>
             ) : (
               <>
