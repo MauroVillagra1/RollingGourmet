@@ -16,30 +16,48 @@ const Footer = () => {
           </article>
 
           <article className="col-md-3 col-sm-6 col-12 p-2 d-flex flex-column align-content-sm-center">
-            <h4>Enlaces</h4>
+            <h4 className="footerFontFamilyBold">Navigation</h4>
             <div>
-              <a href="" className="list-group-item listAnimate pb-2">
+              <a
+                href=""
+                className="list-group-item listAnimate pb-2 footerFontFamilyNormal"
+              >
                 Home
               </a>
-              <a href="" className="list-group-item listAnimate">
-                Sobre Nosotros
+              <a
+                href=""
+                className="list-group-item listAnimate footerFontFamilyNormal"
+              >
+                About Us
               </a>
             </div>
           </article>
 
           <article className="col-md-3 col-sm-6 col-12 p-2 d-flex flex-column align-content-sm-center footerLiCustom">
-            <h4>Informacion</h4>
-            <span className="mt-1">Mail: rollingcode@gmail.com</span>
-            <span>Tel.: +5493815783030</span>
-            <span>Gral. Paz 576 T4000</span>
-            <span>San Miguel de Tucumán</span>
+            <h4 className="footerFontFamilyBold">Information</h4>
+            <span className="mt-1 footerFontFamilyNormal">
+              E-Mail: rollingcode@gmail.com
+            </span>
+            <span className="footerFontFamilyNormal">
+              Phone: +5493815783030
+            </span>
+            <span className="footerFontFamilyNormal">Gral. Paz 576 T4000</span>
+            <span className="footerFontFamilyNormal">
+              San Miguel de Tucumán
+            </span>
           </article>
 
           <article className="col-md-3 col-sm-6 col-12 p-2 d-flex flex-column align-content-sm-center ">
-            <h4>Horarios</h4>
-            <span>Lunes a Viernes: 08:00 a 21:00 hs</span>
-            <span>Sabados: 09:00 a 23:00 hs</span>
-            <span>Domingos: 09:00 a 22:00 hs</span>
+            <h4 className="footerFontFamilyBold">Oppening hour</h4>
+            <span className="footerFontFamilyNormal">
+              Monday to Friday: 8am to 9pm.
+            </span>
+            <span className="footerFontFamilyNormal">
+              Saturdays: 9am to 11pm.
+            </span>
+            <span className="footerFontFamilyNormal">
+              Sundays: 9am to 10pm.
+            </span>
           </article>
         </section>
       </footer>

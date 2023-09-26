@@ -25,31 +25,32 @@
   box-shadow: none !important;
 }
 
-.navButtonAdmin {
-  color: var(--whiteColor);
+.navButtonAdmin,
+.navButtonDefault,
+.navButtonGreen,
+.navButtonRed{
   display: flex;
   justify-content: center;
+}
+
+
+.navButtonAdmin {
+  color: var(--whiteColor);
   background-color: var(--orangeColor);
 }
 
 .navButtonDefault {
   color: var(--whiteColor);
-  display: flex;
-  justify-content: center;
   background-color: var(--paleblueColor);
 }
 
 .navButtonGreen {
   color: var(--whiteColor);
-  display: flex;
-  justify-content: center;
   background-color: var(--greenColor);
 }
 
 .navButtonRed {
   color: var(--whiteColor);
-  display: flex;
-  justify-content: center;
   background-color: var(--redColor);
 }
 
@@ -58,10 +59,10 @@
   opacity: 60%;
 }
 
-.footerFontFamilyBold {
+.navBarFontFamilyBold {
   font-family: "Bebas Neue", sans-serif;
 }
 
-.footerFontFamilyNormal {
+.navBarFontFamilyNormal {
   font-family: "Roboto", sans-serif;
 }
