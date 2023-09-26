@@ -15,27 +15,30 @@ import Order2 from "./components/view/order/order/Order"
 import CardOrder from "./components/view/order/orderCard/CardOrder"
 import HomeOrder from "./components/view/order/orderHome/OrderHome"
 import EditProduct from "./components/view/administrator/edit/EditProduct";
-
-
+import Footer from "./components/cummon/footer/Footer"
+import MyAccount from "./components/view/my-account/MyAccount";
+import ProtectedRoutes_MyAccount from "./components/routes/my-account-routes/ProtectedRoutes_MyAccount"
 function App() {
   const [userActive, setUserActive] = useState({})
-  useEffect(()=>{
-    let x = {
-      _id:"123"
-    }
-    sessionStorage.setItem("userActive", JSON.stringify(x));
-    setUserActive(x)
-  },[])
+  // useEffect(()=>{
+  //   sessionStorage.setItem("userActive", JSON.stringify(userActive));
+  // },[userActive])
 
   return (
+    
     <BrowserRouter>
-      <NavBar></NavBar>
+          <NavBar></NavBar>
       <Routes>
-        <Route exact path="/" element={<Home userActive={userActive}></Home>}></Route>
+        <Route exact path="/" element={<Home userActive={userActive} setUserActive={setUserActive}></Home>}></Route>
         <Route exact path="/my-orders" element={<Order2 userActive={userActive}></Order2>}></Route>
+        
         <Route exact path="/sing-up" element={<SignUp />}></Route>
-        <Route exact path="/login" element={<Login />}></Route>
+        <Route exact path="/login" element={<Login setUserActive={setUserActive} />}></Route>
         <Route exact path="/about-us" element={<CardProgrammer />}></Route>
+        <Route exact path="my-account/*" element={ <EncapsulateRoutes>
+              <ProtectedRoutes_MyAccount></ProtectedRoutes_MyAccount>
+            </EncapsulateRoutes>
+          }></Route>
         <Route
           exact
           path="/productDetail/:id"
@@ -50,6 +53,7 @@ function App() {
           }
         ></Route>
       </Routes>
+      <Footer></Footer>
     </BrowserRouter>
   );
 }

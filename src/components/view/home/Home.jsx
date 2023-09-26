@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./Home.css";
 import { Form, FormGroup, Button } from "react-bootstrap";
-import { set, useForm } from "react-hook-form";
 import CardProduct from "../product/CardProduct";
 import { listCategories, listProducts } from "../../helpers/queries";
 import ButtonOrders from "./buttonOrders/ButtonOrders"
-function home({ userActive }) {
+function home({ userActive, setUserActive }) {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [productsFilter, setProductsFilter] = useState([]);
@@ -22,8 +21,7 @@ function home({ userActive }) {
 
   useEffect(() => {
     const ordersJson = JSON.stringify(order);
-    localStorage.setItem("orders", ordersJson);
- 
+    localStorage.setItem("orders", ordersJson);   
   }, [order]);
 
   useEffect(() => {
@@ -34,6 +32,7 @@ function home({ userActive }) {
     listCategories().then((resp) => {
       setCategories(resp);
     });
+    setUserActive(JSON.parse(sessionStorage.getItem("userActive")))
   }, []);
 
   function handleCategoryChange(event) {

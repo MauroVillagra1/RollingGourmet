@@ -28,7 +28,34 @@ const NavBar = () => {
     //   </Container>
     // </Navbar>
 
+
+    // <Navbar expand="sm" className="navbarBackground navbar-dark">
+    //   <Container>
+    //     <Image
+    //       src="https://res.cloudinary.com/dhe7vivfw/image/upload/v1695001920/Rolling%20Gourmet/IMG%20LOGO/ROLLING-GOURMET_fcyqgy.png"
+    //       alt="gourmetLogo"
+    //       className="imgFix"
+    //     />
+    //     <Navbar.Toggle aria-controls="basic-navbar-nav" />
+    //     <Navbar.Collapse id="basic-navbar-nav">
+    //       <Nav className="ms-auto">
+    //         <Nav.Link href="#link" className="mt-2 mt-sm-0 ms-sm-2 navButtonDefault navButtonAnimation footerFontFamilyBold">
+    //           Mi Cuenta
+    //         </Nav.Link>
+    //         <Nav.Link href="#link" className="mt-2 mt-sm-0 ms-sm-2 navButtonDefault navButtonAnimation footerFontFamilyBold">
+    //           Sobre Nosotros
+    //         </Nav.Link>
+    //         <Nav.Link href="#link" className="mt-2 ms-sm-2 mt-sm-0 navButtonRed navButtonAnimation footerFontFamilyBold">
+    //           Cerrar Sesión
+    //         </Nav.Link>
+    //       </Nav>
+    //     </Navbar.Collapse>
+    //   </Container>
+    // </Navbar>
+    
+
     <Navbar expand="sm" className="navbarBackground navbar-dark">
+
       <Container>
         <Image
           src="https://res.cloudinary.com/dhe7vivfw/image/upload/v1695001920/Rolling%20Gourmet/IMG%20LOGO/ROLLING-GOURMET_fcyqgy.png"
@@ -41,7 +68,7 @@ const NavBar = () => {
             <NavLink to="/administrator" className="nav-link mt-2 mt-sm-0 ms-sm-2 navButtonDefault navButtonAnimation footerFontFamilyBold">
               Administrator
             </NavLink>
-            <NavLink to="/" className="nav-link mt-2 mt-sm-0 ms-sm-2 navButtonDefault navButtonAnimation footerFontFamilyBold">
+            <NavLink to="/my-account" className="nav-link mt-2 mt-sm-0 ms-sm-2 navButtonDefault navButtonAnimation footerFontFamilyBold">
               My Acount
             </NavLink>
             <NavLink to="/about-us" className="nav-link mt-2 mt-sm-0 ms-sm-2 navButtonDefault navButtonAnimation footerFontFamilyBold">

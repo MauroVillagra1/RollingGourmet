@@ -43,8 +43,7 @@ function CreateProduct() {
     data["State"] = "Visible"
     data["Price"] = parseInt(data["Price"])
     data["Stock"] = parseInt(data["Stock"])
-    console.log(data);
-    console.log(selectedCategories)
+   
     createProducts(data).then((resp)=>{
         if (resp.status === 201) {
             Swal.fire(
@@ -68,7 +67,6 @@ function CreateProduct() {
     const selectedCategoryId = event.target.value;
     const selectedCategory = categories.find(category => category._id === selectedCategoryId);
     setSelectedCategory(selectedCategory);
-    console.log(selectedCategoryId)
     setCategoriesComboBox(selectedCategoryId)
   }
 
