@@ -11,6 +11,11 @@ function orderHome() {
     })
    
   },[])
+  const reload = () =>{
+    listOrders().then((ord)=>{
+      setOrder(ord)
+    })
+  }
   useEffect(()=>{
   },[order])
   return (
@@ -18,7 +23,7 @@ function orderHome() {
     <div className='text-light w-100 text-center title_orders mb-5'><h4>My Orders</h4></div>
     <div className='d-flex flex-wrap justify-content-center'>
       {order.map((ord, index)=>(
-        <CardOrder key={ord._id} order={ord} index={index+1}></CardOrder>
+        <CardOrder key={ord._id} order={ord} index={index+1} reload={reload}></CardOrder>
       ))}
     </div>
     </div>

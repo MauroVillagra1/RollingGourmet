@@ -3,7 +3,7 @@ import { Button } from "react-bootstrap";
 import "./CardOrder.css";
 import { deleteOrders } from "../../../helpers/queries";
 
-function CardOrder({ order, index }) {
+function CardOrder({ order, index, reload }) {
   let stateClassName = "";
   switch (order.State) {
     case "Pending":
@@ -17,6 +17,7 @@ function CardOrder({ order, index }) {
   }
   const handleDelete = () =>{
     deleteOrders(order._id)
+    reload()
   }
 
   return (
