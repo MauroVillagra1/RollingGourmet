@@ -30,6 +30,7 @@ export const createProducts = async (products) => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        "x-token": JSON.parse(sessionStorage.getItem("userActive")).token
       },
       body: JSON.stringify(products),
     });
@@ -38,6 +39,50 @@ export const createProducts = async (products) => {
     console.log(error);
   }
 };
+export const getProduct = async (id) => {
+  try {
+    const resp = await fetch(`${uriProducts}/${id}`);
+    const data = await resp.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
+
+export const editProduct = async (id, productEdit) => {
+  try {
+    const resp = await fetch(`${uriProducts}/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        "x-token": JSON.parse(sessionStorage.getItem("userActive")).token
+
+      },
+      body: JSON.stringify(productEdit),
+    });
+    return resp;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
+export const deleteProductAPI = async (id) => {
+  try {
+    const resp = await fetch(`${uriProducts}/${id}`, {
+      
+      method: "DELETE",
+      headers:{
+        "x-token": JSON.parse(sessionStorage.getItem("userActive")).token
+      }
+    });
+    return resp;
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 export const createOrders = async (Orders) => {
   try {
@@ -45,6 +90,7 @@ export const createOrders = async (Orders) => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        
       },
       body: JSON.stringify(Orders),
     });
@@ -54,7 +100,21 @@ export const createOrders = async (Orders) => {
   }
 };
 
-
+export const editOrder = async (id, orderEdit) => {
+  try {
+    const resp = await fetch(`${uriOrders}/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        "x-token": JSON.parse(sessionStorage.getItem("userActive")).token
+      },
+      body: JSON.stringify(orderEdit),
+    });
+    return resp;
+  } catch (error) {
+    console.log(error);
+  }
+};
 export const deleteOrders = async (id) => {
   try {
     const resp = await fetch(`${uriOrders}/${id}`, {
@@ -66,15 +126,7 @@ export const deleteOrders = async (id) => {
   }
 };
 
-export const getProduct = async (id) => {
-  try {
-    const resp = await fetch(`${uriProducts}/${id}`);
-    const data = await resp.json();
-    return data;
-  } catch (error) {
-    console.log(error);
-  }
-};
+
 
 export const login = async (user) => {
   try {
@@ -93,6 +145,7 @@ export const login = async (user) => {
       userName: data.name,
       token: data.token,
       _id: data.uid,
+      rol: data.rol
     };
   } catch (error) {
     console.log("errores en el login");
@@ -101,43 +154,5 @@ export const login = async (user) => {
 }
 
 
-export const editOrder = async (id, orderEdit) => {
-  try {
-    const resp = await fetch(`${uriOrders}/${id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(orderEdit),
-    });
-    return resp;
-  } catch (error) {
-    console.log(error);
-  }
-};
-export const editProduct = async (id, productEdit) => {
-  try {
-    const resp = await fetch(`${uriProducts}/${id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(productEdit),
-    });
-    return resp;
-  } catch (error) {
-    console.log(error);
-  }
-};
 
 
-export const deleteProductAPI = async (id) => {
-  try {
-    const resp = await fetch(`${uriProducts}/${id}`, {
-      method: "DELETE"
-    });
-    return resp;
-  } catch (error) {
-    console.log(error);
-  }
-}
