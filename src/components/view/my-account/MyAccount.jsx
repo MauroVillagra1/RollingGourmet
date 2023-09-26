@@ -13,7 +13,7 @@ function MyAccount() {
     <div className='my-account-content d-flex justify-content-center flex-column align-items-center' >
         <div className='my-account-title text-light'><h3>{userActive.userName}</h3></div>
         <div className='my-account-image'><img src={userActive.ProfilePicture} alt="user-image" /></div>
-        <NavLink className="my-account-order-button btn" to={"/orders"}><Button className="text-light w-100">My orders</Button>
+        <NavLink className="my-account-order-button btn" to={"orders"}><Button className="text-light w-100">My orders</Button>
 </NavLink>
     </div>
     </>
