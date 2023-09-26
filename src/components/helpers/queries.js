@@ -4,7 +4,6 @@ const uriOrders = import.meta.env.VITE_API_ORDERS;
 const uriUsers = import.meta.env.VITE_API_USERS;
 
 const fetchData = async (url) => {
-
   try {
     const respuesta = await fetch(url);
     const datos = await respuesta.json();
@@ -27,9 +26,9 @@ export const listOrders = async () => {
 export const createProducts = async (products) => {
   try {
     const resp = await fetch(uriProducts, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(products),
     });
@@ -39,22 +38,20 @@ export const createProducts = async (products) => {
   }
 };
 
-    try {
-      const respuesta = await fetch(url);
-      const datos = await respuesta.json();
-      return datos;
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  };
-
-
-export const createOrders = async (Orders) => {
+/*try {
+  const respuesta = await fetch(url);
+  const datos = await respuesta.json();
+  return datos;
+} catch (error) {
+  console.error("Error:", error);
+}
+*/
+/*export const createOrders = async (Orders) => {
   try {
     const resp = await fetch(uriOrders, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(Orders),
     });
@@ -63,19 +60,14 @@ export const createOrders = async (Orders) => {
     console.log(error);
   }
 };
-
-
-  export const deleteOrders = async (id) => {
-    try {
-      const resp = await fetch(`${uriOrders}/${id}`, {
-        method: 'DELETE',
-      });
-      return resp;
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
- 
-
-
+*/
+export const deleteOrders = async (id) => {
+  try {
+    const resp = await fetch(`${uriOrders}/${id}`, {
+      method: "DELETE",
+    });
+    return resp;
+  } catch (error) {
+    console.log(error);
+  }
+};

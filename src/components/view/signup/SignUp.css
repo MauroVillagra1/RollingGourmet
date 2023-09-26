@@ -1,0 +1,31 @@
+.singUp {
+  background-color: var(--darkgrayColor);
+  min-height: 100vh;
+  width: 100vw;
+  background: #212939;
+  color: #fff;
+}
+.title {
+  font-family: Bebas Neue;
+  font-weight: 600;
+}
+
+.text {
+  text-align: justify;
+  font-family: Roboto;
+  color: #fff;
+  font-weight: 600;
+}
+
+.orange {
+  color: #f3a851;
+}
+
+.colorButton {
+  background: #008000;
+  color: #fff;
+}
+
+.bg {
+  background: #6f779d;
+}

@@ -1,0 +1,11 @@
+{
+  "listUsers": [
+    {
+      "nameUser": "User",
+      "email": "user@rolling.com",
+      "password": "123456aA",
+      "rol": "user",
+      "id": 1
+    }
+  ]
+}
