@@ -10,38 +10,56 @@ import CardProgrammer from "./components/view/programmer/CardProgrammer";
 import EncapsulateRoutes from "./components/routes/EncapsulateRoutes";
 import ProtectedRoutes from "./components/routes/ProtectedRoutes";
 import { useEffect, useState } from "react";
-import Order from "./components/view/order/Order"
-import Order2 from "./components/view/order/order/Order"
-import CardOrder from "./components/view/order/orderCard/CardOrder"
-import HomeOrder from "./components/view/order/orderHome/OrderHome"
+import Order from "./components/view/order/Order";
+import Order2 from "./components/view/order/order/Order";
+import CardOrder from "./components/view/order/orderCard/CardOrder";
+import HomeOrder from "./components/view/order/orderHome/OrderHome";
 import EditProduct from "./components/view/administrator/edit/EditProduct";
-import Footer from "./components/cummon/footer/Footer"
+import Footer from "./components/cummon/footer/Footer";
 import MyAccount from "./components/view/my-account/MyAccount";
-import ProtectedRoutes_MyAccount from "./components/routes/my-account-routes/ProtectedRoutes_MyAccount"
-function App() {
+import ProtectedRoutes_MyAccount from "./components/routes/my-account-routes/ProtectedRoutes_MyAccount";
+import LoginEncapsulateRoutes from "./components/routes/Login-EncapsulateRoutes/LoginEncapsulateRoutes";
 
-  const [userActive, setUserActive] = useState({})
+function App() {
+  const [userActive, setUserActive] = useState({});
   const [reload, setReload] = useState([]);
 
-  
-const reloadNav = () =>{
-  window.location.reload();
-}
+  const reloadNav = () => {
+    window.location.reload();
+  };
 
   return (
-    
     <BrowserRouter>
-          <NavBar setReload={setReload} reload={reload}></NavBar>
+      <NavBar setReload={setReload} reload={reload}></NavBar>
       <Routes>
-        <Route exact path="/" element={<Home userActive={userActive} setUserActive={setUserActive}></Home>}></Route>
-        <Route exact path="/my-orders" element={<Order2 userActive={userActive}></Order2>}></Route>
-        <Route exact path="/sing-up" element={<SignUp />}></Route>
-        <Route exact path="/login" element={<Login reloadNav={reloadNav} />}></Route>
+        <Route
+          exact
+          path="/"
+          element={
+            <Home userActive={userActive} setUserActive={setUserActive}></Home>
+          }
+        ></Route>
+        <Route
+          exact
+          path="/my-orders"
+          element={<Order2 userActive={userActive}></Order2>}
+        ></Route>
+        <Route exact path="/sing-up" element={<LoginEncapsulateRoutes><SignUp /></LoginEncapsulateRoutes>}></Route>
+        <Route
+          exact
+          path="/login"
+          element={<LoginEncapsulateRoutes> <Login reloadNav={reloadNav} /></LoginEncapsulateRoutes>
+          }></Route>
         <Route exact path="/about-us" element={<CardProgrammer />}></Route>
-        <Route exact path="my-account/*" element={ <EncapsulateRoutes>
+        <Route
+          exact
+          path="my-account/*"
+          element={
+            <EncapsulateRoutes>
               <ProtectedRoutes_MyAccount></ProtectedRoutes_MyAccount>
             </EncapsulateRoutes>
-          }></Route>
+          }
+        ></Route>
         <Route
           exact
           path="/productDetail/:id"
