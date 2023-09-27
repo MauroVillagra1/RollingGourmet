@@ -145,7 +145,8 @@ export const login = async (user) => {
       userName: data.name,
       token: data.token,
       _id: data.uid,
-      rol: data.rol
+      rol: data.rol,
+      img: data.img
     };
   } catch (error) {
     console.log("errores en el login");
