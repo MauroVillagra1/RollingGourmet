@@ -1,23 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./AdministratorUser.css";
 import { Table } from "react-bootstrap";
 import ItemUser from "./ItemUser";
+import { listUsers } from "../../../helpers/queries";
 
-const usersData = [
-  {
-    id: 1,
-    userName: "Pedro",
-    email: "Pedro@gmail.com",
-  },
-  {
-    id: 2,
-    userName: "Juan",
-    email: "Juan@gmail.com",
-  },
-];
+
 
 const AdministratorUser = () => {
   const [users, setUsers] = useState([]);
+
+  useEffect(()=>{
+    listUsers().then((resp)=>{
+      console.log(resp)
+      setUsers(resp)
+    })
+  },[])
 
   return (
     <div className="bg-user-page">
@@ -29,7 +26,7 @@ const AdministratorUser = () => {
           <hr />
         </div>
 
-        <Table responsive striped bordered hover>
+        <Table className="h-100">
           <thead>
             <tr>
               <th className="priority-table-user-1">ID</th>
@@ -39,8 +36,8 @@ const AdministratorUser = () => {
             </tr>
           </thead>
           <tbody>
-            {usersData.map((user, id) => (
-              <ItemUser key={id} {...user} setProducts={setUsers}></ItemUser>
+            {users.map((user) => (
+              <ItemUser key={user._id} user={user} setUsers={setUsers}></ItemUser>
             ))}
           </tbody>
         </Table>

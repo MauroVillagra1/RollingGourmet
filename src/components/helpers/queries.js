@@ -23,6 +23,29 @@ export const listCategories = async () => {
 export const listOrders = async () => {
   return fetchData(uriOrders);
 };
+export const listUsers = async () => {
+  try {
+    const resp = await fetch(uriUsersLogin, {
+      method: 'GET',
+      headers: {
+        "x-token": JSON.parse(sessionStorage.getItem("userActive")).token
+      }
+    });
+
+    // Verificar si la solicitud fue exitosa (código de estado 200)
+    if (resp.ok) {
+      const data = await resp.json();
+      return data; // Devolver el resultado como un array u objeto JSON, según la respuesta del servidor.
+    } else {
+      // Manejar el caso en que la solicitud no sea exitosa (por ejemplo, un error de autenticación).
+      console.error("Error de solicitud:", resp.status, resp.statusText);
+      return []; // Puedes devolver un array vacío u otra respuesta adecuada en caso de error.
+    }
+  } catch (error) {
+    console.error("Error:", error);
+    return []; // Manejar cualquier error de red o de otro tipo aquí.
+  }
+};
 
 export const createProducts = async (products) => {
   try {
@@ -157,3 +180,19 @@ export const login = async (user) => {
 
 
 
+export const editUser = async (id, userEdit) => {
+  try {
+    const resp = await fetch(`${uriUsers}/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        "x-token": JSON.parse(sessionStorage.getItem("userActive")).token
+
+      },
+      body: JSON.stringify(userEdit),
+    });
+    return resp;
+  } catch (error) {
+    console.log(error);
+  }
+};
