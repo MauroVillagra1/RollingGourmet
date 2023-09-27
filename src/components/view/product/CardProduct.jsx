@@ -37,6 +37,7 @@ function CardProduct({
   }, []);
 
   const handleAddOrder = () => {
+    
     if (count <= product.Stock) {
       let x = 0;
       
@@ -69,15 +70,17 @@ function CardProduct({
 
   const handleRemoveOrder = () => {
     if (count > 0) {
+      
       let x = 0;
       if (userActive && userActive._id && userActive._id !== undefined)  {
         orderDB.map((ord) => {
           if (ord.IdUser === userActive._id && ord.State === "Pending") {
             x = 1;
+            
           }
         });
         if (x === 0) {
-          if (count < product.Stock) {
+          if (count <= product.Stock) {
             setCount(count - 1);
             setStock(stock + 1);
             setCountGlobal(countGlobal - 1);
