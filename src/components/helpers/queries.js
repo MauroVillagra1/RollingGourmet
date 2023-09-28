@@ -2,7 +2,7 @@ const uriProducts = import.meta.env.VITE_API_PRODUCTS;
 const uriCategories = import.meta.env.VITE_API_CATEGORIES;
 const uriOrders = import.meta.env.VITE_API_ORDERS;
 const uriUsers = import.meta.env.VITE_API_USERS;
-
+const uriUsersLogin = import.meta.env.VITE_API_USERS_LOGIN
 const fetchData = async (url) => {
 
   try {
@@ -30,6 +30,7 @@ export const createProducts = async (products) => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        "x-token": JSON.parse(sessionStorage.getItem("userActive")).token
       },
       body: JSON.stringify(products),
     });
@@ -38,16 +39,50 @@ export const createProducts = async (products) => {
     console.log(error);
   }
 };
+export const getProduct = async (id) => {
+  try {
+    const resp = await fetch(`${uriProducts}/${id}`);
+    const data = await resp.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-    // try {
-    //   const respuesta = await fetch(url);
-    //   const datos = await respuesta.json();
-    //   return datos;
-    // } catch (error) {
-    //   console.error("Error:", error);
-    // }
-  
 
+
+export const editProduct = async (id, productEdit) => {
+  try {
+    const resp = await fetch(`${uriProducts}/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        "x-token": JSON.parse(sessionStorage.getItem("userActive")).token
+
+      },
+      body: JSON.stringify(productEdit),
+    });
+    return resp;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
+export const deleteProductAPI = async (id) => {
+  try {
+    const resp = await fetch(`${uriProducts}/${id}`, {
+      
+      method: "DELETE",
+      headers:{
+        "x-token": JSON.parse(sessionStorage.getItem("userActive")).token
+      }
+    });
+    return resp;
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 export const createOrders = async (Orders) => {
   try {
@@ -55,6 +90,7 @@ export const createOrders = async (Orders) => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        
       },
       body: JSON.stringify(Orders),
     });
@@ -64,7 +100,21 @@ export const createOrders = async (Orders) => {
   }
 };
 
-
+export const editOrder = async (id, orderEdit) => {
+  try {
+    const resp = await fetch(`${uriOrders}/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        "x-token": JSON.parse(sessionStorage.getItem("userActive")).token
+      },
+      body: JSON.stringify(orderEdit),
+    });
+    return resp;
+  } catch (error) {
+    console.log(error);
+  }
+};
 export const deleteOrders = async (id) => {
   try {
     const resp = await fetch(`${uriOrders}/${id}`, {
@@ -76,25 +126,34 @@ export const deleteOrders = async (id) => {
   }
 };
 
-export const login = async (usuario) =>{
+
+
+export const login = async (user) => {
   try {
-    console.log(usuario);
-    const respuesta = await fetch(uriUsuario, {
+    const resp = await fetch(uriUsersLogin, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(usuario),
+      body: JSON.stringify(user),
     });
-    const datos = await respuesta.json();
+    const data = await resp.json();
+    //  aqui pueden cambiar la respuesta
     return {
-      status: respuesta.status,
-      mensaje: datos.mensaje,
-      usuario: datos.nombre,
-      uid: datos.uid,
+      status: resp.status,
+      message: data.message,
+      userName: data.name,
+      token: data.token,
+      _id: data.uid,
+      rol: data.rol,
+      img: data.img
     };
   } catch (error) {
     console.log("errores en el login");
     return;
   }
 }
+
+
+
+

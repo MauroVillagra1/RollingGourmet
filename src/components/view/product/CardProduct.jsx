@@ -2,10 +2,18 @@ import { Button } from "react-bootstrap";
 import React, { useEffect, useState } from "react";
 import "../product/CardProduct.css";
 
-// import { listOrders } from '../../helpers/queries';
-import Swal from "sweetalert2";
 import { listOrders } from "../../helpers/queries";
-function CardProduct({ product, order, setOrder, newOrders, userActive }) {
+import Swal from "sweetalert2";
+import { NavLink } from "react-router-dom";
+function CardProduct({
+  product,
+  order,
+  setOrder,
+  newOrders,
+  userActive,
+  setCountGlobal,
+  countGlobal,
+}) {
   const [count, setCount] = useState(0);
   const [stock, setStock] = useState(product.Stock);
   const [statusEffect, setStatusEffect] = useState(false);
@@ -13,7 +21,7 @@ function CardProduct({ product, order, setOrder, newOrders, userActive }) {
   const [orderDB, setOrderDB] = useState([]);
   const newArray = [...order];
 
-  var newOrder = {};
+  let newOrder = {};
   useEffect(() => {
     listOrders().then((resp) => {
       setOrderDB(resp);
@@ -29,9 +37,11 @@ function CardProduct({ product, order, setOrder, newOrders, userActive }) {
   }, []);
 
   const handleAddOrder = () => {
+    
     if (count <= product.Stock) {
-      var x = 0;
-      if (userActive._id !== undefined) {
+      let x = 0;
+      
+      if (userActive && userActive._id && userActive._id !== undefined)  {
         orderDB.map((ord) => {
           if (ord.IdUser === userActive._id && ord.State === "Pending") {
             x = 1;
@@ -41,35 +51,50 @@ function CardProduct({ product, order, setOrder, newOrders, userActive }) {
           if (count < product.Stock) {
             setCount(count + 1);
             setStock(stock - 1);
+            setCountGlobal(countGlobal + 1);
+            const x = JSON.stringify(countGlobal + 1);
+            localStorage.setItem("countGlobal", x);
           }
-        } else {
-          Swal.fire("You have a pending order");
+          
         }
-      } else {
-        Swal.fire("You must log in");
-      }
+        else{
+          Swal.fire("You have a pending order")
+        }
+      
+    }
+    else{
+      Swal.fire("You must log in")
+    }
     }
   };
 
   const handleRemoveOrder = () => {
     if (count > 0) {
-      var x = 0;
-      if (userActive._id !== undefined) {
+      
+      let x = 0;
+      if (userActive && userActive._id && userActive._id !== undefined)  {
         orderDB.map((ord) => {
           if (ord.IdUser === userActive._id && ord.State === "Pending") {
             x = 1;
+            
           }
         });
         if (x === 0) {
-          if (count < product.Stock) {
+          if (count <= product.Stock) {
             setCount(count - 1);
             setStock(stock + 1);
+            setCountGlobal(countGlobal - 1);
+            const x = JSON.stringify(countGlobal - 1);
+            localStorage.setItem("countGlobal", x);
           }
-        } else {
-          Swal.fire("You have a pending order");
         }
-      } else {
-        Swal.fire("You must log in");
+        else{
+          Swal.fire("You have a pending order")
+        }
+        
+      }
+      else{
+        Swal.fire("You must log in")
       }
     }
   };
@@ -83,7 +108,7 @@ function CardProduct({ product, order, setOrder, newOrders, userActive }) {
         Stock: stock,
         quantity: count,
       };
-      var c = 0;
+      let c = 0;
       if (count > 0) {
         order.map((ord) => {
           if (ord.ProductID === product._id.toString()) {
@@ -133,7 +158,13 @@ function CardProduct({ product, order, setOrder, newOrders, userActive }) {
             <p>${product.Price}</p>
           </div>
           <div className="card_button_container d-flex flex-column">
-            <Button className="button_showme">Show More</Button>
+            <NavLink
+              className="w-100 btn d-flex justify-content-center"
+              to={`/productDetail/${product._id}`}
+            >
+              <Button className="button_showme">Show More</Button>
+            </NavLink>
+
             <div className="d-flex group_button">
               <Button
                 className="button_add_order mx-1"

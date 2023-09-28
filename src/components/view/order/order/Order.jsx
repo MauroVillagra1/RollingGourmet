@@ -10,6 +10,7 @@ import {
 } from "../../../helpers/queries";
 import { set } from "react-hook-form";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 function Order({ userActive }) {
   const [show, setShow] = useState(false);
@@ -20,7 +21,7 @@ function Order({ userActive }) {
   const [products, setProducts] = useState([]);
   const [productFilter, setProductFilter] = useState([]);
 
-  var newOrders = [];
+  let newOrders = [];
 
   function obtenerFechaYHoraActual() {
     const ahora = new Date();
@@ -43,27 +44,30 @@ function Order({ userActive }) {
   }
 
   const handleCloseBuy = () => {
-    var x = 0;
+    let x = 0;
     setShow(false);
     const Date = obtenerFechaYHoraActual();
-    var storageOrder = {
-      Orders: order,
+    let storageOrder = {
+      Order: order,
       State: "Pending",
       Adress: address,
       Date: Date,
       IdUser: userActive._id,
+      NameUser: userActive.userName
     };
+
     
     listOrders().then((orderDB) => {
-      const hasMatchingOrder = orderDB.some((ord) => ord.IdUser === userActive._id);
-      
+      const hasMatchingOrder = orderDB.some((ord) => (ord.IdUser === userActive._id && ord.State === "Pending"));
       if (hasMatchingOrder) {
         Swal.fire("You already have a pending order.")
         localStorage.removeItem("orders");
+        localStorage.removeItem("countGlobal");
         setProductFilter([]);
       } else {
         createOrders(storageOrder);
         localStorage.removeItem("orders");
+        localStorage.removeItem("countGlobal");
         Swal.fire("Your order was saved successfully")
         setProductFilter([]);
       }
@@ -84,22 +88,7 @@ function Order({ userActive }) {
     listProducts().then((resp) => {
       setProducts(resp);
     });
-    // var c = 0
-    // listOrders().then((resp)=>{
-    //   resp.map((order_resp)=>{
-    //     if(!order_resp.length)
-    //     {
-    //       c++
-    //       console.log("adios")
-    //     }
-
-    //   })
-    //   if (c===0)
-    //   {
-    //     setOrder(resp)
-    //     console.log("hola")
-    //   }
-    // })
+    
   }, []);
   useEffect(() => {
     const ordersJson = JSON.stringify(order);
@@ -107,7 +96,7 @@ function Order({ userActive }) {
   }, [order]);
 
   useEffect(() => {
-    var productsFilt = [];
+    let productsFilt = [];
     products.map((product) => {
       order.map((ord) => {
         if (product._id.toString() === ord.ProductID) {
@@ -117,7 +106,6 @@ function Order({ userActive }) {
     });
 
     setProductFilter(productsFilt);
-    console.log(productFilter);
   }, [products, order]);
 
   return (
@@ -131,7 +119,9 @@ function Order({ userActive }) {
             <div className="text-light text_not_order">
               <p>No orders have been made yet.</p>
             </div>
+            <Link className="btn" to={"../"}>
             <Button onClick={handleShow}>Back to Home</Button>
+            </Link>
           </div>
         ) : (
           <div className="d-flex flex-column">
