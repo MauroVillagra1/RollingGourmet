@@ -11,20 +11,18 @@ function HomeOrder() {
   function obtenerFechaYHoraActual() {
     const ahora = new Date();
     const dia = ahora.getDate();
-    const mes = ahora.getMonth() + 1; // Sumamos 1 porque en JavaScript los meses van de 0 a 11
+    const mes = ahora.getMonth() + 1; 
     const año = ahora.getFullYear();
     const hora = ahora.getHours();
     const minutos = ahora.getMinutes();
     const segundos = ahora.getSeconds();
 
-    // Formatea el día, mes, hora, minutos y segundos para que tengan dos dígitos
     const diaFormateado = dia < 10 ? `0${dia}` : dia;
     const mesFormateado = mes < 10 ? `0${mes}` : mes;
     const horaFormateada = hora < 10 ? `0${hora}` : hora;
     const minutosFormateados = minutos < 10 ? `0${minutos}` : minutos;
     const segundosFormateados = segundos < 10 ? `0${segundos}` : segundos;
 
-    // Devuelve la fecha y hora en formato YYYY-MM-DD HH:MM:SS
     return `${año}-${mesFormateado}-${diaFormateado} ${horaFormateada}:${minutosFormateados}:${segundosFormateados}`;
   }
 

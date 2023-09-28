@@ -4,17 +4,15 @@ import { Table } from "react-bootstrap";
 import ItemUser from "./ItemUser";
 import { listUsers } from "../../../helpers/queries";
 
-
-
 const AdministratorUser = () => {
   const [users, setUsers] = useState([]);
+  const [reload, setReload] = useState(0)
 
   useEffect(()=>{
     listUsers().then((resp)=>{
-      console.log(resp)
       setUsers(resp)
     })
-  },[])
+  },[reload])
 
   return (
     <div className="bg-user-page">
@@ -37,7 +35,7 @@ const AdministratorUser = () => {
           </thead>
           <tbody>
             {users.map((user) => (
-              <ItemUser key={user._id} user={user} setUsers={setUsers}></ItemUser>
+              <ItemUser key={user._id} user={user} setUsers={setUsers} reload={reload} setReload={setReload}></ItemUser>
             ))}
           </tbody>
         </Table>

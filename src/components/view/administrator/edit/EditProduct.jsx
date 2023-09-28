@@ -8,17 +8,15 @@ import {
   FormSelect,
   InputGroup,
 } from "react-bootstrap";
-import "./EditProduct.css";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import {
-  createProducts,
   editProduct,
   getProduct,
   listCategories,
 } from "../../../helpers/queries";
-
 import { useNavigate, useParams } from "react-router-dom";
+
 function EditProduct() {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [categories, setCategories] = useState([]);

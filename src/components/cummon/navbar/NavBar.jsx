@@ -14,7 +14,6 @@ const NavBar = (reloadNav) => {
       if (userActive && userActive.rol) {
         setUserRole(userActive.rol);
       } else {
-        
         setUserRole("");
       }
     } else {
@@ -23,21 +22,20 @@ const NavBar = (reloadNav) => {
   }, [reload]);
 
   const closeSession = () => {
-    
     sessionStorage.removeItem("userActive");
-    reloadNav()  
+    reloadNav();
   };
 
   return (
     <Navbar expand="sm" className="navbarBackground navbar-dark">
       <Container>
-      <NavLink to={"/"}>
+        <NavLink to={"/"}>
           <Image
             src="https://res.cloudinary.com/dhe7vivfw/image/upload/v1695001920/Rolling%20Gourmet/IMG%20LOGO/ROLLING-GOURMET_fcyqgy.png"
             alt="gourmetLogo"
             className="imgFix"
           />
-          </NavLink>
+        </NavLink>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">

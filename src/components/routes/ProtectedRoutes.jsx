@@ -14,9 +14,6 @@ const ProtectedRoutes = () => {
       <Route exact path="/order" element={<AdministratorOrder />}></Route>
       <Route exact path="/user" element={<AdministratorUser />}></Route>
       <Route exact path="/product" element={<AdministratorProduct />}></Route>
-
-     
-
     </Routes>
   );
 };

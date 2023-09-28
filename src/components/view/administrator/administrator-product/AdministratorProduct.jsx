@@ -3,11 +3,8 @@ import "./../administrator-product/AdministratorProduct.css";
 import { Spinner, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import ItemProduct from "./ItemProduct";
-
 import Swal from "sweetalert2";
 import { listProducts } from "../../../helpers/queries";
-
-
 
 const AdministratorProduct = () => {
   const [products, setProducts] = useState([]);
@@ -52,6 +49,7 @@ const AdministratorProduct = () => {
         setMostrarSpinner(false);
       });
   };
+
   useEffect(()=>{
     setMostrarSpinner(true);
     listProducts()
@@ -70,6 +68,7 @@ const AdministratorProduct = () => {
       });
     setMostrarSpinner(false);
   },[])
+  
   useEffect(() => {
     listProducts()
       .then((respuestaProductos) => {

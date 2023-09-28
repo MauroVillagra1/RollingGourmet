@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 
 const Login = ({ setUserActive, reloadNav }) => {
+
   const {
     register,
     handleSubmit,
@@ -13,10 +14,8 @@ const Login = ({ setUserActive, reloadNav }) => {
   } = useForm();
   const navegacion = useNavigate();
 
-  // esta es mi funcion la que pide loguear al usuario
   const onSubmit = (user) => {
     login(user).then((resp) => {
-      console.log(resp.status)
       if (resp.status === 200) {
         Swal.fire(
           "Welcome " + resp.userName,
@@ -60,7 +59,6 @@ const Login = ({ setUserActive, reloadNav }) => {
                 {errors.Email?.message}
               </Form.Text>
             </Form.Group>
-
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Label>Password</Form.Label>
               <Form.Control

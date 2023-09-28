@@ -32,18 +32,16 @@ export const listUsers = async () => {
       }
     });
 
-    // Verificar si la solicitud fue exitosa (código de estado 200)
     if (resp.ok) {
       const data = await resp.json();
-      return data; // Devolver el resultado como un array u objeto JSON, según la respuesta del servidor.
+      return data; 
     } else {
-      // Manejar el caso en que la solicitud no sea exitosa (por ejemplo, un error de autenticación).
-      console.error("Error de solicitud:", resp.status, resp.statusText);
-      return []; // Puedes devolver un array vacío u otra respuesta adecuada en caso de error.
+      console.error("Request error:", resp.status, resp.statusText);
+      return []; 
     }
   } catch (error) {
     console.error("Error:", error);
-    return []; // Manejar cualquier error de red o de otro tipo aquí.
+    return []; 
   }
 };
 
@@ -62,6 +60,7 @@ export const createProducts = async (products) => {
     console.log(error);
   }
 };
+
 export const getProduct = async (id) => {
   try {
     const resp = await fetch(`${uriProducts}/${id}`);
@@ -72,8 +71,6 @@ export const getProduct = async (id) => {
   }
 };
 
-
-
 export const editProduct = async (id, productEdit) => {
   try {
     const resp = await fetch(`${uriProducts}/${id}`, {
@@ -81,7 +78,6 @@ export const editProduct = async (id, productEdit) => {
       headers: {
         'Content-Type': 'application/json',
         "x-token": JSON.parse(sessionStorage.getItem("userActive")).token
-
       },
       body: JSON.stringify(productEdit),
     });
@@ -90,7 +86,6 @@ export const editProduct = async (id, productEdit) => {
     console.log(error);
   }
 };
-
 
 export const deleteProductAPI = async (id) => {
   try {
@@ -112,8 +107,7 @@ export const createOrders = async (Orders) => {
     const resp = await fetch(uriOrders, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
-        
+        'Content-Type': 'application/json'       
       },
       body: JSON.stringify(Orders),
     });
@@ -138,6 +132,7 @@ export const editOrder = async (id, orderEdit) => {
     console.log(error);
   }
 };
+
 export const deleteOrders = async (id) => {
   try {
     const resp = await fetch(`${uriOrders}/${id}`, {
@@ -161,7 +156,6 @@ export const login = async (user) => {
       body: JSON.stringify(user),
     });
     const data = await resp.json();
-    //  aqui pueden cambiar la respuesta
     return {
       status: resp.status,
       message: data.message,
@@ -177,9 +171,6 @@ export const login = async (user) => {
   }
 }
 
-
-
-
 export const editUser = async (id, userEdit) => {
   try {
     const resp = await fetch(`${uriUsers}/${id}`, {
@@ -187,7 +178,6 @@ export const editUser = async (id, userEdit) => {
       headers: {
         'Content-Type': 'application/json',
         "x-token": JSON.parse(sessionStorage.getItem("userActive")).token
-
       },
       body: JSON.stringify(userEdit),
     });

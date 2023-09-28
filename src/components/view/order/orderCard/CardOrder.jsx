@@ -3,7 +3,7 @@ import { Button } from "react-bootstrap";
 import "./CardOrder.css";
 import { deleteOrders } from "../../../helpers/queries";
 
-function CardOrder({ order, index, reload }) {
+function CardOrder({ order, reload }) {
   let stateClassName = "";
   switch (order.State) {
     case "Pending":
@@ -15,10 +15,11 @@ function CardOrder({ order, index, reload }) {
     default:
       stateClassName = "";
   }
-  const handleDelete = () =>{
-    deleteOrders(order._id)
-    reload()
-  }
+
+  const handleDelete = () => {
+    deleteOrders(order._id);
+    reload();
+  };
 
   return (
     <div className="card_content d-flex flex-column mx-2 my-2">
@@ -38,12 +39,20 @@ function CardOrder({ order, index, reload }) {
         </div>
         <div className="card_button_container_order d-flex flex-column">
           {order.State === "Pending" ? (
-            <Button className="h-25" variant="danger" onClick={()=>{handleDelete()}}>
+            <Button
+              className="h-25"
+              variant="danger"
+              onClick={() => {
+                handleDelete();
+              }}
+            >
               Cancel Order
             </Button>
           ) : (
-            <img src="https://res.cloudinary.com/dhe7vivfw/image/upload/v1695089233/Rolling%20Gourmet/IMG%20LOGO/checkbox_103909_o37tet.png" alt="check_icon" />
-
+            <img
+              src="https://res.cloudinary.com/dhe7vivfw/image/upload/v1695089233/Rolling%20Gourmet/IMG%20LOGO/checkbox_103909_o37tet.png"
+              alt="check_icon"
+            />
           )}
         </div>
       </div>

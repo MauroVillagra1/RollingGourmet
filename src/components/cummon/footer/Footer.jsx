@@ -6,7 +6,6 @@ const Footer = () => {
       <footer className="footerPosition footerBackground container-fluid">
         <section className="row text-center footerFontColor">
           <div className="separationLine"></div>
-
           <article className="col-md-3 col-sm-6 col-12 p-2 d-flex align-items-center justify-content-center">
             <img
               src="https://res.cloudinary.com/dhe7vivfw/image/upload/v1695001920/Rolling%20Gourmet/IMG%20LOGO/ROLLING-GOURMET-nav_u7y7wl.png"
@@ -14,7 +13,6 @@ const Footer = () => {
               className="imgFooterFix"
             />
           </article>
-
           <article className="col-md-3 col-sm-6 col-12 p-2 d-flex flex-column align-content-sm-center">
             <h4 className="footerFontFamilyBold">Navigation</h4>
             <div>
@@ -46,7 +44,6 @@ const Footer = () => {
               San Miguel de Tucumán
             </span>
           </article>
-
           <article className="col-md-3 col-sm-6 col-12 p-2 d-flex flex-column align-content-sm-center ">
             <h4 className="footerFontFamilyBold">Oppening hour</h4>
             <span className="footerFontFamilyNormal">
