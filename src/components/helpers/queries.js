@@ -3,6 +3,8 @@ const uriCategories = import.meta.env.VITE_API_CATEGORIES;
 const uriOrders = import.meta.env.VITE_API_ORDERS;
 const uriUsers = import.meta.env.VITE_API_USERS;
 const uriUsersLogin = import.meta.env.VITE_API_USERS_LOGIN;
+const uriRegister = import.meta.env.VITE_API_USER_REGISTER;
+
 const fetchData = async (url) => {
   try {
     const respuesta = await fetch(url);
@@ -141,7 +143,7 @@ export const deleteProductAPI = async (id) => {
 //busca los usuarios que ya están registrados
 export const registerList = async (user) => {
   try {
-    const resp = await fetch("http://localhost:3004/listUsers");
+    const resp = await fetch(uriRegister);
     const listUsers = await resp.json();
     if (listUsers) {
       return user;

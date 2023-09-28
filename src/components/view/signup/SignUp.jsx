@@ -100,7 +100,10 @@ const SignUp = ({ setUserInLine }) => {
                 {errors.email?.message}
               </Form.Text>
             </Form.Group>
-            <Form.Group className="text mb-3" controlId="formBasicPassword">
+            <Form.Group
+              className="mt-3 text mb-3"
+              controlId="formBasicPassword"
+            >
               <Form.Label>Password</Form.Label>
               <Form.Control
                 type="password"
@@ -137,7 +140,7 @@ const SignUp = ({ setUserInLine }) => {
                     width: "60%",
                   }}
                   type="submit"
-                  className="text text-start border-0 fs-4 d-flex justify-content-center align-items-center"
+                  className="text text-start fs-lg-5 border-0 fs-4 d-flex justify-content-center align-items-center"
                 >
                   {" "}
                   <img
