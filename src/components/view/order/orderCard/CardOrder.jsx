@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import "./CardOrder.css";
-import { deleteOrders } from "../../../helpers/queries";
+import { deleteOrders, listOrders } from "../../../helpers/queries";
 
 function CardOrder({ order, reload }) {
+
+  const [orders, setOrders] = useState([])
+  const [order_, setOrder_] = useState([])
+
+
   let stateClassName = "";
   switch (order.State) {
     case "Pending":
@@ -15,6 +20,11 @@ function CardOrder({ order, reload }) {
     default:
       stateClassName = "";
   }
+
+ 
+ 
+
+  
 
   const handleDelete = () => {
     deleteOrders(order._id);

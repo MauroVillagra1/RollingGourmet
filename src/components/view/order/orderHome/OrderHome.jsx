@@ -6,10 +6,18 @@ import CardOrder from "../orderCard/CardOrder"
 function orderHome() {
   const [order, setOrder] = useState([])
   useEffect(()=>{
+    let Array = []
+    const User = JSON.parse(sessionStorage.getItem("userActive"))._id || "0"
     listOrders().then((ord)=>{
-      setOrder(ord)
+      ord.map((resp)=>{
+        if(resp.IdUser === User){
+          Array.push(resp)
+          setOrder(Array)
+
+        }
+      })
     })
-   
+
   },[])
   const reload = () =>{
     listOrders().then((ord)=>{
