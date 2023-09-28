@@ -5,7 +5,7 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 const NavBar = ({ userInLine, setUserInLine }) => {
   const navigator = useNavigate();
 
-  const singOut = () => {
+  const signOut = () => {
     setUserInLine({});
     sessionStorage.removeItem("registeredUser");
     navigator("/");
@@ -86,11 +86,11 @@ const NavBar = ({ userInLine, setUserInLine }) => {
                   My Acount
                 </NavLink>
                 <Button
-                  onClick={singOut}
+                  onClick={signOut}
                   to="/sing-up"
                   className="nav-link mt-2 mt-sm-0 ms-sm-2 navButtonDefault navButtonAnimation footerFontFamilyBold"
                 >
-                  Sing out
+                  Sign out
                 </Button>
               </>
             ) : (

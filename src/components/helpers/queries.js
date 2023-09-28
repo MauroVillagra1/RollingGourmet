@@ -140,13 +140,16 @@ export const deleteProductAPI = async (id) => {
   }
 };
 
-//busca los usuarios que ya están registrados
 export const registerList = async (user) => {
   try {
     const resp = await fetch(uriRegister);
     const listUsers = await resp.json();
     if (listUsers) {
-      return user;
+      if (listUsers.password != listUsers.repeatPassword) {
+        return "password must much";
+      } else {
+        return listUsers;
+      }
     } else {
       console.log("Username or email not found");
       return null;

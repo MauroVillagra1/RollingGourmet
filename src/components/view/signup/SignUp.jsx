@@ -18,21 +18,18 @@ const SignUp = ({ setUserInLine }) => {
     console.log(user);
     registerList(user).then((response) => {
       console.log(response);
-      if (response) {
+      if (user.password === user.repeatPassword) {
         Swal.fire(
-          "Welcome! " + response.nameUser,
+          "Welcome! " + user.nameUser,
           "You are successfully registered!",
           "success"
         );
-        sessionStorage.setItem("registeredUser", JSON.stringify(response));
-        setUserInLine(response);
+        sessionStorage.setItem("registeredUser", JSON.stringify(user));
+        setUserInLine(user);
         navigator("/");
       } else {
-        Swal.fire(
-          "A system error occurred! ",
-          "You're already signed in!",
-          "error"
-        );
+        Swal.fire("A system error occurred! ", "Password must match!", "error");
+        return "Username or email not found";
       }
     });
   };
@@ -119,6 +116,24 @@ const SignUp = ({ setUserInLine }) => {
               />
               <Form.Text className="text-danger">
                 {errors.password?.message}
+              </Form.Text>
+            </Form.Group>
+            <Form.Group className="mt-3 text mb-3" controlId="">
+              <Form.Label>Repeat Password</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Repeat password"
+                {...register("repeatPassword", {
+                  required: "The password is mandatory information",
+                  pattern: {
+                    value: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/,
+                    message:
+                      "Password should be between 8 and 16 characters, at least one digit, at least one lowercase and at least one uppercase",
+                  },
+                })}
+              />
+              <Form.Text className="text-danger">
+                {errors.repeatPassword?.message}
               </Form.Text>
             </Form.Group>
             <div className="mt-5 d-flex flex-column justify-content-center align-items-center">
