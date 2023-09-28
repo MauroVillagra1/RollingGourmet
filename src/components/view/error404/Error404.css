@@ -2,19 +2,9 @@
     background-color: #212939;
 }
 
-/* .font {
-   
-    color: white;
-    font-size: 40px;
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  } */
-  
-  .h1 {
+  .error4040-h1 {
     color: #ffffff;
-    font-size: 60px;
+    font-size: 80px;
     font-weight: bold;
     text-align: center;
     display: flex;
@@ -22,27 +12,24 @@
     align-items: center;
   }
   
-  .p {
+  .error404-p {
     color: #ffffff;
     font-size: 30px;
+    font-weight: bold;
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  
-  .img {
-    width: 100px;
-    margin-bottom: 1rem;
-  }
-  
-  .btn-success  {
+    
+  /* .btn btn-success  {
     background-color: #212939;
     color: #ffffff;
     font-weight: bold;
-    border: 1px solid #ffffff;
     padding: 0.5rem 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
-  }
+  } */
+
+ 

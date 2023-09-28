@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Button, Card, CardBody, CardText, Container, Row, Col } from "react-bootstrap";
 import "./Error404.css";
+import { Link } from "react-router-dom";
 
 const Error404 = () => {
-  const [setMessage] = useState("");
+  const [message, setMessage] = useState("");
 
   const handleGoHome = () => {
     setMessage("");
@@ -15,10 +16,11 @@ const Error404 = () => {
         <Col sm={12}>
           <Card>
             <CardBody >
-              <CardText className="">
-                <h1 className="h1" >404</h1>
-                <p className="p" >Whoops... Page not found!!!</p>
-                <Button variant="success" onClick={handleGoHome}>Go Home</Button>
+              <CardText>
+                <h1 className="error4040-h1" >404</h1>
+                <p className="error404-p" >Whoops... Page not found!!!</p>
+                <Link to={'/'}>
+                <Button variant="success" onClick={handleGoHome}>Go Home</Button></Link>
               </CardText>
             </CardBody>
           </Card>
