@@ -13,6 +13,9 @@ import { useState } from "react";
 import Orders from "./components/view/order/order/Orders";
 import ProtectedRoutes_MyAccount from "./components/routes/my-account-routes/ProtectedRoutes_MyAccount";
 import LoginEncapsulateRoutes from "./components/routes/Login-EncapsulateRoutes/LoginEncapsulateRoutes";
+import AboutUs from "./components/view/AboutUs"
+import Error from "./components/view/error404/Error404"
+import Error404 from "./components/view/error404/Error404";
 
 function App() {
   const [userActive, setUserActive] = useState({});
@@ -52,12 +55,11 @@ function App() {
           path="/login"
           element={
             <LoginEncapsulateRoutes>
-              {" "}
               <Login reloadNav={reloadNav} />
             </LoginEncapsulateRoutes>
           }
         ></Route>
-        <Route exact path="/about-us"></Route>
+        <Route exact path="/about-us" element={<AboutUs></AboutUs>}></Route>
         <Route
           exact
           path="my-account/*"
@@ -78,6 +80,12 @@ function App() {
             <EncapsulateRoutes>
               <ProtectedRoutes></ProtectedRoutes>
             </EncapsulateRoutes>
+          }
+        ></Route>
+        <Route
+          path="*"
+          element={
+            <Error404></Error404>
           }
         ></Route>
       </Routes>

@@ -1,0 +1,41 @@
+.content-error404{
+    background-color: #212939;
+    height: 100vh;
+}
+.content-card-404{
+  background-color: #212939;
+}
+
+.content-card-404 img{
+  width: 20vw;
+  height: 20vw;
+  min-width: 200px;
+  min-height: 200px;
+}
+.content-card-404{
+  height: 100vh;
+}
+
+  .error4040-h1 {
+    color: #ffffff;
+    font-size: 80px;
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .error404-p {
+    color: #ffffff;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+   
+  .content-button-404{
+    min-width: 200px;
+  }
