@@ -5,10 +5,13 @@ import Home from "./components/view/home/Home";
 import Login from "./components/view/login/Login";
 import SignUp from "./components/view/signup/SignUp";
 import ProductDetail from "./components/view/productdetail/ProductDetail";
-import CardProgrammer from "./components/view/programmer/CardProgrammer";
+import AboutUs from "./components/view/programmer/CardProgrammer";
+import Order from "./components/view/order/Order";
+import Footer from "./components/cummon/footer/Footer";
 import EncapsulateRoutes from "./components/routes/EncapsulateRoutes";
 import ProtectedRoutes from "./components/routes/ProtectedRoutes";
 import { useState } from "react";
+
 import Orders from "./components/view/order/order/Orders";
 import Footer from "./components/cummon/footer/Footer";
 import ProtectedRoutes_MyAccount from "./components/routes/my-account-routes/ProtectedRoutes_MyAccount";

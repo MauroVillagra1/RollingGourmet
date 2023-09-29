@@ -2,9 +2,10 @@ const uriProducts = import.meta.env.VITE_API_PRODUCTS;
 const uriCategories = import.meta.env.VITE_API_CATEGORIES;
 const uriOrders = import.meta.env.VITE_API_ORDERS;
 const uriUsers = import.meta.env.VITE_API_USERS;
-const uriUsersLogin = import.meta.env.VITE_API_USERS_LOGIN
-const fetchData = async (url) => {
+const uriUsersLogin = import.meta.env.VITE_API_USERS_LOGIN;
+const uriRegister = import.meta.env.VITE_API_USER_REGISTER;
 
+const fetchData = async (url) => {
   try {
     const respuesta = await fetch(url);
     const datos = await respuesta.json();
@@ -17,6 +18,7 @@ const fetchData = async (url) => {
 export const listProducts = async () => {
   return fetchData(uriProducts);
 };
+
 export const listCategories = async () => {
   return fetchData(uriCategories);
 };
@@ -48,8 +50,9 @@ export const listUsers = async () => {
 export const createProducts = async (products) => {
   try {
     const resp = await fetch(uriProducts, {
-      method: 'POST',
+      method: "POST",
       headers: {
+
         'Content-Type': 'application/json',
         "x-token": JSON.parse(sessionStorage.getItem("userActive")).token
       },
@@ -70,6 +73,7 @@ export const getProduct = async (id) => {
     console.log(error);
   }
 };
+
 
 export const editProduct = async (id, productEdit) => {
   try {
@@ -105,7 +109,7 @@ export const deleteProductAPI = async (id) => {
 export const createOrders = async (Orders) => {
   try {
     const resp = await fetch(uriOrders, {
-      method: 'POST',
+      method: "POST",
       headers: {
         'Content-Type': 'application/json'       
       },
@@ -116,6 +120,7 @@ export const createOrders = async (Orders) => {
     console.log(error);
   }
 };
+
 
 export const editOrder = async (id, orderEdit) => {
   try {
@@ -132,6 +137,7 @@ export const editOrder = async (id, orderEdit) => {
     console.log(error);
   }
 };
+
 
 export const deleteOrders = async (id) => {
   try {
@@ -169,6 +175,7 @@ export const login = async (user) => {
     console.log("errores en el login");
     return;
   }
+
 }
 
 export const editUser = async (id, userEdit) => {
@@ -180,6 +187,20 @@ export const editUser = async (id, userEdit) => {
         "x-token": JSON.parse(sessionStorage.getItem("userActive")).token
       },
       body: JSON.stringify(userEdit),
+    });
+    return resp;
+  } catch (error) {
+    console.log(error);
+  }
+  
+export const createUsers = async (User) => {
+  try {
+    const resp = await fetch(uriUsers, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(User),
     });
     return resp;
   } catch (error) {

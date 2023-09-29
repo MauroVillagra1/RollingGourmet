@@ -1,9 +1,10 @@
 import { Container, Button, Form, Card } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
-import { login } from "../../helpers/queries";
+import { login } from "../../helpers/queries.js";
 import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
+
 
 const Login = ({ setUserActive, reloadNav }) => {
 
@@ -13,6 +14,7 @@ const Login = ({ setUserActive, reloadNav }) => {
     formState: { errors },
   } = useForm();
   const navegacion = useNavigate();
+
 
   const onSubmit = (user) => {
     login(user).then((resp) => {
@@ -64,6 +66,7 @@ const Login = ({ setUserActive, reloadNav }) => {
               <Form.Control
                 type="Password"
                 placeholder="Password"
+
                 maxLength={100}
                 {...register("Password", {
                   required: "The password is mandatory information",
