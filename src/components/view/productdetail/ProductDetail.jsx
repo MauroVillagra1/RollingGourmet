@@ -47,8 +47,7 @@ const ProductDetail = () => {
       <div className="detail d-flex flex-column justify-content-center align-items-center">
         <div className="my-5 d-flex flex-column justify-content-center align-items-center w-75">
           <Card
-            style={{ width: "100%" }}
-            className="d-flex flex-lg-row flex-column card_title my-3 "
+            className="d-flex flex-lg-row flex-column card_title my-3 w-100"
           >
             <div className="image_background w-lg-50 w-100 d-flex">
               <Card.Img
@@ -92,8 +91,7 @@ const ProductDetail = () => {
           </Card>
 
           <Card
-            style={{ width: "100%", height: "12rem" }}
-            className="description d-flex card_title"
+            className="description d-flex card_title w-100"
           >
             <Card.Title className="p-2 title fw-bold fs-1 text-light">
               Description

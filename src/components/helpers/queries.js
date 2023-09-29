@@ -18,12 +18,6 @@ const fetchData = async (url) => {
 export const listProducts = async () => {
   return fetchData(uriProducts);
 };
-export const listCategories = async () => {
-  return fetchData(uriCategories);
-};
-export const listOrders = async () => {
-  return fetchData(uriOrders);
-};
 
 export const createProducts = async (products) => {
   try {
@@ -38,6 +32,23 @@ export const createProducts = async (products) => {
   } catch (error) {
     console.log(error);
   }
+};
+
+export const getProduct = async (id) => {
+  try {
+    const resp = await fetch(`${uriProducts}/${id}`);
+    const data = await resp.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const listCategories = async () => {
+  return fetchData(uriCategories);
+};
+export const listOrders = async () => {
+  return fetchData(uriOrders);
 };
 
 export const createOrders = async (Orders) => {
@@ -66,15 +77,7 @@ export const deleteOrders = async (id) => {
   }
 };
 
-export const getProduct = async (id) => {
-  try {
-    const resp = await fetch(`${uriProducts}/${id}`);
-    const data = await resp.json();
-    return data;
-  } catch (error) {
-    console.log(error);
-  }
-};
+
 
 export const login = async (user) => {
   try {
@@ -157,5 +160,20 @@ export const registerList = async (user) => {
   } catch (error) {
     console.log(error);
     return null;
+  }
+};
+
+export const createUsers = async (User) => {
+  try {
+    const resp = await fetch(uriUsers, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(User),
+    });
+    return resp;
+  } catch (error) {
+    console.log(error);
   }
 };

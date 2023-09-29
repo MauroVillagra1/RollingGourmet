@@ -1,7 +1,7 @@
 import "./SignUp.css";
 import { Form, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { registerList } from "../../helpers/queries";
+import { createUsers } from "../../helpers/queries";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
@@ -15,23 +15,32 @@ const SignUp = ({ setUserInLine }) => {
   } = useForm();
 
   const onSubmit = (user) => {
-    console.log(user);
-    registerList(user).then((response) => {
-      console.log(response);
-      if (user.password === user.repeatPassword) {
-        Swal.fire(
-          "Welcome! " + user.nameUser,
-          "You are successfully registered!",
-          "success"
-        );
-        sessionStorage.setItem("registeredUser", JSON.stringify(user));
-        setUserInLine(user);
-        navigator("/");
-      } else {
-        Swal.fire("A system error occurred! ", "Password must match!", "error");
-        return "Username or email not found";
-      }
-    });
+    user["ProfilePicture"] =
+      "https://res.cloudinary.com/dhe7vivfw/image/upload/v1694745378/Rolling%20Gourmet/IMG%20USER/avatardefault_92824_son9pd.png";
+    user["Role"] = "User";
+    user["State"] = "Active";
+    if (user.Password === user.RepeatPassword) {
+      createUsers(user).then((resp) => {
+        
+        if (resp.status === 201) {
+          Swal.fire("Welcome!", "You are successfully registered!", "success");
+          navigator("/")
+        }
+        else{
+          Swal.fire(
+            "A system error occurred! ",
+            "Error," + resp.status,
+            "error"
+          );
+        }
+      });
+    } else {
+      Swal.fire(
+        "A system error occurred! ",
+        "Error, Passwords do not match",
+        "error"
+      );
+    }
   };
 
   return (
@@ -51,7 +60,7 @@ const SignUp = ({ setUserInLine }) => {
         </div>
 
         <div className="m-2 container-lg d-flex flex-column justify-content-center align-items-center">
-          <Form onSubmit={handleSubmit(onSubmit)} style={{ width: "65%" }}>
+          <Form onSubmit={handleSubmit(onSubmit)} className="form-body-signup">
             {" "}
             <div className="pb-5">
               <h1 className="text-light title">Sing Up</h1>
@@ -65,10 +74,10 @@ const SignUp = ({ setUserInLine }) => {
               <Form.Control
                 type="text"
                 placeholder="Enter username"
-                {...register("nameUser", {
+                {...register("Name", {
                   required: "username is mandatory information",
                   pattern: {
-                    value: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/,
+                    value: /^[a-zA-Z0-9_]+$/,
                     message:
                       "Username should be between 8 and 16 characters, at least one digit, al least one lowercase and at least one uppercase",
                   },
@@ -83,18 +92,18 @@ const SignUp = ({ setUserInLine }) => {
               <Form.Control
                 type="email"
                 placeholder="Enter email"
-                {...register("email", {
+                {...register("Email", {
                   required: "Email is mandatory information",
                   pattern: {
                     value:
-                      /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/,
+                    /^[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/,
                     message:
                       "The email must cumply with a valid format such as the following email@mail.com",
                   },
                 })}
               />
               <Form.Text className="text-danger">
-                {errors.email?.message}
+                {errors.Email?.message}
               </Form.Text>
             </Form.Group>
             <Form.Group
@@ -105,7 +114,7 @@ const SignUp = ({ setUserInLine }) => {
               <Form.Control
                 type="password"
                 placeholder="Password"
-                {...register("password", {
+                {...register("Password", {
                   required: "The password is mandatory information",
                   pattern: {
                     value: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/,
@@ -115,15 +124,15 @@ const SignUp = ({ setUserInLine }) => {
                 })}
               />
               <Form.Text className="text-danger">
-                {errors.password?.message}
+                {errors.Password?.message}
               </Form.Text>
             </Form.Group>
             <Form.Group className="mt-3 text mb-3" controlId="">
               <Form.Label>Repeat Password</Form.Label>
               <Form.Control
                 type="password"
-                placeholder="Repeat password"
-                {...register("repeatPassword", {
+                placeholder="RepeatPassword"
+                {...register("RepeatPassword", {
                   required: "The password is mandatory information",
                   pattern: {
                     value: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/,
@@ -133,15 +142,14 @@ const SignUp = ({ setUserInLine }) => {
                 })}
               />
               <Form.Text className="text-danger">
-                {errors.repeatPassword?.message}
+                {errors.RepeatPassword?.message}
               </Form.Text>
             </Form.Group>
             <div className="mt-5 d-flex flex-column justify-content-center align-items-center">
               <div>
                 <Button
-                  style={{ background: "#008000", color: "#fff" }}
                   type="submit"
-                  className="text border-0 fs-3"
+                  className="text border-0 fs-3 button-createaccount"
                 >
                   Create Account
                 </Button>
@@ -149,23 +157,13 @@ const SignUp = ({ setUserInLine }) => {
               <div className="mt-3 d-flex flex-lg-row justify-content-center align-items-center w-100">
                 {" "}
                 <Button
-                  style={{
-                    background: "#6F779D",
-                    color: "#fff",
-                    width: "60%",
-                  }}
                   type="submit"
-                  className="text text-start fs-lg-5 border-0 fs-4 d-flex justify-content-center align-items-center"
+                  className="text text-start fs-lg-5 border-0 fs-4 d-flex justify-content-center align-items-center button-gmail"
                 >
-                  {" "}
                   <img
+                  className="img-gmail"
                     src="https://brandeps.com/logo-download/G/Gmail-logo-vector-01.svg"
                     alt="logoGmail"
-                    style={{
-                      background: "#6F779D",
-                      margin: ".5rem",
-                      maxWidth: "12%",
-                    }}
                   />
                   Sing up with Gmail
                 </Button>
