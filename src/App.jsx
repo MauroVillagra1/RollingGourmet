@@ -1,6 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
 import NavBar from "./components/cummon/navbar/NavBar";
 import Home from "./components/view/home/Home";
 import Login from "./components/view/login/Login";
@@ -13,17 +12,22 @@ import EncapsulateRoutes from "./components/routes/EncapsulateRoutes";
 import ProtectedRoutes from "./components/routes/ProtectedRoutes";
 import { useState } from "react";
 
+import Orders from "./components/view/order/order/Orders";
+import Footer from "./components/cummon/footer/Footer";
+import ProtectedRoutes_MyAccount from "./components/routes/my-account-routes/ProtectedRoutes_MyAccount";
+import LoginEncapsulateRoutes from "./components/routes/Login-EncapsulateRoutes/LoginEncapsulateRoutes";
+
 function App() {
   const [userActive, setUserActive] = useState({});
-  // useEffect(()=>{
-  //   sessionStorage.setItem("userActive", JSON.stringify(userActive));
-  // },[userActive])
-  const singUpUser = JSON.parse(sessionStorage.getItem("registeredUser")) || {};
-  const [userInLine, setUserInLine] = useState(singUpUser);
+  const [reload, setReload] = useState([]);
+
+  const reloadNav = () => {
+    window.location.reload();
+  };
 
   return (
     <BrowserRouter>
-      <NavBar userInLine={userInLine} setUserInLine={setUserInLine}></NavBar>
+      <NavBar setReload={setReload} reload={reload}></NavBar>
       <Routes>
         <Route
           exact
@@ -35,16 +39,37 @@ function App() {
         <Route
           exact
           path="/my-orders"
-          element={<Order userActive={userActive}></Order>}
+          element={<Orders userActive={userActive}></Orders>}
         ></Route>
-
         <Route
           exact
           path="/sing-up"
-          element={<SignUp setUserInLine={setUserInLine}></SignUp>}
+          element={
+            <LoginEncapsulateRoutes>
+              <SignUp />
+            </LoginEncapsulateRoutes>
+          }
         ></Route>
-        <Route exact path="/login" element={<Login />}></Route>
-        <Route exact path="/about-us" element={<AboutUs />}></Route>
+        <Route
+          exact
+          path="/login"
+          element={
+            <LoginEncapsulateRoutes>
+              {" "}
+              <Login reloadNav={reloadNav} />
+            </LoginEncapsulateRoutes>
+          }
+        ></Route>
+        <Route exact path="/about-us" element={<CardProgrammer />}></Route>
+        <Route
+          exact
+          path="my-account/*"
+          element={
+            <EncapsulateRoutes>
+              <ProtectedRoutes_MyAccount></ProtectedRoutes_MyAccount>
+            </EncapsulateRoutes>
+          }
+        ></Route>
         <Route
           exact
           path="/productDetail/:id"

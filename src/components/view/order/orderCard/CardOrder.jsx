@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import "./CardOrder.css";
-import { deleteOrders } from "../../../helpers/queries";
+import { deleteOrders, listOrders } from "../../../helpers/queries";
 
-function CardOrder({ order, index }) {
+function CardOrder({ order, reload }) {
+
+  const [orders, setOrders] = useState([])
+  const [order_, setOrder_] = useState([])
+
+
   let stateClassName = "";
   switch (order.State) {
     case "Pending":
@@ -15,9 +20,16 @@ function CardOrder({ order, index }) {
     default:
       stateClassName = "";
   }
-  const handleDelete = () =>{
-    deleteOrders(order._id)
-  }
+
+ 
+ 
+
+  
+
+  const handleDelete = () => {
+    deleteOrders(order._id);
+    reload();
+  };
 
   return (
     <div className="card_content d-flex flex-column mx-2 my-2">
@@ -37,12 +49,20 @@ function CardOrder({ order, index }) {
         </div>
         <div className="card_button_container_order d-flex flex-column">
           {order.State === "Pending" ? (
-            <Button className="h-25" variant="danger" onClick={()=>{handleDelete()}}>
+            <Button
+              className="h-25"
+              variant="danger"
+              onClick={() => {
+                handleDelete();
+              }}
+            >
               Cancel Order
             </Button>
           ) : (
-            <img src="https://res.cloudinary.com/dhe7vivfw/image/upload/v1695089233/Rolling%20Gourmet/IMG%20LOGO/checkbox_103909_o37tet.png" alt="check_icon" />
-
+            <img
+              src="https://res.cloudinary.com/dhe7vivfw/image/upload/v1695089233/Rolling%20Gourmet/IMG%20LOGO/checkbox_103909_o37tet.png"
+              alt="check_icon"
+            />
           )}
         </div>
       </div>

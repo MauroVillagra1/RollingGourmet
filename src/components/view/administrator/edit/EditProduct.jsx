@@ -8,16 +8,15 @@ import {
   FormSelect,
   InputGroup,
 } from "react-bootstrap";
-import "./EditProduct.css";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import {
-  createProducts,
   editProduct,
   getProduct,
   listCategories,
 } from "../../../helpers/queries";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+
 function EditProduct() {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [categories, setCategories] = useState([]);
@@ -28,6 +27,7 @@ function EditProduct() {
   const [categoriesLoad, setCategoriesLoad] = useState([])
 
   let { id } = useParams();
+  const navigation = useNavigate()
 
   useEffect(() => {
     let x = [];
@@ -83,19 +83,20 @@ function EditProduct() {
    
     editProduct(id, data)
       .then((resp) => {
-        if (resp.status === 201) {
+        if (resp.status === 200) {
           Swal.fire(
-            "Producto guardado",
-            "Su producto se guardo correctamente",
+            "Saved product",
+            "Your product was stored correctly",
             "success"
           );
+          navigation("/administrator/product")
         }
       })
       .catch((error) => {
         console.log(error);
         Swal.fire(
-          "Hubo un error",
-          "Error al intentar cargar el producto",
+          "There was a Error",
+          "Error trying to load the product",
           "error"
         );
       });

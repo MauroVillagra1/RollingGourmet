@@ -3,28 +3,8 @@ import "./../administrator-product/AdministratorProduct.css";
 import { Spinner, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import ItemProduct from "./ItemProduct";
-
 import Swal from "sweetalert2";
 import { listProducts } from "../../../helpers/queries";
-
-const productsData = [
-  {
-    id: 1,
-    product: "Hamburguer",
-    price: 700,
-    image:
-      "https://img.freepik.com/foto-gratis/vista-frontal-hamburguesa-stand_141793-15542.jpg?size=626&ext=jpg",
-    category: "Food",
-  },
-  {
-    id: 2,
-    product: "Water bottle",
-    price: 500,
-    image:
-      "https://w7.pngwing.com/pngs/308/919/png-transparent-mineral-water-bottles-transparent-bottle-mineral-water-bottles-mineral-water-thumbnail.png",
-    category: "Drink",
-  },
-];
 
 const AdministratorProduct = () => {
   const [products, setProducts] = useState([]);
@@ -49,6 +29,46 @@ const AdministratorProduct = () => {
     setMostrarSpinner(false);
   }, []);
 
+  const fetchProducts = () => {
+    setMostrarSpinner(true);
+    listProducts()
+      .then((resp) => {
+        if (resp) {
+          setProducts(resp);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        Swal.fire(
+          "Ocurrio un error",
+          "Intente realizar esta operación mas tarde",
+          "error"
+        );
+      })
+      .finally(() => {
+        setMostrarSpinner(false);
+      });
+  };
+
+  useEffect(()=>{
+    setMostrarSpinner(true);
+    listProducts()
+      .then((resp) => {
+        if (resp) {
+          setProducts(resp);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        Swal.fire(
+          "Ocurrio un error",
+          "Intente realizar esta operación mas tarde",
+          "error"
+        );
+      });
+    setMostrarSpinner(false);
+  },[])
+  
   useEffect(() => {
     listProducts()
       .then((respuestaProductos) => {
@@ -67,6 +87,10 @@ const AdministratorProduct = () => {
       });
   }, []);
 
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
   return (
     <div className="bg-product-page">
       <section className="container mainSection ">
@@ -74,7 +98,7 @@ const AdministratorProduct = () => {
           <h1 className=" text-white">Product Manager</h1>
           <Link
             className="btn-create text-white btn"
-            to="/administrador/create"
+            to="/administrator/product/create"
           >
             Create Product
           </Link>
@@ -102,7 +126,7 @@ const AdministratorProduct = () => {
               {products.map((product, id) => (
                 <ItemProduct
                   key={id}
-                  {...product}
+                  product={product}
                   setProducts={setProducts}
                 ></ItemProduct>
               ))}

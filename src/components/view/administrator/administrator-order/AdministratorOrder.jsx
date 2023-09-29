@@ -4,12 +4,7 @@ import { Table } from "react-bootstrap";
 import ItemOrder from "./ItemOrder";
 import { listOrders } from "../../../helpers/queries";
 
-
-
-
-
 const AdministratorOrder = () => {
-  const [users, setUsers] = useState([]);
 const [orders, setOrders] = useState([]);
   useEffect(()=>{
     listOrders().then((resp)=>{
@@ -45,7 +40,7 @@ const [orders, setOrders] = useState([]);
           </thead>
           <tbody>
             {orders.map((order) => (
-              <ItemOrder key={order._id} order={order} setProducts={setUsers} updateOrderList={updateOrderList}></ItemOrder>
+              <ItemOrder key={order._id} order={order} updateOrderList={updateOrderList}></ItemOrder>
             ))}
           </tbody>
         </Table>

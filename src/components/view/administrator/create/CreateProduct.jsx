@@ -12,48 +12,55 @@ import "./CreateProduct.css";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { createProducts, listCategories } from "../../../helpers/queries";
+
 function CreateProduct() {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [categories, setCategories] = useState([]);
-
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [categoriesComboBox, setCategoriesComboBox] = useState("");
 
-
-  useEffect(()=>{
-    listCategories().then((categories)=>{
-        setCategories(categories)
-    })
-  },[])
+  useEffect(() => {
+    listCategories().then((categories) => {
+      setCategories(categories);
+    });
+  }, []);
+  
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
-  
-
   const onSubmit = (data) => {
-    const categories = []
-    selectedCategories.map((category)=>{
-        categories.push(category._id)
-    })
+    const categories = [];
+    selectedCategories.map((category) => {
+      categories.push(category._id);
+    });
 
-    data["CategoriesID"] = categories
-    data["State"] = "Visible"
-    data["Price"] = parseInt(data["Price"])
-    data["Stock"] = parseInt(data["Stock"])
-   
-    createProducts(data).then((resp)=>{
+    data["CategoriesID"] = categories;
+    data["State"] = "Visible";
+    data["Price"] = parseInt(data["Price"]);
+    data["Stock"] = parseInt(data["Stock"]);
+
+    createProducts(data)
+      .then((resp) => {
         if (resp.status === 201) {
-            Swal.fire(
-              "Producto guardado",
-              "Su producto se guardo correctamente",
-              "success"
-            );
-          }
-    })
-    .catch((error) => {
+          Swal.fire(
+            "Producto guardado",
+            "Su producto se guardo correctamente",
+            "success"
+          );
+          reset();
+          listCategories().then((categories) => {
+            setCategories(categories);
+          });
+          setSelectedCategory("");
+          setSelectedCategories([]);
+          setCategoriesComboBox("");
+        }
+      })
+      .catch((error) => {
         console.log(error);
         Swal.fire(
           "Hubo un error",
@@ -65,13 +72,18 @@ function CreateProduct() {
 
   function handleCategoryChange(event) {
     const selectedCategoryId = event.target.value;
-    const selectedCategory = categories.find(category => category._id === selectedCategoryId);
+    const selectedCategory = categories.find(
+      (category) => category._id === selectedCategoryId
+    );
     setSelectedCategory(selectedCategory);
-    setCategoriesComboBox(selectedCategoryId)
+    setCategoriesComboBox(selectedCategoryId);
   }
 
   function handleAddCategory() {
-    if (selectedCategory._id && !selectedCategories.includes(selectedCategory)) {
+    if (
+      selectedCategory._id &&
+      !selectedCategories.includes(selectedCategory)
+    ) {
       setSelectedCategories([...selectedCategories, selectedCategory]);
       setCategories(
         categories.filter((category) => category !== selectedCategory)
@@ -134,7 +146,7 @@ function CreateProduct() {
                       return "The price must be between 100 and 100000";
                     }
                     return true;
-                  }
+                  },
                 })}
               ></FormControl>
             </InputGroup>
@@ -176,11 +188,9 @@ function CreateProduct() {
                 required: "The image url is required",
                 pattern: {
                   value: /^https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/,
-                  message: "You must enter a valid URL"
-                }
-              })
-
-              }
+                  message: "You must enter a valid URL",
+                },
+              })}
             ></FormControl>
             <Form.Text className="text-danger">
               {errors.Image?.message}
@@ -189,9 +199,11 @@ function CreateProduct() {
           <FormGroup>
             <FormLabel className="mt-2">Product Stock</FormLabel>
             <InputGroup>
-              <FormControl type="number" placeholder="Example: 10"
-              {...register("Stock", {
-                validate: (value) => {
+              <FormControl
+                type="number"
+                placeholder="Example: 10"
+                {...register("Stock", {
+                  validate: (value) => {
                     const parsedValue = parseFloat(value);
                     if (isNaN(parsedValue)) {
                       return "Please enter a valid number";
@@ -200,9 +212,9 @@ function CreateProduct() {
                       return "The stock must be between 1 and 100";
                     }
                     return true;
-                  }
-              })
-              }></FormControl>
+                  },
+                })}
+              ></FormControl>
             </InputGroup>
             <Form.Text className="text-danger">
               {errors.Stock?.message}
@@ -231,7 +243,10 @@ function CreateProduct() {
             <FormLabel>Selected Categories</FormLabel>
             <div className="selected-categories d-flex text-light flex-wrap mb-5">
               {selectedCategories.map((category) => (
-                <div key={category._id} className="selected-category mb-1 mx-3 p-2">
+                <div
+                  key={category._id}
+                  className="selected-category mb-1 mx-3 p-2"
+                >
                   {category.Category}
                   <Button
                     className="remove_button_category"

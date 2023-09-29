@@ -1,7 +1,6 @@
 import { Button } from "react-bootstrap";
 import React, { useEffect, useState } from "react";
 import "../product/CardProduct.css";
-
 import { listOrders } from "../../helpers/queries";
 import Swal from "sweetalert2";
 import { NavLink } from "react-router-dom";
@@ -9,7 +8,6 @@ function CardProduct({
   product,
   order,
   setOrder,
-  newOrders,
   userActive,
   setCountGlobal,
   countGlobal,
@@ -17,7 +15,6 @@ function CardProduct({
   const [count, setCount] = useState(0);
   const [stock, setStock] = useState(product.Stock);
   const [statusEffect, setStatusEffect] = useState(false);
-  const [orderLocal, setOrderLocal] = useState({});
   const [orderDB, setOrderDB] = useState([]);
   const newArray = [...order];
 
@@ -39,7 +36,8 @@ function CardProduct({
   const handleAddOrder = () => {
     if (count <= product.Stock) {
       let x = 0;
-      if (userActive._id !== undefined) {
+
+      if (userActive && userActive._id && userActive._id !== undefined) {
         orderDB.map((ord) => {
           if (ord.IdUser === userActive._id && ord.State === "Pending") {
             x = 1;
@@ -53,7 +51,11 @@ function CardProduct({
             const x = JSON.stringify(countGlobal + 1);
             localStorage.setItem("countGlobal", x);
           }
+        } else {
+          Swal.fire("You have a pending order");
         }
+      } else {
+        Swal.fire("You must log in");
       }
     }
   };
@@ -61,21 +63,25 @@ function CardProduct({
   const handleRemoveOrder = () => {
     if (count > 0) {
       let x = 0;
-      if (userActive._id !== undefined) {
+      if (userActive && userActive._id && userActive._id !== undefined) {
         orderDB.map((ord) => {
           if (ord.IdUser === userActive._id && ord.State === "Pending") {
             x = 1;
           }
         });
         if (x === 0) {
-          if (count < product.Stock) {
+          if (count <= product.Stock) {
             setCount(count - 1);
             setStock(stock + 1);
             setCountGlobal(countGlobal - 1);
             const x = JSON.stringify(countGlobal - 1);
             localStorage.setItem("countGlobal", x);
           }
+        } else {
+          Swal.fire("You have a pending order");
         }
+      } else {
+        Swal.fire("You must log in");
       }
     }
   };

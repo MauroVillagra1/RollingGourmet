@@ -1,6 +1,5 @@
 .bg-user-page {
   background: var(--navybluecolor) !important;
-  height: 100vh;
 }
 
 hr {
@@ -12,7 +11,7 @@ hr {
 }
 
 .btn-options-user-width {
-  width: 200px;
+  width: 20vw;
 }
 
 .img-table-product {
@@ -59,13 +58,18 @@ td {
     display: none;
   }
   .priority-table-user-3 {
-    display: none;
+    font-size: 10px;
+
   }
-  .priority-table-user-4 {
-    display: none;
+  .btn-options-user-width {
+    width: 100%;
+   
   }
 
-  .btn-options-width {
-    width: 200px;
+  .btn-unsuspend {
+    font-size: 12px;
+  }
+  .btn-suspend {
+    font-size: 12px;
   }
 }

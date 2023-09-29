@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import "./ProductDetail.css";
-import { Card, Container } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import { useEffect } from "react";
 import { listCategories, listProducts } from "../../helpers/queries";
 import { useState } from "react";

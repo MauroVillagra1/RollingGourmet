@@ -7,8 +7,6 @@ const ProtectedRoutes_MyAccount = () => {
     <Routes>
       <Route exact path="/" element={<MyAccount></MyAccount>}></Route>
       <Route exact path="/orders" element={<OrderHome></OrderHome>}></Route>
-      
-
     </Routes>
   );
 };

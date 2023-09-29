@@ -5,7 +5,9 @@ import { login } from "../../helpers/queries.js";
 import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 
-const Login = ({ setUserActive }) => {
+
+const Login = ({ setUserActive, reloadNav }) => {
+
   const {
     register,
     handleSubmit,
@@ -13,21 +15,22 @@ const Login = ({ setUserActive }) => {
   } = useForm();
   const navegacion = useNavigate();
 
-  // esta es mi funcion la que pide loguear al usuario
-  const onSubmit = (usuario) => {
-    login(usuario).then((respuesta) => {
-      if (respuesta.status === 200) {
+
+  const onSubmit = (user) => {
+    login(user).then((resp) => {
+      if (resp.status === 200) {
         Swal.fire(
-          "Bienvenido " + respuesta.usuario,
-          "Ingresaste a la web cafecito",
+          "Welcome " + resp.userName,
+          "You entered the rolling gourmet web",
           "success"
         );
-        // guardar el usuario en el localstorage o sessionStorage;
-        sessionStorage.setItem("userActive", JSON.stringify(respuesta));
-        setUserActive(respuesta);
-        navegacion("/administrador");
-      } else {
-        Swal.fire("Ocurrio un error", "Email o password incorrecto", "error");
+        navegacion("/");  
+        reloadNav();
+        sessionStorage.setItem("userActive", JSON.stringify(resp));
+        setUserActive(resp);
+      } 
+      else {
+        Swal.fire("An error occurred", resp.message, "error");
       }
     });
   };
@@ -42,48 +45,50 @@ const Login = ({ setUserActive }) => {
               <Form.Label>Email</Form.Label>
               <Form.Control
                 type="email"
-                placeholder="Ingrese un email"
+                placeholder="Enter an email"
+                maxLength={100}
                 {...register("Email", {
-                  required: "El email es un dato obligatorio",
+                  required: "Email is mandatory information",
                   pattern: {
                     value:
                       /^[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/,
                     message:
-                      "El email debe cumplir con un formato valido como el siguiente mail@mail.com ",
+                      "The email must comply with a valid format such as the following mail@mail.com",
                   },
                 })}
               />
               <Form.Text className="text-danger">
-                {errors.email?.message}
+                {errors.Email?.message}
               </Form.Text>
             </Form.Group>
-
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Label>Password</Form.Label>
               <Form.Control
                 type="Password"
                 placeholder="Password"
+
+                maxLength={100}
                 {...register("Password", {
-                  required: "El password es un dato obligatorio",
+                  required: "The password is mandatory information",
                   pattern: {
-                    value: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/,
+                    value: /^[a-zA-Z0-9]*$/,
                     message:
-                      "el password debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula.",
+                      "The password must be between 8 and 16 characters, at least one digit, at least one lowercase letter and at least one uppercase letter.",
                   },
                 })}
               />
               <Form.Text className="text-danger">
-                {errors.password?.message}
+                {errors.Password?.message}
               </Form.Text>
             </Form.Group>
             <Card.Text className="text-color">
-              <Link to="/">No tienes una cuenta?</Link>
+              <Link to="/">You do not have an account?</Link>
             </Card.Text>
             <Card.Text className="text-color">
-              <Link to="/">Has olvidado la contraseña?</Link>
+              <Link to="/">Have you forgotten the password?</Link>
             </Card.Text>
             <Button variant="success" type="submit">
-              Ingresar
+            Get into
             </Button>
           </Form>
         </Card.Body>

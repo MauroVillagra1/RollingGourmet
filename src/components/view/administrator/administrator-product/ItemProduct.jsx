@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import Swal from "sweetalert2";
 import { deleteProductAPI, listProducts } from "../../../helpers/queries";
 
-const ItemProduct = (product, setProducts) => {
+const ItemProduct = ({ product, setProducts }) => {
   const deleteProduct = () => {
     Swal.fire({
       title: "¿Esta seguro de eliminar el producto",
@@ -19,7 +19,6 @@ const ItemProduct = (product, setProducts) => {
         deleteProductAPI(product._id).then((resp) => {
           if (resp.status === 200) {
             listProducts().then((resp) => {
-              console.log(resp);
               setProducts(resp);
             });
             Swal.fire(
