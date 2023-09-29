@@ -5,15 +5,12 @@ import Home from "./components/view/home/Home";
 import Login from "./components/view/login/Login";
 import SignUp from "./components/view/signup/SignUp";
 import ProductDetail from "./components/view/productdetail/ProductDetail";
-import AboutUs from "./components/view/programmer/CardProgrammer";
 import Order from "./components/view/order/Order";
 import Footer from "./components/cummon/footer/Footer";
 import EncapsulateRoutes from "./components/routes/EncapsulateRoutes";
 import ProtectedRoutes from "./components/routes/ProtectedRoutes";
 import { useState } from "react";
-
 import Orders from "./components/view/order/order/Orders";
-import Footer from "./components/cummon/footer/Footer";
 import ProtectedRoutes_MyAccount from "./components/routes/my-account-routes/ProtectedRoutes_MyAccount";
 import LoginEncapsulateRoutes from "./components/routes/Login-EncapsulateRoutes/LoginEncapsulateRoutes";
 
@@ -60,7 +57,7 @@ function App() {
             </LoginEncapsulateRoutes>
           }
         ></Route>
-        <Route exact path="/about-us" element={<CardProgrammer />}></Route>
+        <Route exact path="/about-us"></Route>
         <Route
           exact
           path="my-account/*"

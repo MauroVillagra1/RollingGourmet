@@ -3,7 +3,6 @@ const uriCategories = import.meta.env.VITE_API_CATEGORIES;
 const uriOrders = import.meta.env.VITE_API_ORDERS;
 const uriUsers = import.meta.env.VITE_API_USERS;
 const uriUsersLogin = import.meta.env.VITE_API_USERS_LOGIN;
-const uriRegister = import.meta.env.VITE_API_USER_REGISTER;
 
 const fetchData = async (url) => {
   try {
@@ -192,7 +191,7 @@ export const editUser = async (id, userEdit) => {
   } catch (error) {
     console.log(error);
   }
-  
+}
 export const createUsers = async (User) => {
   try {
     const resp = await fetch(uriUsers, {
@@ -206,4 +205,4 @@ export const createUsers = async (User) => {
   } catch (error) {
     console.log(error);
   }
-};
+}
