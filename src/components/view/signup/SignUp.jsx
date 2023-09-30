@@ -149,12 +149,12 @@ const SignUp = ({ setUserInLine }) => {
               <div>
                 <Button
                   type="submit"
-                  className="text border-0 fs-3 button-createaccount"
+                  className="text border-0 fs-3 button-createaccount text-center"
                 >
                   Create Account
                 </Button>
               </div>
-              <div className="mt-3 d-flex flex-lg-row justify-content-center align-items-center w-100">
+              <div className="mt-3 d-flex flex-lg-row justify-content-center align-items-center w-100 register-gmail">
                 {" "}
                 <Button
                   type="submit"

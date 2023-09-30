@@ -35,18 +35,20 @@
 }
 
 .button-createaccount {
-  background: "#008000";
-  color: "#fff";
+  background: #008000;
+  color: #fff;
 }
 
 .button-gmail {
-  background: "#6F779D";
-  color: "#fff";
-  width: "60%";
+  background: #6F779D;
+  color: #fff;
+  width: 60%;
+  min-width: 200px;
 }
 
 .img-gmail {
-  background: "#6F779D";
-  margin: "0.5rem";
-  max-width: "12%";
+  background: #6F779D;
+  margin: 0.5rem;
+  max-width: 12%;
+  min-width: 50px;
 }
