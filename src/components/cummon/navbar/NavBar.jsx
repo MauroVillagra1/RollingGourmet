@@ -24,6 +24,8 @@ const NavBar = (reloadNav) => {
 
   const closeSession = () => {
     sessionStorage.removeItem("userActive");
+    localStorage.removeItem("orders")
+    localStorage.removeItem("countGlobal")
     reloadNav();
   };
 
