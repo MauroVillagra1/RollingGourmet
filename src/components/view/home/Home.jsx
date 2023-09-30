@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./Home.css";
-import { Form, FormGroup, Button } from "react-bootstrap";
+import { Form, FormGroup, Button, Pagination } from "react-bootstrap";
 import CardProduct from "../product/CardProduct";
 import { listCategories, listProducts } from "../../helpers/queries";
 import ButtonOrders from "./buttonOrders/ButtonOrders"
-function home({ userActive, setUserActive }) {
+function Home({ userActive, setUserActive }) {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [productsFilter, setProductsFilter] = useState([]);
@@ -16,6 +16,18 @@ function home({ userActive, setUserActive }) {
   const countG = localStorage.getItem("countGlobal");
   const countGlobal_local = JSON.parse(countG);
   const [countGlobal, setCountGlobal] = useState(countGlobal_local || 0)
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(12); 
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentProducts = productsFilter.slice(
+    indexOfFirstItem,
+    indexOfLastItem
+  );
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+  
   var newOrders = [];
  
 
@@ -124,31 +136,43 @@ function home({ userActive, setUserActive }) {
             </Form>
           </div>
           <div className="list_products px-5 py-5 d-flex flex-wrap justify-content-center">
-            {productsFilter.length === 0 ? (
-              <p className="text-light">
-                No products were found with this category.
-              </p>
-            ) : (
-              productsFilter.map((product) => (
-                <CardProduct
-                  key={product._id}
-                  product={product}
-                  order={order}
-                  setOrder={setOrder}
-                  newOrders={newOrders}
-                  userActive={userActive}
-                  setCountGlobal={setCountGlobal}
-                  countGlobal={countGlobal}
-                ></CardProduct>
-              ))
-            )}
-          </div>
-          <ButtonOrders countGlobal={countGlobal}></ButtonOrders>
-
-        </div>
+        {currentProducts.length === 0 ? (
+          <p className="text-light">No products were found with this category.</p>
+        ) : (
+          currentProducts.map((product) => (
+            <CardProduct
+              key={product._id}
+              product={product}
+              order={order}
+              setOrder={setOrder}
+              newOrders={newOrders}
+              userActive={userActive}
+              setCountGlobal={setCountGlobal}
+              countGlobal={countGlobal}
+            ></CardProduct>
+          ))
+        )}
       </div>
-    </>
-  );
+
+      <div className="pagination-container w-100 d-flex justify-content-center">
+        <Pagination>
+          {Array.from({ length: Math.ceil(productsFilter.length / itemsPerPage) }, (_, index) => (
+            <Pagination.Item
+              key={index}
+              active={index + 1 === currentPage}
+              onClick={() => handlePageChange(index + 1)}
+            >
+              {index + 1}
+            </Pagination.Item>
+          ))}
+        </Pagination>
+      </div>
+
+      <ButtonOrders countGlobal={countGlobal}></ButtonOrders>
+    </div>
+  </div>
+</>
+);
 }
 
-export default home;
+export default Home;

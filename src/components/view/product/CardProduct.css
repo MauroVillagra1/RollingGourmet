@@ -9,7 +9,6 @@
 .card_header {
   height: 40%;
   width: 100%;
-
   background-color: var(--grayblueColor);
   position: relative;
 
@@ -31,16 +30,16 @@
   height: 25%;
   font-size: 16px;
   padding: 0 5%;
-  overflow: hidden;
 
  
 }
 .card_product_name h4 {
   font-size: 1.6em;
-  text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
   
 }
 
