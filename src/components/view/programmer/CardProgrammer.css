@@ -1,25 +1,38 @@
-.aboutUs {
-  background-color: var(--darkgrayColor);
-  min-height: 100vh;
-  width: 100vw;
-  background: #212939;
-  color: #fff;
+.content-programmer{
+  background-color: var(--paleblueColor);
 }
 
-.title {
-  font-family: Bebas Neue;
-}
-.text {
-  text-align: justify;
-  font-family: Roboto;
-  color: #fff;
-  font-weight: 600;
+.content-img-programmer {
+  min-width: 200px;
+  min-height: 200px;
+  width: 50%;
 }
 
-.card_title {
-  background: #6f779d;
+.content-img-programmer img{
+  border-radius: 50%;
+  object-fit: cover;
+  width: 190px;
+  height: 190px;
 }
 
-.pointer {
-  cursor: pointer;
+.content-programmer{
+  width: 80vw;
+}
+
+.content-text-programmer{
+  padding-left: 1%;
+  background-color: var(--grayblueColor);
+}
+
+
+@media screen and (max-width: 992px) {
+  .content-programmer{
+    flex-direction: column;
+    align-items: center;
+
+  }
+  .content-text-programmer{
+    width: 100%;
+    padding: 2% 2%;
+  }
 }
