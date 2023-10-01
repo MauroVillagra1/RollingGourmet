@@ -5,7 +5,6 @@ import Home from "./components/view/home/Home";
 import Login from "./components/view/login/Login";
 import SignUp from "./components/view/signup/SignUp";
 import ProductDetail from "./components/view/productdetail/ProductDetail";
-import Order from "./components/view/order/Order";
 import Footer from "./components/cummon/footer/Footer";
 import EncapsulateRoutes from "./components/routes/EncapsulateRoutes";
 import ProtectedRoutes from "./components/routes/ProtectedRoutes";
@@ -14,7 +13,6 @@ import Orders from "./components/view/order/order/Orders";
 import ProtectedRoutes_MyAccount from "./components/routes/my-account-routes/ProtectedRoutes_MyAccount";
 import LoginEncapsulateRoutes from "./components/routes/Login-EncapsulateRoutes/LoginEncapsulateRoutes";
 import AboutUs from "./components/view/AboutUs";
-import Error from "./components/view/error404/Error404";
 import Error404 from "./components/view/error404/Error404";
 import { useEffect } from "react";
 import ScrollToTop from "./components/cummon/scrolltotop/ScrollToTop";
@@ -25,7 +23,6 @@ function App() {
 
   const reloadNav = () => {
     window.location.reload();
-    console.log("cargo la pagina");
   };
 
   useEffect(() => {
@@ -48,7 +45,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar setReload={setReload} reload={reload}></NavBar>
+      <NavBar setReload={setReload} reload={reload} userActive={userActive}></NavBar>
       <ScrollToTop />
       <Routes>
         <Route

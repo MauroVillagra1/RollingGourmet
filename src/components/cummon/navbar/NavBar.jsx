@@ -4,7 +4,7 @@ import "./NavBar.css";
 import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-const NavBar = ({reloadNav}) => {
+const NavBar = ({reloadNav, userActive}) => {
   const [userRole, setUserRole] = useState("");
   const [reload, setReload] = useState("");
 
@@ -20,7 +20,7 @@ const NavBar = ({reloadNav}) => {
     } else {
       setUserRole("");
     }
-  }, [reload]);
+  }, [reload, userActive]);
 
   const closeSession = () => {
     sessionStorage.removeItem("userActive");
