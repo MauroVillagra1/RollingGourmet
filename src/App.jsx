@@ -13,46 +13,42 @@ import { useState } from "react";
 import Orders from "./components/view/order/order/Orders";
 import ProtectedRoutes_MyAccount from "./components/routes/my-account-routes/ProtectedRoutes_MyAccount";
 import LoginEncapsulateRoutes from "./components/routes/Login-EncapsulateRoutes/LoginEncapsulateRoutes";
-import AboutUs from "./components/view/AboutUs"
-import Error from "./components/view/error404/Error404"
+import AboutUs from "./components/view/AboutUs";
+import Error from "./components/view/error404/Error404";
 import Error404 from "./components/view/error404/Error404";
 import { useEffect } from "react";
+import ScrollToTop from "./components/cummon/scrolltotop/ScrollToTop";
 
 function App() {
   const [reload, setReload] = useState([]);
-  const [userActive, setUserActive] = useState({})
+  const [userActive, setUserActive] = useState({});
   const reloadNav = () => {
     window.location.reload();
   };
 
-  useEffect(()=>{
-    const sessionP = JSON.parse(sessionStorage.getItem("userActive"))
-    if (sessionP)
-    {
+  useEffect(() => {
+    const sessionP = JSON.parse(sessionStorage.getItem("userActive"));
+    if (sessionP) {
       localStorage.setItem("userActive2", JSON.stringify(sessionP));
     }
-  },[userActive])
-
-
+  }, [userActive]);
 
   useEffect(() => {
     const sessionP = JSON.parse(sessionStorage.getItem("userActive"));
     const localStorageData = JSON.parse(localStorage.getItem("userActive2"));
-  
+
     if (localStorageData) {
       sessionStorage.setItem("userActive", JSON.stringify(localStorageData));
     } else if (sessionP) {
       localStorage.setItem("userActive2", JSON.stringify(sessionP));
       history.go(0);
-
     }
-
   }, []);
-
 
   return (
     <BrowserRouter>
       <NavBar setReload={setReload} reload={reload}></NavBar>
+      <ScrollToTop />
       <Routes>
         <Route
           exact
@@ -80,7 +76,7 @@ function App() {
           path="/login"
           element={
             <LoginEncapsulateRoutes>
-              <Login reloadNav={reloadNav} setUserActive={setUserActive}/>
+              <Login reloadNav={reloadNav} setUserActive={setUserActive} />
             </LoginEncapsulateRoutes>
           }
         ></Route>
@@ -107,12 +103,7 @@ function App() {
             </EncapsulateRoutes>
           }
         ></Route>
-        <Route
-          path="*"
-          element={
-            <Error404></Error404>
-          }
-        ></Route>
+        <Route path="*" element={<Error404></Error404>}></Route>
       </Routes>
       <Footer></Footer>
     </BrowserRouter>
