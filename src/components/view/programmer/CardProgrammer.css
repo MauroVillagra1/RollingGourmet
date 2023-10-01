@@ -24,6 +24,9 @@
   background-color: var(--grayblueColor);
 }
 
+.aboutus{
+  background-color: var(--darkgrayColor);
+}
 
 @media screen and (max-width: 992px) {
   .content-programmer{

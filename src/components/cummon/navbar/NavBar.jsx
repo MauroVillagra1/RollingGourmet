@@ -4,9 +4,10 @@ import "./NavBar.css";
 import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-const NavBar = ({reloadNav, userActive}) => {
+const NavBar = ({ reloadNav, userActive }) => {
   const [userRole, setUserRole] = useState("");
   const [reload, setReload] = useState("");
+  const [isNavExpanded, setIsNavExpanded] = useState(false);
 
   useEffect(() => {
     const userActiveJSON = sessionStorage.getItem("userActive");
@@ -31,17 +32,23 @@ const NavBar = ({reloadNav, userActive}) => {
   };
 
   return (
-    <Navbar expand="sm" className="navbarBackground navbar-dark">
+    <Navbar
+      expand="sm"
+      className="navbarBackground navbar-dark"
+      expanded={isNavExpanded}
+      onClick={() => setIsNavExpanded(!isNavExpanded)}
+    >
       <Container>
         <NavLink to={"/"}>
           <Image
             src="https://res.cloudinary.com/dhe7vivfw/image/upload/v1695001920/Rolling%20Gourmet/IMG%20LOGO/ROLLING-GOURMET_fcyqgy.png"
             alt="gourmetLogo"
             className="imgFix"
+            onClick={(e) => e.stopPropagation()}
           />
         </NavLink>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
+        <Navbar.Collapse id="basic-navbar-nav" >
           <Nav className="ms-auto">
             {userRole === "" ? (
               <>

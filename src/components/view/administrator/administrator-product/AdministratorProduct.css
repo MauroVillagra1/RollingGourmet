@@ -1,5 +1,5 @@
 .bg-product-page {
-  background: #212939;
+  background-color: var(--darkgrayColor);
 }
 
 .mainSection {

@@ -6,11 +6,11 @@
 }
 
 .bg-admin-page {
-  background: var(--navybluecolor) !important;
+  background-color: var(--darkgrayColor);
 }
 
 .btn-admin {
-  background: var(--paleblueColor) !important;
+  background: var(--paleblueColor);
   width: 400px;
   height: 60px;
 }

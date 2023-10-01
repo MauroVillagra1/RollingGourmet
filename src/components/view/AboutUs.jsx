@@ -61,7 +61,7 @@ const AboutUs = () => {
   ];
   return (
     <>
-      <div className="aboutUs container-fluid w-100">
+      <div className="aboutus container-fluid w-100">
         <div className="d-flex flex-column justify-content-center py-5">
           <h1 className="text-center pb-5 fs-1 fw-bold text-light title">
             About us

@@ -58,7 +58,7 @@ const Footer = () => {
           </article>
         </section>
       </footer>
-      <div className="copyStyleGeneral">
+      <div className="copyStyleGeneral ">
         <p className="footerFontFamilyNormal copyStyleText mt-2">
           &copy; 2023 - GrupoTres Developers - All rights reserved
         </p>

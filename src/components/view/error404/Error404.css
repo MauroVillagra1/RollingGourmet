@@ -1,9 +1,10 @@
 .content-error404{
-    background-color: #212939;
-    height: 100vh;
+  background-color: var(--darkgrayColor);
+  height: 100vh;
+  max-width: none;
 }
 .content-card-404{
-  background-color: #212939;
+  background-color: var(--darkgrayColor);
 }
 
 .content-card-404 img{
@@ -38,4 +39,9 @@
    
   .content-button-404{
     min-width: 200px;
+  }
+
+  .card-body-error404{
+    background-color: var(--darkgrayColor);
+
   }

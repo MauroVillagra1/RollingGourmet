@@ -11,7 +11,7 @@ function MyAccount() {
 
   return (
     <>
-      <div className="my-account-content d-flex justify-content-center flex-column align-items-center">
+      <div className="my-account-content d-flex pt-5 flex-column align-items-center">
         <div className="my-account-title text-light">
           <h3>{userActive.userName}</h3>
         </div>

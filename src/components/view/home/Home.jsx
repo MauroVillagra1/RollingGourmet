@@ -82,7 +82,7 @@ function Home({ userActive, setUserActive }) {
               />
             </div>
             <div className="text_page_entry d-flex justify-content-center align-items-center">
-              <h4>
+              <h4 className="text-title-home">
                 Welcome to <br />
                 <span className="text_header_rolling">Rolling </span>
                 <span className="text_header_gourmet">Gourmet</span>
@@ -124,7 +124,7 @@ function Home({ userActive, setUserActive }) {
               </FormGroup>
 
               <FormGroup>
-                <Button
+                <Button variant="success"
                   className="search_name"
                   onClick={handleSearchButtonClick}
                 >

@@ -17,6 +17,8 @@
     background-color: var(--darkgrayColor);
     min-height: 100vh;
     padding: 2% 5%;
+    background-color: var(--darkgrayColor);
+
 }
 
 .title_create_product{

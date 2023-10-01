@@ -6,7 +6,7 @@ const CardProgrammer = ({ Programmer }) => {
     <>
       {" "}
       {Programmer.map((resp) => (
-        <div className="content-programmer d-flex my-5">
+        <div key={resp.Name} className="content-programmer d-flex my-5">
           <div className="content-img-programmer w-25 d-flex justify-content-center align-items-center">
             <img src={resp.Image} alt="img-programmer" />
           </div>

@@ -1,6 +1,8 @@
 .my-account-content
 {
+    background-color: var(--darkgrayColor);
     width: 100vw;
+    min-height: 100vh;
 }
 .my-account-order-button{
     width: 50%;

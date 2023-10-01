@@ -15,7 +15,7 @@ const Error404 = () => {
       <Row>
         <Col sm={12}>
           <Card className="content-card-404">
-            <Card.Body className="text-light d-flex flex-column justify-content-center align-items-center">
+            <Card.Body className="card-body-error404 text-light d-flex flex-column justify-content-center align-items-center">
               <Card.Title className="error4040-h1">404</Card.Title>
               <Card.Text className="error404-p">
                 {" "}
