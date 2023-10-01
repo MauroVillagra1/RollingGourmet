@@ -28,6 +28,7 @@ function orderHome() {
           Array.push(resp)
           setOrder(Array)
           window.location.reload();
+
         }
       })
     })

@@ -43,4 +43,14 @@
 
 .customBgImg {
   background-color: var(--paleblueColor);
+  width: 20vw;
+  height: 20vw;
+  min-width: 200px;
+  min-height: 200px;
+}
+.content-category-details{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }
