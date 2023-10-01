@@ -31,7 +31,6 @@ function App() {
     {
       localStorage.setItem("userActive2", JSON.stringify(sessionP));
     }
-    
   },[userActive])
 
 
@@ -44,7 +43,9 @@ function App() {
       sessionStorage.setItem("userActive", JSON.stringify(localStorageData));
     } else if (sessionP) {
       localStorage.setItem("userActive2", JSON.stringify(sessionP));
+      window.location.reload();
     }
+
   }, []);
 
 
