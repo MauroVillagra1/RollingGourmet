@@ -43,7 +43,10 @@ function App() {
       sessionStorage.setItem("userActive", JSON.stringify(localStorageData));
     } else if (sessionP) {
       localStorage.setItem("userActive2", JSON.stringify(sessionP));
-      window.location.reload();
+      setInterval(function() {
+        window.location.reload();
+
+      }, 5000);
     }
 
   }, []);

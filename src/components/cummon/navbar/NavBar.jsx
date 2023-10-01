@@ -87,7 +87,7 @@ const NavBar = (reloadNav) => {
                 </NavLink>
                 <NavLink
                   to="/"
-                  className="nav-link mt-2 mt-sm-0 ms-sm-2 navButtonDefault navButtonAnimation footerFontFamilyBold"
+                  className="nav-link mt-2 mt-sm-0 ms-sm-2 navButtonRed navButtonDefault navButtonAnimation footerFontFamilyBold"
                   onClick={() => {
                     closeSession();
                   }}
@@ -115,7 +115,7 @@ const NavBar = (reloadNav) => {
                     closeSession();
                   }}
                 >
-                  Cerrar Sesión
+                  Logout
                 </NavLink>
               </>
             )}
