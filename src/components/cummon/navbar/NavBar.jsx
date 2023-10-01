@@ -4,7 +4,7 @@ import "./NavBar.css";
 import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-const NavBar = (reloadNav) => {
+const NavBar = ({reloadNav}) => {
   const [userRole, setUserRole] = useState("");
   const [reload, setReload] = useState("");
 

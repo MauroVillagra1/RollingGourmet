@@ -43,8 +43,6 @@ function App() {
       sessionStorage.setItem("userActive", JSON.stringify(localStorageData));
     } else if (sessionP) {
       localStorage.setItem("userActive2", JSON.stringify(sessionP));
-      history.go(0);
-
     }
 
   }, []);
@@ -52,7 +50,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar setReload={setReload} reload={reload}></NavBar>
+      <NavBar setReload={setReload} userActive={userActive} reload={reload}></NavBar>
       <Routes>
         <Route
           exact
