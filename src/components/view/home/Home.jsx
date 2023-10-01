@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./Home.css";
 import { Form, FormGroup, Button, Pagination } from "react-bootstrap";
 import CardProduct from "../product/CardProduct";
 import { listCategories, listProducts } from "../../helpers/queries";
-import ButtonOrders from "./buttonOrders/ButtonOrders"
+import ButtonOrders from "./buttonOrders/ButtonOrders";
 function Home({ userActive, setUserActive }) {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -12,12 +12,12 @@ function Home({ userActive, setUserActive }) {
   const ordersJson = localStorage.getItem("orders");
   const ordersJson_retrieved = JSON.parse(ordersJson);
   const [order, setOrder] = useState(ordersJson_retrieved || []);
-  const [selectedCategory, setSelectedCategory] = useState(""); 
+  const [selectedCategory, setSelectedCategory] = useState("");
   const countG = localStorage.getItem("countGlobal");
   const countGlobal_local = JSON.parse(countG);
-  const [countGlobal, setCountGlobal] = useState(countGlobal_local || 0)
+  const [countGlobal, setCountGlobal] = useState(countGlobal_local || 0);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(12); 
+  const [itemsPerPage] = useState(12);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentProducts = productsFilter.slice(
@@ -27,14 +27,12 @@ function Home({ userActive, setUserActive }) {
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
-  
+
   var newOrders = [];
- 
 
   useEffect(() => {
     const ordersJson = JSON.stringify(order);
     localStorage.setItem("orders", ordersJson);
-    
   }, [order]);
 
   useEffect(() => {
@@ -45,7 +43,7 @@ function Home({ userActive, setUserActive }) {
     listCategories().then((resp) => {
       setCategories(resp);
     });
-    setUserActive(JSON.parse(sessionStorage.getItem("userActive")))
+    setUserActive(JSON.parse(sessionStorage.getItem("userActive")));
   }, []);
 
   function handleCategoryChange(event) {
@@ -136,43 +134,48 @@ function Home({ userActive, setUserActive }) {
             </Form>
           </div>
           <div className="list_products px-5 py-5 d-flex flex-wrap justify-content-center">
-        {currentProducts.length === 0 ? (
-          <p className="text-light">No products were found with this category.</p>
-        ) : (
-          currentProducts.map((product) => (
-            <CardProduct
-              key={product._id}
-              product={product}
-              order={order}
-              setOrder={setOrder}
-              newOrders={newOrders}
-              userActive={userActive}
-              setCountGlobal={setCountGlobal}
-              countGlobal={countGlobal}
-            ></CardProduct>
-          ))
-        )}
-      </div>
+            {currentProducts.length === 0 ? (
+              <p className="text-light">
+                No products were found with this category.
+              </p>
+            ) : (
+              currentProducts.map((product) => (
+                <CardProduct
+                  key={product._id}
+                  product={product}
+                  order={order}
+                  setOrder={setOrder}
+                  newOrders={newOrders}
+                  userActive={userActive}
+                  setCountGlobal={setCountGlobal}
+                  countGlobal={countGlobal}
+                ></CardProduct>
+              ))
+            )}
+          </div>
 
-      <div className="pagination-container w-100 d-flex justify-content-center">
-        <Pagination>
-          {Array.from({ length: Math.ceil(productsFilter.length / itemsPerPage) }, (_, index) => (
-            <Pagination.Item
-              key={index}
-              active={index + 1 === currentPage}
-              onClick={() => handlePageChange(index + 1)}
-            >
-              {index + 1}
-            </Pagination.Item>
-          ))}
-        </Pagination>
-      </div>
+          <div className="pagination-container w-100 d-flex justify-content-center">
+            <Pagination>
+              {Array.from(
+                { length: Math.ceil(productsFilter.length / itemsPerPage) },
+                (_, index) => (
+                  <Pagination.Item
+                    key={index}
+                    active={index + 1 === currentPage}
+                    onClick={() => handlePageChange(index + 1)}
+                  >
+                    {index + 1}
+                  </Pagination.Item>
+                )
+              )}
+            </Pagination>
+          </div>
 
-      <ButtonOrders countGlobal={countGlobal}></ButtonOrders>
-    </div>
-  </div>
-</>
-);
+          <ButtonOrders countGlobal={countGlobal}></ButtonOrders>
+        </div>
+      </div>
+    </>
+  );
 }
 
 export default Home;

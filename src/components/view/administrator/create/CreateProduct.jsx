@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Button,
   Form,
@@ -12,8 +12,10 @@ import "./CreateProduct.css";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { createProducts, listCategories } from "../../../helpers/queries";
+import { useNavigate } from "react-router-dom";
 
 function CreateProduct() {
+  const navigation = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState("");
   const [categories, setCategories] = useState([]);
   const [selectedCategories, setSelectedCategories] = useState([]);
@@ -24,7 +26,7 @@ function CreateProduct() {
       setCategories(categories);
     });
   }, []);
-  
+
   const {
     register,
     handleSubmit,
@@ -59,6 +61,7 @@ function CreateProduct() {
           setSelectedCategories([]);
           setCategoriesComboBox("");
         }
+        navigation("/administrator/product");
       })
       .catch((error) => {
         console.log(error);

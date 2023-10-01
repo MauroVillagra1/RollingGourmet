@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import "./Orders.css";
 import CardProduct from "../../product/CardProduct";
 import { Button, Modal, Form } from "react-bootstrap";

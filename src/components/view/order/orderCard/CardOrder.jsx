@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { Button } from "react-bootstrap";
 import "./CardOrder.css";
-import { deleteOrders, listOrders } from "../../../helpers/queries";
+import { deleteOrders } from "../../../helpers/queries";
 
 function CardOrder({ order, reload }) {
-
-  const [orders, setOrders] = useState([])
-  const [order_, setOrder_] = useState([])
-
+  const [orders, setOrders] = useState([]);
+  const [order_, setOrder_] = useState([]);
 
   let stateClassName = "";
   switch (order.State) {
@@ -20,11 +18,6 @@ function CardOrder({ order, reload }) {
     default:
       stateClassName = "";
   }
-
- 
- 
-
-  
 
   const handleDelete = () => {
     deleteOrders(order._id);

@@ -1,5 +1,5 @@
 import { Button } from "react-bootstrap";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "../product/CardProduct.css";
 import { listOrders } from "../../helpers/queries";
 import Swal from "sweetalert2";
