@@ -1,4 +1,3 @@
-import React from "react";
 import "./Order.css";
 import CardProduct from "../product/CardProduct";
 import { Button, Modal, Form } from "react-bootstrap";
@@ -11,7 +10,7 @@ function HomeOrder() {
   function obtenerFechaYHoraActual() {
     const ahora = new Date();
     const dia = ahora.getDate();
-    const mes = ahora.getMonth() + 1; 
+    const mes = ahora.getMonth() + 1;
     const año = ahora.getFullYear();
     const hora = ahora.getHours();
     const minutos = ahora.getMinutes();

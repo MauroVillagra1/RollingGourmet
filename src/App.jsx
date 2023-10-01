@@ -22,8 +22,10 @@ import ScrollToTop from "./components/cummon/scrolltotop/ScrollToTop";
 function App() {
   const [reload, setReload] = useState([]);
   const [userActive, setUserActive] = useState({});
+
   const reloadNav = () => {
     window.location.reload();
+    console.log("cargo la pagina");
   };
 
   useEffect(() => {

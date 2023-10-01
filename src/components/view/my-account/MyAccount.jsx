@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import "./MyAccount.css";
 import { NavLink } from "react-router-dom";
 
 function MyAccount() {
-  
   const [userActive, setUserActive] = useState({});
   useEffect(() => {
     setUserActive(JSON.parse(sessionStorage.getItem("userActive")));

@@ -1,4 +1,4 @@
-import { Nav, Navbar, Container, Image, Button } from "react-bootstrap";
+import { Nav, Navbar, Container, Image } from "react-bootstrap";
 import "./NavBar.css";
 
 import { NavLink } from "react-router-dom";
@@ -24,9 +24,9 @@ const NavBar = (reloadNav) => {
 
   const closeSession = () => {
     sessionStorage.removeItem("userActive");
-    localStorage.removeItem("orders")
-    localStorage.removeItem("countGlobal")
-    localStorage.removeItem("userActive2")
+    localStorage.removeItem("orders");
+    localStorage.removeItem("countGlobal");
+    localStorage.removeItem("userActive2");
     reloadNav();
   };
 
@@ -43,7 +43,6 @@ const NavBar = (reloadNav) => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-
             {userRole === "" ? (
               <>
                 <NavLink
@@ -123,7 +122,6 @@ const NavBar = (reloadNav) => {
         </Navbar.Collapse>
       </Container>
     </Navbar>
-
   );
 };
 
