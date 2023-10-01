@@ -17,13 +17,13 @@ const CardProgrammer = ({Programmer}) => {
           <p>{resp.Email}</p>
           </div>
          <div className="d-flex w-100">
-          <Link to={resp.LinkGithub || "error"}>
+          <Link target="_blank" to={resp.LinkGithub || "error"}>
           <img className="mx-1" src="https://res.cloudinary.com/dhe7vivfw/image/upload/v1696037692/Rolling%20Gourmet/ICON%20LOGIN/logo_github_icon_143196_a28cht.png" alt="github" />
           </Link>
-          <Link to={resp.LinkLinkedin || "error"}>
+          <Link target="_blank" to={resp.LinkLinkedin || "error"}>
           <img className="mx-1" src="https://res.cloudinary.com/dhe7vivfw/image/upload/v1696037696/Rolling%20Gourmet/ICON%20LOGIN/linkedin_icon-icons.com_65929_1_uimfxz.png" alt="linkedin" />
           </Link>
-          <Link to={resp.LinkInstagram || "error"}>
+          <Link target="_blank" to={resp.LinkInstagram || "error"}>
           <img className="mx-1" src="https://res.cloudinary.com/dhe7vivfw/image/upload/v1696037699/Rolling%20Gourmet/ICON%20LOGIN/1491580635-yumminkysocialmedia26_83102_rkcdir.png" alt="instagram" />
           </Link>
          </div>

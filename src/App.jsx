@@ -16,14 +16,37 @@ import LoginEncapsulateRoutes from "./components/routes/Login-EncapsulateRoutes/
 import AboutUs from "./components/view/AboutUs"
 import Error from "./components/view/error404/Error404"
 import Error404 from "./components/view/error404/Error404";
+import { useEffect } from "react";
 
 function App() {
-  const [userActive, setUserActive] = useState({});
   const [reload, setReload] = useState([]);
-
+  const [userActive, setUserActive] = useState({})
   const reloadNav = () => {
     window.location.reload();
   };
+
+  useEffect(()=>{
+    const sessionP = JSON.parse(sessionStorage.getItem("userActive"))
+    if (sessionP)
+    {
+      localStorage.setItem("userActive2", JSON.stringify(sessionP));
+    }
+    
+  },[userActive])
+
+
+
+  useEffect(() => {
+    const sessionP = JSON.parse(sessionStorage.getItem("userActive"));
+    const localStorageData = JSON.parse(localStorage.getItem("userActive2"));
+  
+    if (localStorageData) {
+      sessionStorage.setItem("userActive", JSON.stringify(localStorageData));
+    } else if (sessionP) {
+      localStorage.setItem("userActive2", JSON.stringify(sessionP));
+    }
+  }, []);
+
 
   return (
     <BrowserRouter>
@@ -55,7 +78,7 @@ function App() {
           path="/login"
           element={
             <LoginEncapsulateRoutes>
-              <Login reloadNav={reloadNav} />
+              <Login reloadNav={reloadNav} setUserActive={setUserActive}/>
             </LoginEncapsulateRoutes>
           }
         ></Route>

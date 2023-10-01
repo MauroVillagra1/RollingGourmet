@@ -26,6 +26,7 @@ const NavBar = (reloadNav) => {
     sessionStorage.removeItem("userActive");
     localStorage.removeItem("orders")
     localStorage.removeItem("countGlobal")
+    localStorage.removeItem("userActive2")
     reloadNav();
   };
 

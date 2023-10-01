@@ -123,7 +123,7 @@ function Order({ userActive }) {
           </div>
         ) : (
           <div className="d-flex flex-column">
-            <div className="d-flex flex-wrap">
+            <div className="d-flex flex-wrap justify-content-center">
               {productFilter.map((productFilter_) => (
                 <CardProduct
                   key={productFilter_._id}
