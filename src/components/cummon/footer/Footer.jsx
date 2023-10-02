@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import "./Footer.css";
 
 const Footer = () => {
@@ -16,18 +17,18 @@ const Footer = () => {
           <article className="col-md-3 col-sm-6 col-12 p-2 d-flex flex-column align-content-sm-center">
             <h4 className="footerFontFamilyBold">Navigation</h4>
             <div>
-              <a
-                href=""
+            <NavLink
+                to={"/"}
                 className="list-group-item listAnimate pb-2 footerFontFamilyNormal"
               >
                 Home
-              </a>
-              <a
-                href=""
+                </NavLink>
+              <NavLink
+                to={"/about-us"}
                 className="list-group-item listAnimate footerFontFamilyNormal"
               >
                 About Us
-              </a>
+              </NavLink>
             </div>
           </article>
 
