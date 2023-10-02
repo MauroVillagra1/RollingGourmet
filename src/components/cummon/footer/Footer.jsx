@@ -1,4 +1,5 @@
 import "./Footer.css";
+import { NavLink } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -15,25 +16,23 @@ const Footer = () => {
           </article>
           <article className="col-md-3 col-sm-6 col-12 p-2 d-flex flex-column align-content-sm-center">
             <h4 className="footerFontFamilyBold">Navigation</h4>
-            <div>
-              <a
-                href=""
+            <NavLink
+                to={"/"}
                 className="list-group-item listAnimate pb-2 footerFontFamilyNormal"
               >
                 Home
-              </a>
-              <a
-                href=""
-                className="list-group-item listAnimate footerFontFamilyNormal"
+              </NavLink>
+              <NavLink
+                to={"/about-us"}
+                className="list-group-item listAnimate pb-2 footerFontFamilyNormal"
               >
                 About Us
-              </a>
-            </div>
+              </NavLink>  
           </article>
 
           <article className="col-md-3 col-sm-6 col-12 p-2 d-flex flex-column align-content-sm-center">
             <h4 className="footerFontFamilyBold">Information</h4>
-            <span className="mt-1 footerFontFamilyNormal">
+            <span className="footerFontFamilyNormal">
               E-Mail: rollingcode@gmail.com
             </span>
             <span className="footerFontFamilyNormal">
@@ -44,7 +43,7 @@ const Footer = () => {
               San Miguel de Tucumán
             </span>
           </article>
-          <article className="col-md-3 col-sm-6 col-12 p-2 d-flex flex-column align-content-sm-center ">
+          <article className="col-md-3 col-sm-6 col-12 p-2 d-flex flex-column align-content-sm-center">
             <h4 className="footerFontFamilyBold">Oppening hour</h4>
             <span className="footerFontFamilyNormal">
               Monday to Friday: 8am to 9pm.
