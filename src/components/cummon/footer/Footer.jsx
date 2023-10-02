@@ -31,7 +31,7 @@ const Footer = () => {
             </div>
           </article>
 
-          <article className="col-md-3 col-sm-6 col-12 p-2 d-flex flex-column align-content-sm-center footerLiCustom">
+          <article className="col-md-3 col-sm-6 col-12 p-2 d-flex flex-column align-content-sm-center">
             <h4 className="footerFontFamilyBold">Information</h4>
             <span className="mt-1 footerFontFamilyNormal">
               E-Mail: rollingcode@gmail.com
