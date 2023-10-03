@@ -5,16 +5,13 @@ import { login } from "../../helpers/queries.js";
 import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 
-
 const Login = ({ setUserActive, reloadNav }) => {
-
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
   const navegacion = useNavigate();
-
 
   const onSubmit = (user) => {
     login(user).then((resp) => {
@@ -24,12 +21,11 @@ const Login = ({ setUserActive, reloadNav }) => {
           "You entered the rolling gourmet web",
           "success"
         );
-        navegacion("/");  
+        navegacion("/");
         reloadNav();
         sessionStorage.setItem("userActive", JSON.stringify(resp));
         setUserActive(resp);
-      } 
-      else {
+      } else {
         Swal.fire("An error occurred", resp.message, "error");
       }
     });
@@ -66,7 +62,6 @@ const Login = ({ setUserActive, reloadNav }) => {
               <Form.Control
                 type="Password"
                 placeholder="Password"
-
                 maxLength={100}
                 {...register("Password", {
                   required: "The password is mandatory information",
@@ -81,14 +76,18 @@ const Login = ({ setUserActive, reloadNav }) => {
                 {errors.Password?.message}
               </Form.Text>
             </Form.Group>
-            <Card.Text className="text-color">
-              <Link to="/">You do not have an account?</Link>
+            <Card.Text className="text-color ">
+              <Link className="text-decoration-none text-white" to="/">
+                You do not have an account?
+              </Link>
             </Card.Text>
             <Card.Text className="text-color">
-              <Link to="/">Have you forgotten the password?</Link>
+              <Link className="text-decoration-none text-white" to="/">
+                Have you forgotten the password?
+              </Link>
             </Card.Text>
             <Button variant="success" type="submit">
-            Get into
+              Get into
             </Button>
           </Form>
         </Card.Body>
