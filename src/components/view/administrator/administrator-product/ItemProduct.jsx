@@ -36,7 +36,6 @@ const ItemProduct = ({ product, setProducts }) => {
 
   return (
     <tr>
-      <td className="priority-1">{product._id}</td>
       <td className="priority-2">{product.NameProduct}</td>
       <td className="priority-3">{product.Price}</td>
       <td className="priority-4">

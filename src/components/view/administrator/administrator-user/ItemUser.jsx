@@ -38,7 +38,6 @@ const ItemUser = ({ user, setUsers, reload, setReload }) => {
     <>
       {user.Role === "Admin" ? (
         <tr className="d-none">
-          <td className="priority-table-user-1">{user._id}</td>
           <td className="priority-table-user-2">{user.Name}</td>
           <td className="priority-table-user-3">{user.Email}</td>
           <td className="priority-table-user-4">
@@ -65,7 +64,6 @@ const ItemUser = ({ user, setUsers, reload, setReload }) => {
         </tr>
       ) : (
         <tr>
-          <td className="priority-table-user-1">{user._id}</td>
           <td className="priority-table-user-2">{user.Name}</td>
           <td className="priority-table-user-3">{user.Email}</td>
           <td className="priority-table-user-4">
