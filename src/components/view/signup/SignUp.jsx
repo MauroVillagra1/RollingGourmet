@@ -21,12 +21,10 @@ const SignUp = ({ setUserInLine }) => {
     user["State"] = "Active";
     if (user.Password === user.RepeatPassword) {
       createUsers(user).then((resp) => {
-        
         if (resp.status === 201) {
           Swal.fire("Welcome!", "You are successfully registered!", "success");
-          navigator("/")
-        }
-        else{
+          navigator("/");
+        } else {
           Swal.fire(
             "A system error occurred! ",
             "Error," + resp.status,
@@ -84,7 +82,7 @@ const SignUp = ({ setUserInLine }) => {
                 })}
               />
               <Form.Text className="text-danger">
-                {errors.nameUser?.message}
+                {errors.Name?.message}
               </Form.Text>
             </Form.Group>
             <Form.Group className="text mt-2" controlId="formBasicEmail">
@@ -96,7 +94,7 @@ const SignUp = ({ setUserInLine }) => {
                   required: "Email is mandatory information",
                   pattern: {
                     value:
-                    /^[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/,
+                      /^[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/,
                     message:
                       "The email must cumply with a valid format such as the following email@mail.com",
                   },
@@ -161,7 +159,7 @@ const SignUp = ({ setUserInLine }) => {
                   className="text text-start fs-lg-5 border-0 fs-4 d-flex justify-content-center align-items-center button-gmail"
                 >
                   <img
-                  className="img-gmail"
+                    className="img-gmail"
                     src="https://brandeps.com/logo-download/G/Gmail-logo-vector-01.svg"
                     alt="logoGmail"
                   />
