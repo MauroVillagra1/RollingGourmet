@@ -114,7 +114,6 @@ const AdministratorProduct = () => {
           <Table responsive striped bordered hover>
             <thead>
               <tr>
-                <th className="priority-1">ID</th>
                 <th className="priority-2">Product</th>
                 <th className="priority-3">Price</th>
                 <th className="priority-4">Image</th>

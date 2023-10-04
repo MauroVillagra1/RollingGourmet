@@ -24,10 +24,9 @@ const AdministratorUser = () => {
           <hr />
         </div>
 
-        <Table className="h-100">
+        <Table responsive striped bordered hover>
           <thead>
             <tr>
-              <th className="priority-table-user-1">ID</th>
               <th className="priority-table-user-2">UserName</th>
               <th className="priority-table-user-3">Mail</th>
               <th className="priority-table-user-4">Options</th>
