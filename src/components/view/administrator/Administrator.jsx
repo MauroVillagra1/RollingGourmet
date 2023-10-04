@@ -28,7 +28,7 @@ const Administrator = () => {
             to="/administrator/orders"
             className="my-2 btn-admin text-white border-0 center"
           >
-            Product Management
+            Orders Management
           </Button>
         </div>
       </div>

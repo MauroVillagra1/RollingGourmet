@@ -19,3 +19,7 @@
 .card_title {
   background: #6f779d;
 }
+
+.pointer {
+  cursor: pointer;
+}
