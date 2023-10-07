@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import "./Order.css";
+import { useEffect } from "react";
+import "./Orders.css";
 import CardProduct from "../../product/CardProduct";
 import { Button, Modal, Form } from "react-bootstrap";
 import { useState } from "react";
@@ -8,7 +8,6 @@ import {
   listOrders,
   listProducts,
 } from "../../../helpers/queries";
-import { set } from "react-hook-form";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 
@@ -26,20 +25,18 @@ function Order({ userActive }) {
   function obtenerFechaYHoraActual() {
     const ahora = new Date();
     const dia = ahora.getDate();
-    const mes = ahora.getMonth() + 1; // Sumamos 1 porque en JavaScript los meses van de 0 a 11
+    const mes = ahora.getMonth() + 1;
     const año = ahora.getFullYear();
     const hora = ahora.getHours();
     const minutos = ahora.getMinutes();
     const segundos = ahora.getSeconds();
 
-    // Formatea el día, mes, hora, minutos y segundos para que tengan dos dígitos
     const diaFormateado = dia < 10 ? `0${dia}` : dia;
     const mesFormateado = mes < 10 ? `0${mes}` : mes;
     const horaFormateada = hora < 10 ? `0${hora}` : hora;
     const minutosFormateados = minutos < 10 ? `0${minutos}` : minutos;
     const segundosFormateados = segundos < 10 ? `0${segundos}` : segundos;
 
-    // Devuelve la fecha y hora en formato YYYY-MM-DD HH:MM:SS
     return `${año}-${mesFormateado}-${diaFormateado} ${horaFormateada}:${minutosFormateados}:${segundosFormateados}`;
   }
 
@@ -53,14 +50,15 @@ function Order({ userActive }) {
       Adress: address,
       Date: Date,
       IdUser: userActive._id,
-      NameUser: userActive.userName
+      NameUser: userActive.userName,
     };
 
-    
     listOrders().then((orderDB) => {
-      const hasMatchingOrder = orderDB.some((ord) => (ord.IdUser === userActive._id && ord.State === "Pending"));
+      const hasMatchingOrder = orderDB.some(
+        (ord) => ord.IdUser === userActive._id && ord.State === "Pending"
+      );
       if (hasMatchingOrder) {
-        Swal.fire("You already have a pending order.")
+        Swal.fire("You already have a pending order.");
         localStorage.removeItem("orders");
         localStorage.removeItem("countGlobal");
         setProductFilter([]);
@@ -68,7 +66,7 @@ function Order({ userActive }) {
         createOrders(storageOrder);
         localStorage.removeItem("orders");
         localStorage.removeItem("countGlobal");
-        Swal.fire("Your order was saved successfully")
+        Swal.fire("Your order was saved successfully");
         setProductFilter([]);
       }
     });
@@ -88,8 +86,8 @@ function Order({ userActive }) {
     listProducts().then((resp) => {
       setProducts(resp);
     });
-    
   }, []);
+
   useEffect(() => {
     const ordersJson = JSON.stringify(order);
     localStorage.setItem("orders", ordersJson);
@@ -120,12 +118,12 @@ function Order({ userActive }) {
               <p>No orders have been made yet.</p>
             </div>
             <Link className="btn" to={"../"}>
-            <Button onClick={handleShow}>Back to Home</Button>
+              <Button onClick={handleShow}>Back to Home</Button>
             </Link>
           </div>
         ) : (
           <div className="d-flex flex-column">
-            <div className="d-flex flex-wrap">
+            <div className="d-flex flex-wrap justify-content-center">
               {productFilter.map((productFilter_) => (
                 <CardProduct
                   key={productFilter_._id}
@@ -158,6 +156,11 @@ function Order({ userActive }) {
                       required
                       value={address}
                       onChange={handleAddressChange}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                          e.preventDefault();
+                        }
+                      }}
                     />
                   </Form.Group>
                   {order.map((orderItem) => (

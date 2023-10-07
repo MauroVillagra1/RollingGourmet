@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Button,
   Form,
@@ -8,24 +8,24 @@ import {
   FormSelect,
   InputGroup,
 } from "react-bootstrap";
-import "./EditProduct.css";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import {
-  createProducts,
   editProduct,
   getProduct,
   listCategories,
 } from "../../../helpers/queries";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+
 function EditProduct() {
+  const navigation = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState("");
   const [categories, setCategories] = useState([]);
   const [categories2, setCategories2] = useState([]);
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [categoriesComboBox, setCategoriesComboBox] = useState("");
   const [editLoad, setEditLoad] = useState([]);
-  const [categoriesLoad, setCategoriesLoad] = useState([])
+  const [categoriesLoad, setCategoriesLoad] = useState([]);
 
   let { id } = useParams();
 
@@ -36,7 +36,7 @@ function EditProduct() {
     setValue("Details", editLoad.Details);
     setValue("Image", editLoad.Image);
     setValue("Stock", editLoad.Stock);
-  
+
     categoriesLoad.forEach((resp2) => {
       categories2.forEach((cate2) => {
         if (cate2._id.toString() === resp2) {
@@ -45,21 +45,19 @@ function EditProduct() {
       });
     });
     setSelectedCategories(x);
-    x.map((asd)=>{
-      setCategories(categories.filter((category) => category._id !== asd._id))
-    })
-
-
+    x.map((asd) => {
+      setCategories(categories.filter((category) => category._id !== asd._id));
+    });
   }, [categories2, editLoad, categoriesLoad]);
 
   useEffect(() => {
     getProduct(id).then((resp) => {
       setEditLoad(resp);
-      setCategoriesLoad(resp.CategoriesID)
+      setCategoriesLoad(resp.CategoriesID);
     });
     listCategories().then((categories) => {
       setCategories(categories);
-      setCategories2(categories)
+      setCategories2(categories);
     });
   }, []);
   const {
@@ -70,7 +68,6 @@ function EditProduct() {
   } = useForm();
 
   const onSubmit = (data) => {
-
     const categories = [];
     selectedCategories.map((category) => {
       categories.push(category._id);
@@ -80,22 +77,23 @@ function EditProduct() {
     data["State"] = "Visible";
     data["Price"] = parseInt(data["Price"]);
     data["Stock"] = parseInt(data["Stock"]);
-   
+
     editProduct(id, data)
       .then((resp) => {
-        if (resp.status === 201) {
+        if (resp.status === 200) {
           Swal.fire(
-            "Producto guardado",
-            "Su producto se guardo correctamente",
+            "Saved product",
+            "Your product was stored correctly",
             "success"
           );
+          navigation("/administrator/product");
         }
       })
       .catch((error) => {
         console.log(error);
         Swal.fire(
-          "Hubo un error",
-          "Error al intentar cargar el producto",
+          "There was a Error",
+          "Error trying to load the product",
           "error"
         );
       });

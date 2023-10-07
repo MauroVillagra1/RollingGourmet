@@ -1,7 +1,21 @@
 .my-account-content
 {
+    background-color: var(--darkgrayColor);
     width: 100vw;
+    min-height: 100vh;
 }
 .my-account-order-button{
     width: 50%;
+}
+.my-account-image{
+    height: 50%;
+    width: 100%;
+    min-width: 120px;
+    min-height: 120px;
+}
+.my-account-image img{
+    width: 10%;
+    height: 10%;
+    min-width: 120px;
+    min-height: 120px;
 }
