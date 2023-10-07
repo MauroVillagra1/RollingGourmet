@@ -77,12 +77,12 @@ const Login = ({ setUserActive, reloadNav }) => {
               </Form.Text>
             </Form.Group>
             <Card.Text className="text-color ">
-              <Link className="text-decoration-none text-white" to="/">
+              <Link className="text-decoration-none text-white" to="/Error">
                 You do not have an account?
               </Link>
             </Card.Text>
             <Card.Text className="text-color">
-              <Link className="text-decoration-none text-white" to="/">
+              <Link className="text-decoration-none text-white" to="/Error">
                 Have you forgotten the password?
               </Link>
             </Card.Text>
