@@ -1,8 +1,6 @@
-#root{
-    background-color: #212939;
-}
+
 .login{
-    background-color: #212939;
+    background-color: var(--darkgrayColor);
     min-height: 100vh;
     width: 100vw;
 }

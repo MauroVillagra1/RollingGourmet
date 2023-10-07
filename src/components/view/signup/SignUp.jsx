@@ -48,7 +48,7 @@ const SignUp = ({ setUserInLine }) => {
           <div className="pt-3">
             <div className="mx-3 my-2 py-2">
               <img
-                src="image.webp"
+                src="https://res.cloudinary.com/dhe7vivfw/image/upload/v1696641327/Rolling%20Gourmet/IMG-SIGNUP/signup_unlgc3.webp"
                 className="rounded-3"
                 width="105%"
                 alt="image.webp"
@@ -163,7 +163,7 @@ const SignUp = ({ setUserInLine }) => {
                     src="https://brandeps.com/logo-download/G/Gmail-logo-vector-01.svg"
                     alt="logoGmail"
                   />
-                  Sing up with Gmail
+                  <p> Sing up with Gmail</p>
                 </Button>
               </div>
             </div>
