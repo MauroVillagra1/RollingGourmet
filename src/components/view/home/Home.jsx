@@ -28,8 +28,12 @@ function Home({ userActive, setUserActive }) {
     setCurrentPage(page);
   };
 
-  var newOrders = [];
+  let newOrders = [];
 
+  useEffect(() => {
+    setCurrentPage(1); 
+  }, [searchTerm, selectedCategory]);
+  
   useEffect(() => {
     const ordersJson = JSON.stringify(order);
     localStorage.setItem("orders", ordersJson);
@@ -112,8 +116,7 @@ function Home({ userActive, setUserActive }) {
                   onChange={(event) => handleCategoryChange(event)}
                   className="select_option_category"
                 >
-                  <option value="">Select an option</option>
-                  <option value="">Alls</option>
+                  <option value="">All</option>
 
                   {categories.map((category) => (
                     <option key={category._id} value={category._id}>

@@ -156,6 +156,11 @@ function Order({ userActive }) {
                       required
                       value={address}
                       onChange={handleAddressChange}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                          e.preventDefault();
+                        }
+                      }}
                     />
                   </Form.Group>
                   {order.map((orderItem) => (
