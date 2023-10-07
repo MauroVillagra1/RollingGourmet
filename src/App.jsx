@@ -35,7 +35,6 @@ function App() {
   useEffect(() => {
     const sessionP = JSON.parse(sessionStorage.getItem("userActive"));
     const localStorageData = JSON.parse(localStorage.getItem("userActive2"));
-
     if (localStorageData) {
       sessionStorage.setItem("userActive", JSON.stringify(localStorageData));
     } else if (sessionP) {

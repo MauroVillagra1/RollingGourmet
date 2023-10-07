@@ -16,11 +16,13 @@ hr {
 
 .btn-delivery {
   background-color: var(--greenColor) !important;
-  width: 200px !important;
+  /* width: 100%;
+  min-width: 50px;
+  font-size: 18px; */
 }
 
 .btn-options-order-width {
-  width: 200px;
+  width: 100%;
 }
 
 td {
@@ -45,6 +47,7 @@ td {
   .priority-table-order-2 {
     display: none;
   }
+
 }
 
 @media screen and (max-width: 300px) {
@@ -60,8 +63,5 @@ td {
   .priority-table-order-4 {
     display: none;
   }
-
-  .btn-options-order-width {
-    width: 50px !important;
-  }
+  
 }

@@ -48,6 +48,15 @@ td {
   .priority-table-user-2 {
     display: none;
   }
+  .priority-table-user-3 {
+    font-size: 10px;
+  }
+  .btn-unsuspend {
+    font-size: 10px;
+  }
+  .btn-suspend {
+    font-size: 10px;
+  }
 }
 
 @media screen and (max-width: 300px) {
@@ -57,19 +66,20 @@ td {
   .priority-table-user-2 {
     display: none;
   }
+
   .priority-table-user-3 {
     font-size: 10px;
-
   }
+
   .btn-options-user-width {
     width: 100%;
    
   }
 
   .btn-unsuspend {
-    font-size: 12px;
+    font-size: 10px;
   }
   .btn-suspend {
-    font-size: 12px;
+    font-size: 10px;
   }
 }
