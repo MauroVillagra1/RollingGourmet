@@ -19,6 +19,9 @@ function Order({ userActive }) {
   const [order, setOrder] = useState(ordersJson_retrieved || []);
   const [products, setProducts] = useState([]);
   const [productFilter, setProductFilter] = useState([]);
+  const countG = localStorage.getItem("countGlobal");
+  const countGlobal_local = JSON.parse(countG);
+  const [countGlobal, setCountGlobal] = useState(countGlobal_local || 0);
 
   let newOrders = [];
 
@@ -132,6 +135,8 @@ function Order({ userActive }) {
                   setOrder={setOrder}
                   newOrders={newOrders}
                   userActive={userActive}
+                  setCountGlobal={setCountGlobal}
+                  countGlobal={countGlobal}
                 ></CardProduct>
               ))}
             </div>
